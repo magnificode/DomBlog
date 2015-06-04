@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dominic Magnifico</title>
+    <description>Dominic Magnifico | Front End Developer
+</description>
+    <link>http://dommagnifi.co/</link>
+    <atom:link href="http://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 01 Jun 2015 15:19:50 -0600</pubDate>
+    <lastBuildDate>Mon, 01 Jun 2015 15:19:50 -0600</lastBuildDate>
+    <generator>Jekyll v2.5.2</generator>
+    
+      <item>
+        <title>The Importance of Company-wide Respect for Process</title>
+        <description>&lt;p&gt;In my previous post I discussed how to start setting up processes within your team. If you haven’t read it, check it out &lt;a href=&quot;http://dommagnifi.co/update/2015/05/14/spinning-up-process.html&quot;&gt;here&lt;/a&gt;. This post will focus more on the integration of that process to the whole team, and the importance of company wide adoption.&lt;/p&gt;
+
+&lt;h2 id=&quot;start-at-the-top&quot;&gt;Start at The Top&lt;/h2&gt;
+
+&lt;p&gt;The main point here is that business has to be on board with the process. At Zenman when we decide a process needs to some tweaking, or a new one is necessary, we take a few preliminary steps. We  begin by writing an explanation of any problems that the process will help to reduce. We follow that with any extra time that this process will add to the project. And finally we list any pros and cons associated with this new process.&lt;/p&gt;
+
+&lt;p&gt;It is possible that the risk involved with the tweak in process may not be worth it to business. You as a developer or designer need to prepare yourself to be shot down. Take the concerns that business has and rework your plan. Get the high level folks on board and it’s all downhill from there.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://bukk.it/business.jpg&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;project-management&quot;&gt;Project Management&lt;/h2&gt;
+
+&lt;p&gt;Once you’ve got business all warm and fuzzy about this fantastic new process, your likely next step will be to talk to project management. It’s important that your Project Managers / Account Managers are aware of this process change so that they can plan accordingly. There’s nothing that will piss off a PM or AM more than a change in process that affects the way they interact with the client. Ensuring that they fully understand the need for this process, and exactly what issues it will help to alleviate is real important.&lt;/p&gt;
+
+&lt;p&gt;As long as your PM or AM is comfortable, and understands the process as well, they’ll have no problem adhering to it and ensuring that the client is aware of the change. Or, at the very least, they will ensure that the process is put into place for the next project.&lt;/p&gt;
+
+&lt;h2 id=&quot;team-participation&quot;&gt;Team Participation&lt;/h2&gt;
+
+&lt;p&gt;Throughout this whole process it’s important to keep your team in the loop. At Zenman we believe in being super transparent. Any time we think about implementing a change that could affect the whole team, we loop them in. From the very beginning we ask for input from the whole team in regards to this new, or improved, process and address any concerns that come up. This step should most definitely be integrated into the planning stage of your new process.&lt;/p&gt;
+
+&lt;p&gt;This high level of transparency helps to ensure that your team is not blindsided by this change in process. It also works to ensure that your whole team has had a chance to voice their concerns.&lt;/p&gt;
+
+&lt;p&gt;This section is a little bit smaller than the last, but without a doubt it is very important. You can be Captain Process all by yourself as much as you want, but if your the whole team isn’t on board then you’re setting yourself up for failure. Collaboration within your department yields huge benefits, and will without a doubt expedite the process when you present your idea to business.&lt;/p&gt;
+
+&lt;p&gt;This series of posts will be turned into a talk that I’ll be doing at Refresh Denver on August 12th. &lt;a href=&quot;http://www.meetup.com/refreshdenver/events/219844847/&quot;&gt;Check it out and RSVP if you’re interested!&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 01 Jun 2015 09:51:00 -0600</pubDate>
+        <link>http://dommagnifi.co/update/2015/06/01/the-importance-of-company-wide-respect-for-process.html</link>
+        <guid isPermaLink="true">http://dommagnifi.co/update/2015/06/01/the-importance-of-company-wide-respect-for-process.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Spinning Up Process</title>
+        <description>&lt;p&gt;As every good developer knows, a process is crucial to the success of your project. Without it, clients run amok, design changes seven times, development never has a clear objective, and the project becomes an all around disaster. Process is important, it keeps everyones eye on the prize. At Zenman, I’ve spent the past 3 and a half years cultivating a process that I believe works quite well.&lt;/p&gt;
+
+&lt;p&gt;One thing that I want to preface here, and I’ll refrence this point a bunch, is that your process is never &lt;strong&gt;EVER&lt;/strong&gt; perfect. I can’t think of a single process that I’ve been a part of that didn’t have some room for improvement. So keep in mind, the fact that you’re even trying to lay out a process, is a step in the right direction. You’re going to change it, iterate on it, and ultimately improve upon it.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-the-right-processes-in-place&quot;&gt;Setting the Right Processes in Place&lt;/h2&gt;
+
+&lt;p&gt;When first developing our process at Zenman we had to establish exactly what it was we were trying to accomplish. Where are we headed? What exactly is that prize we should be keeping our eyes on. What it came down to was simply the fact that we wanted a process that provided designers, developers, and business with all of the information that is needed for the project right off the bat. Leave no stone unturned. &lt;/p&gt;
+
+&lt;p&gt;The first step in attaining this goal was to hold a discovery meeting, which for Zenman, is our first deep dive into what the client is all about. This meeting incorporates every member of the team for this specific project. Everyone from Project Manager and Sales Exec, to Developer and Designer, all the way up to the CEO sits in on this meeting.&lt;/p&gt;
+
+&lt;p&gt;We incorporate everyone in this meeting for a very specific reason, and that is because without full immersion in the process, your process is more likely to fail. Having everyone participate in this meeting gives us all the preparation we need for the project as a whole. And not only that, it gives each department insight into the other departments processes and methodology. This then helps sales people to sell better, because they understand our development process, and can explain to clients more readily and knowledgeably about how that process works. Everyone benefits from having a high level understanding of how the other departments work, thus creating a more seemless project and inevitably a better product.&lt;/p&gt;
+
+&lt;p&gt;Just to give you a little insight into our discovery process, from a development standpoint, during the discovery we ask some technical questions like where is your current site hosted, where is your domain registered, how are your emails set up, and how do we access your google analytics. This gives us the power to complete steps within our process that are both immediate, and further down the line, so that a back and forth does not need to occur between developer and client. Having a clear goal in place makes a project ridiculously more manageable.&lt;/p&gt;
+
+&lt;h2 id=&quot;is-it-scalable&quot;&gt;Is it Scalable?&lt;/h2&gt;
+
+&lt;p&gt;One of the best things about the process that we implemented at Zenman is that it is effective for projects of all sizes. From Fortune 500 companies down to startups, our process works. There is no more tempting time to skip out on process then on a small project. This is where you kind of have to reign in the project managers and sales folks. At this point, a PM or AM will try to tempt you with promises of gold and mir to break process and get the task done in record time.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://bukk.it/noooooooooo.gif&quot; alt=&quot;nope nope nope&quot; title=&quot;noooooooooo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;DON’T DO IT! Sticking to the process may incur a little bit of extra time up front, but for the love of God it has the potential to save your ass in the long run.&lt;/p&gt;
+
+&lt;p&gt;Nothing like an example to help justify my claim…one of our steps in the process, almost immediately after our discovery meeting, is to run a smoke test on the clients server. A smoke test for anyone interested is just an automated test that runs through a series of tasks to ensure that, in our case, the clients server is set up to handle a wordpress installation. There have been a few times where the process doesn’t get followed, the client drags their feet in getting us hosting credentials, and all of the sudden, it’s time to launch the site! Hooray right? Not exactly. I’ve tried to launch to a server where a smoke test was not ran before and run into castrophic problems…it’s running on PHP4…ssh isn’t enabled…the server was bit by a PC and is now a windows server…awful awful terrible things like that. And because of these things, the site didn’t get launched, and the project delivery date had to be extended, sometimes as long as weeks after the initial go live date.&lt;/p&gt;
+
+&lt;p&gt;If process had been followed, we wouldn’t have run into these issues, they would have been resolved while development was happening, and the site would have gone live on the day it was supposed to.&lt;/p&gt;
+
+&lt;p&gt;This is where I’ll end the post for now. Stay tuned for more like this as I intend to turn this series of posts into a talk that I’ll be giving in August at Refresh Denver. &lt;a href=&quot;http://www.meetup.com/refreshdenver/events/219844847/&quot;&gt;Check it out and RSVP if you’re interested!&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 14 May 2015 09:51:00 -0600</pubDate>
+        <link>http://dommagnifi.co/update/2015/05/14/spinning-up-process.html</link>
+        <guid isPermaLink="true">http://dommagnifi.co/update/2015/05/14/spinning-up-process.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Choosing Your Stack: Part 1</title>
+        <description>&lt;p&gt;Ah yes. The question that plagues every developer looking to break into the Web App development field. A question that I have had to ask myself recently as well. Everyone knows there’s a million frameworks out there that will lead you down a particular path. Some are all encompassing stacks, like &lt;a href=&quot;http://mean.io/#!/&quot;&gt;MEAN&lt;/a&gt;, and of course you can mix and match your own. But how the heck are you supposed to choose between &lt;a href=&quot;http://emberjs.com/&quot;&gt;Ember&lt;/a&gt;, &lt;a href=&quot;http://backbonejs.org/&quot;&gt;Backbone&lt;/a&gt;, &lt;a href=&quot;https://angularjs.org/&quot;&gt;Angular&lt;/a&gt;, or &lt;a href=&quot;http://laravel.com/&quot;&gt;Laravel&lt;/a&gt; or the countless thousand other frameworks that exist.&lt;/p&gt;
+
+&lt;p&gt;Through the next few posts, I’m going to walk you through the process that lead to the team I work with to choose our stack.&lt;/p&gt;
+
+&lt;h2 id=&quot;choosing-your-projects&quot;&gt;Choosing Your Projects&lt;/h2&gt;
+
+&lt;p&gt;The first and clearly most important step to this process is choosing which types of projects you want to work on. Are they single page apps? Or as the &lt;a href=&quot;http://en.wikipedia.org/wiki/Single-page_application&quot;&gt;Wikipedia&lt;/a&gt; page puts it…&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;…a web application or web site that fits on a single web page with the goal of providing a more fluid user experience akin to a desktop application.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Or are you looking to build apps that adhere to the MVC (Model - View - Controller) principle, again, defined by &lt;a href=&quot;http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&quot;&gt;Wikipedia&lt;/a&gt; as…&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;…a software architectural pattern for implementing user interfaces. It divides a given software application into three interconnected parts, so as to separate internal representations of information from the ways that information is presented to or accepted from the user&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The team I am working with landed on the single page app approach. After further research we established that this title of “single page” does not directly translate to a literal one page application, but actually describes an app that uses AJAX and api calls to render page content fluidly without a page load. Thus giving the illusion of a “single page” application.&lt;/p&gt;
+
+&lt;p&gt;So far so good, we’ve established what type of apps we want to build. Currently we are in the phase of choosing actual tools to help us build the thing we want. I don’t have too much more info at the moment, but let me show you the tools we are looking into.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://emberjs.com/&quot;&gt;Ember&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://angularjs.org/&quot;&gt;Angular&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.meteor.com/&quot;&gt;Meteor.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://facebook.github.io/react/&quot;&gt;React.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot;&gt;Node&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://iojs.org/en/index.html&quot;&gt;io.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://symfony.com/&quot;&gt;Symfony&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://backbonejs.org/&quot;&gt;Backbone&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Obviously some of these are front end, others are backend. We are looking at all of these options and how they pair together. Each has their pros and cons but at the moment we need to figure out what set of tools will not only be most effective for the project, but we need to also figure out which tools play to the skills we currently have. Zenman is primarily a wordpress shop. That being said we have a pretty solid understanding of PHP, which makes us lean towards utilizing symfony as a the backend framework. We are still in the process but I think we have a good start. Updates to come as they develop.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 19 Feb 2015 08:51:00 -0700</pubDate>
+        <link>http://dommagnifi.co/update/2015/02/19/choosing-your-stack-part-1.html</link>
+        <guid isPermaLink="true">http://dommagnifi.co/update/2015/02/19/choosing-your-stack-part-1.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>The Internet’s Own Boy</title>
+        <description>&lt;p&gt;I had the pleasure of watching &lt;strong&gt;&lt;em&gt;The Internet’s Own Boy: The Story of Aaron Swartz&lt;/em&gt;&lt;/strong&gt;, and let me tell you, this documentary that highlights tragedy that is the US Justice system was quite eye opening.&lt;/p&gt;
+
+&lt;p&gt;I’d like to preface with the fact that I think Aaron Swartz  was  one of the internet’s, if not this generation’s most influential figures. The guy was a damn genius, had incredible ideas for the web itself, and had an amazing desire to make documents that were in the public domain, easily accessible to the public.&lt;/p&gt;
+
+&lt;p&gt;Public documents easily accessible to the public…not a crazy desire.&lt;/p&gt;
+
+&lt;p&gt;The documentary goes into detail about what Mr. Swartz did with the whole Jstor MIT debacle, and essentially the FBI ended up investigating this person because he downloaded too many public documents, too quickly. It appears he had no intention of reselling these papers, or even posting them up for public viewing, it appears his intentions were to analyze the massive amounts of data, like he had done in the past, to try to improve specific things.&lt;/p&gt;
+
+&lt;p&gt;I really connected with the documentary because of how deeply this person seemed to have touched the lives of every single person around him. Mr. Swartz was described as a person who just wanted to make the world a better place.&lt;/p&gt;
+
+&lt;p&gt;The other thing that really made me pay attention was the fact that some people in the documentary had the view that the government was trying to make an example of Aaron to prevent people from shaking things up too much. “Hackers” like Aaron posed a threat to the government, and they wanted to scare the shit out of that group of people to prevent that shakeup from affecting their bottom dollar. It’s mind blowing to me that they drove this genius of a man to end his own life.&lt;/p&gt;
+
+&lt;p&gt;In addition his contributions to slowing down and killing SOPA are possibly some of the most important contributions to preserving free speech on the internet to date.&lt;/p&gt;
+
+&lt;p&gt;There was so much more Mr. Swartz had left to accomplish, so much good that he could have done for this broken system that we have, that we blissfully ignore and accept. The man saw a thing that was broken, that was censoring people and materials that should be available to everyone to further their knowledge. But the government realized how scary an informed public is, and ran him into the ground. The story is tragic, but it is one that every single person needs to be aware of, and informed about so that we can carry on his legacy and his goal to make the world a better place.&lt;/p&gt;
+
+&lt;p&gt;If you want to watch the video it’s on Youtube and multiple other places. Check it out.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/vXr-2hwTk58&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</description>
+        <pubDate>Sat, 13 Dec 2014 18:09:00 -0700</pubDate>
+        <link>http://dommagnifi.co/update/2014/12/13/the-internets-own-boy.html</link>
+        <guid isPermaLink="true">http://dommagnifi.co/update/2014/12/13/the-internets-own-boy.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>A More Minimal Approach</title>
+        <description>&lt;p&gt;Howdy folks!&lt;/p&gt;
+
+&lt;p&gt;So after an absurd amount of time, I’ve decided to update my site. Not really featuring any work at the moment, but I definitely have plans for more features!&lt;/p&gt;
+
+&lt;p&gt;One thing I really wanted to start doing was write. Any new technology that I’m learning, I’m going to start documenting here to help myself learn and recall.&lt;/p&gt;
+
+&lt;p&gt;Thanks for taking a gander!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Dec 2014 10:24:11 -0700</pubDate>
+        <link>http://dommagnifi.co/update/2014/12/09/a-more-minimal-approach.html</link>
+        <guid isPermaLink="true">http://dommagnifi.co/update/2014/12/09/a-more-minimal-approach.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
+    
+  </channel>
+</rss>

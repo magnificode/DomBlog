@@ -1,0 +1,28 @@
+/*------------------------------------*\
+    ::Typography
+\*------------------------------------*/
+h1{
+	font-family: open_sansextrabold, sans-serif;
+	text-transform: uppercase;
+	margin: {bottom: 0;}
+}
+
+p{
+	line-height:  2em;
+}
+
+a{
+	color: $color-3;
+	text-decoration: none;
+	transition: color 400ms;
+	&:hover{
+		color: lighten($color-3, 15%);
+	}
+}
+
+blockquote{
+	background: darken($color-2,5%);
+	border-left: 5px solid $color-3;
+	padding: $pad;
+	font-style: italic;
+}

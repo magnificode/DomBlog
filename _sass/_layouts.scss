@@ -1,0 +1,56 @@
+/*------------------------------------*\
+    ::Site Header
+\*------------------------------------*/
+.site-header{
+    text-align: center;
+    .header__social{
+	display: inline-block;
+    	width: 100%;
+    	a{
+    		margin: {right:$pad*2;}
+    	}
+    }
+}
+/*------------------------------------*\
+    ::Post Excertps
+\*------------------------------------*/
+.posts{
+	padding: {top:$pad*3;}
+}
+.post{
+	padding: {left:$pad;right:$pad;}
+	margin: {bottom:$pad*2;}
+	h1{
+		font-size: 1.5em;
+	}
+	h2{
+		margin: {bottom: 0;}
+	}
+	@media only screen and (min-width:  480px){
+		h1{
+			font-size: 3vw;
+		}
+	}
+}
+.post-meta{
+	margin: {top:$pad;}
+	svg{
+		width: 15px;
+		height: 15px;
+		margin: {right: $pad/2;}
+	}
+}
+.rss-subscribe{
+	text-align: center;
+}
+
+
+/*------------------------------------*\
+    ::Single Posts
+\*------------------------------------*/
+.post-content{
+    img{
+        display: block;
+        margin: 0 auto;
+    }
+}
