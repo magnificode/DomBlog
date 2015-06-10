@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Importance of Company-wide Respect for Process"
-date:   2015-06-02 15:51:00
+date:   2015-06-01 15:51:00
 categories: update
 ---
 In my previous post I discussed how to start setting up processes within your team. If you haven't read it, check it out [here](http://dommagnifi.co/update/2015/05/14/spinning-up-process.html). This post will focus more on the integration of that process to the whole team, and the importance of company wide adoption.
