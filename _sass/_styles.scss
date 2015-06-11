@@ -4,7 +4,9 @@
 .site-header{
 	h1{
 		color: $color-1;
+		font-family: open_sansextrabold, sans-serif;
 		font-size: 7vw;
+		text-transform: uppercase;
 	}
 	a{
 		color: $color-1;

@@ -11,26 +11,16 @@
     	}
     }
 }
+
 /*------------------------------------*\
     ::Post Excertps
 \*------------------------------------*/
-.posts{
-	padding: {top:$pad*3;}
-}
 .post{
-	padding: {left:$pad;right:$pad;}
-	margin: {bottom:$pad*2;}
-	h1{
-		font-size: 1.5em;
-	}
-	h2{
-		margin: {bottom: 0;}
-	}
-	@media only screen and (min-width:  480px){
-		h1{
-			font-size: 3vw;
-		}
-	}
+        padding: {left:$pad;right:$pad;}
+        margin: {bottom:$pad*2;}
+        &:first-child{
+            margin: {top:$pad*2;}
+        }
 }
 .post-meta{
 	margin: {top:$pad;}
@@ -43,7 +33,6 @@
 .rss-subscribe{
 	text-align: center;
 }
-
 
 /*------------------------------------*\
     ::Single Posts

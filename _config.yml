@@ -10,3 +10,7 @@ github_username:  magnificode
 
 # Build settings
 markdown: kramdown
+
+sass:
+    style: :compressed
+    sass_dir: _sass
