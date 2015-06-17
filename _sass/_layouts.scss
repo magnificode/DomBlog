@@ -21,6 +21,9 @@
         &:first-child{
             margin: {top:$pad*2;}
         }
+        p{
+            padding: {bottom: 0;}
+        }
 }
 .post-meta{
 	margin: {top:$pad;}
@@ -37,7 +40,10 @@
 /*------------------------------------*\
     ::Single Posts
 \*------------------------------------*/
-.post-content{
+.post-content,
+.post-header{
+    max-width: 800px;
+    margin: 0 auto;
     img{
         display: block;
         margin: 0 auto;
