@@ -6,13 +6,13 @@
 </description>
     <link>http://dommagnifi.co/</link>
     <atom:link href="http://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Jun 2015 07:44:11 -0600</pubDate>
-    <lastBuildDate>Tue, 23 Jun 2015 07:44:11 -0600</lastBuildDate>
+    <pubDate>Tue, 23 Jun 2015 07:45:28 -0600</pubDate>
+    <lastBuildDate>Tue, 23 Jun 2015 07:45:28 -0600</lastBuildDate>
     <generator>Jekyll v2.5.2</generator>
     
       <item>
         <title>Enhancing Progressive Enhancement</title>
-        <description>&lt;p&gt;As the famous Dave Rupert says, “It’s time for some &lt;em&gt;Law and Order sound effect here&lt;/em&gt; Hot Drama.”&lt;/p&gt;
+        <description>&lt;p&gt;As the famous Dave Rupert says, “It’s time for some * &lt;em&gt;Law and Order sound effect here&lt;/em&gt; * Hot Drama.”&lt;/p&gt;
 
 &lt;p&gt;Yesterday the internet was abuzz with the technicalities of what Progressive Enhancement really is. A few posts popped up here and there of folks defending their respective sides of the argument. Now it goes without saying that this is a great thing, and obviously what the internet is intended to do, which is foster discussion. The two main articles I’ll reference in this little discussion are &lt;a href=&quot;https://adactio.com/journal/7774&quot;&gt;Jeremy Keith’s&lt;/a&gt; article, which is a response to &lt;a href=&quot;https://plus.google.com/+ScottJenson/posts/S23BqQsEuvR&quot;&gt;Scott Jenson’s&lt;/a&gt; post on Google+.&lt;/p&gt;
 

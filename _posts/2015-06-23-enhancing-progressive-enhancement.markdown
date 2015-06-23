@@ -5,7 +5,7 @@ date:   2015-06-23 15:51:00
 categories: update
 ---
 
-As the famous Dave Rupert says, "It's time for some *Law and Order sound effect here* Hot Drama."
+As the famous Dave Rupert says, "It's time for some * *Law and Order sound effect here* * Hot Drama."
 
 Yesterday the internet was abuzz with the technicalities of what Progressive Enhancement really is. A few posts popped up here and there of folks defending their respective sides of the argument. Now it goes without saying that this is a great thing, and obviously what the internet is intended to do, which is foster discussion. The two main articles I'll reference in this little discussion are [Jeremy Keith's](https://adactio.com/journal/7774) article, which is a response to [Scott Jenson's](https://plus.google.com/+ScottJenson/posts/S23BqQsEuvR) post on Google+.
 
