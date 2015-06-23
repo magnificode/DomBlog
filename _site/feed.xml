@@ -6,13 +6,13 @@
 </description>
     <link>http://dommagnifi.co/</link>
     <atom:link href="http://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Jun 2015 07:43:24 -0600</pubDate>
-    <lastBuildDate>Tue, 23 Jun 2015 07:43:24 -0600</lastBuildDate>
+    <pubDate>Tue, 23 Jun 2015 07:44:11 -0600</pubDate>
+    <lastBuildDate>Tue, 23 Jun 2015 07:44:11 -0600</lastBuildDate>
     <generator>Jekyll v2.5.2</generator>
     
       <item>
         <title>Enhancing Progressive Enhancement</title>
-        <description>&lt;p&gt;As the famous Dave Rupert says, “It’s time for some &lt;strong&gt;Law and Order sound effect here&lt;/strong&gt; Hot Drama.”&lt;/p&gt;
+        <description>&lt;p&gt;As the famous Dave Rupert says, “It’s time for some &lt;em&gt;Law and Order sound effect here&lt;/em&gt; Hot Drama.”&lt;/p&gt;
 
 &lt;p&gt;Yesterday the internet was abuzz with the technicalities of what Progressive Enhancement really is. A few posts popped up here and there of folks defending their respective sides of the argument. Now it goes without saying that this is a great thing, and obviously what the internet is intended to do, which is foster discussion. The two main articles I’ll reference in this little discussion are &lt;a href=&quot;https://adactio.com/journal/7774&quot;&gt;Jeremy Keith’s&lt;/a&gt; article, which is a response to &lt;a href=&quot;https://plus.google.com/+ScottJenson/posts/S23BqQsEuvR&quot;&gt;Scott Jenson’s&lt;/a&gt; post on Google+.&lt;/p&gt;
 
@@ -22,7 +22,7 @@
   &lt;p&gt;Of course you can have it fail gracefully. That is very reasonable but what are you left with, an elegant error dialog?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;This statement cuts away all the mustard and gets at, what I believe to be, the Progressive Enhancement purists. This is the main point of Scott’s article. That in some cases Progressive Enhancement may not be an acceptable solution. Specifically when it comes down to the fact that the entire app is rendered useless by this practice, and &lt;strong&gt;”…not everything devolves to content.”&lt;/strong&gt;. &lt;/p&gt;
+&lt;p&gt;This statement cuts away all the mustard and gets at, what I believe to be, the Progressive Enhancement purists. This is the main point of Scott’s article. That in some cases Progressive Enhancement may not be an acceptable solution. Specifically when it comes down to the fact that the entire app is rendered useless by this practice, and &lt;em&gt;”…not everything devolves to content.”&lt;/em&gt;. &lt;/p&gt;
 
 &lt;p&gt;While I certainly agree with Scott here, we have to take a step back for a second. This is one of the issues that I see come up time and time again in our industry. Everyone is taking these practices, or these ideologies, at face value. It’s either black, or it’s white. Zero or one. There is no middle ground. And that is where I think the hang-ups start.&lt;/p&gt;
 

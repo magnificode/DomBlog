@@ -5,7 +5,7 @@ date:   2015-06-23 15:51:00
 categories: update
 ---
 
-As the famous Dave Rupert says, "It's time for some **Law and Order sound effect here** Hot Drama."
+As the famous Dave Rupert says, "It's time for some *Law and Order sound effect here* Hot Drama."
 
 Yesterday the internet was abuzz with the technicalities of what Progressive Enhancement really is. A few posts popped up here and there of folks defending their respective sides of the argument. Now it goes without saying that this is a great thing, and obviously what the internet is intended to do, which is foster discussion. The two main articles I'll reference in this little discussion are [Jeremy Keith's](https://adactio.com/journal/7774) article, which is a response to [Scott Jenson's](https://plus.google.com/+ScottJenson/posts/S23BqQsEuvR) post on Google+.
 
@@ -13,7 +13,7 @@ Both of these articles make great points. Scott Jenson, in regards to building a
 
 >Of course you can have it fail gracefully. That is very reasonable but what are you left with, an elegant error dialog?
 
-This statement cuts away all the mustard and gets at, what I believe to be, the Progressive Enhancement purists. This is the main point of Scott's article. That in some cases Progressive Enhancement may not be an acceptable solution. Specifically when it comes down to the fact that the entire app is rendered useless by this practice, and **"...not everything devolves to content."**. 
+This statement cuts away all the mustard and gets at, what I believe to be, the Progressive Enhancement purists. This is the main point of Scott's article. That in some cases Progressive Enhancement may not be an acceptable solution. Specifically when it comes down to the fact that the entire app is rendered useless by this practice, and *"...not everything devolves to content."*. 
 
 While I certainly agree with Scott here, we have to take a step back for a second. This is one of the issues that I see come up time and time again in our industry. Everyone is taking these practices, or these ideologies, at face value. It's either black, or it's white. Zero or one. There is no middle ground. And that is where I think the hang-ups start.
 
