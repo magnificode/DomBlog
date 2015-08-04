@@ -90,15 +90,17 @@
     overflow: hidden;
 }
 .about-blurb__content{
-    padding: {bottom:$pad;}
-}
-.about-blurb__content,
-.about-blurb__image{
-    float: left;
     width: 100%;
+    padding: {bottom:$pad;}
+    text-align: center;
+    letter-spacing: 1px;
+    strong{
+        color: $color-3;
+    }
     @media (min-width: 768px){
+        width: 75%;
         padding: {left:$pad;right:$pad;}
-        width: calc(50% - 0.9375rem*2);
+        margin: 0 auto;
     }
 }
 .skill-cat--core {
