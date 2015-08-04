@@ -80,3 +80,61 @@
         margin: 0 auto;
     }
 }
+
+/*------------------------------------*
+    ::About
+*------------------------------------*/
+.about-blurb{
+    padding: $pad*3;
+    overflow: hidden;
+}
+.about-blurb__content{
+    padding: {bottom:$pad;}
+}
+.about-blurb__content,
+.about-blurb__image{
+    float: left;
+    width: 100%;
+    @media (min-width: 768px){
+        padding: {left:$pad;right:$pad;}
+        width: calc(50% - 0.9375rem*2);
+    }
+}
+.skill-cat--core {
+    color: $color-3;
+}
+.skill-cat--pondering {
+    color: $color-4;
+}
+.skill-cat{
+    text-align: center;
+    .skill-cat__icon{
+        display: block;
+        margin: 0 auto;
+    }
+    svg{
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        height: auto;
+        fill: currentcolor;
+    }
+    h2{
+        position: relative;
+        display: inline-block;
+        &:after{
+            content: "";
+            display: block;
+            height: 3px;
+            width: 125px;
+            margin: 5px auto;
+            background: currentcolor;
+        }
+    }
+    ul{
+        margin: {bottom:$pad*2;}
+        padding: 0;
+        font-size: 1.25em;
+        list-style: none;
+    }
+}
