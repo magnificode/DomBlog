@@ -1,33 +1,34 @@
 /*------------------------------------*\
     ::Typography
 \*------------------------------------*/
-h1{
+h1,h2,h3,h4,h5,h6{
 	margin: 0;
-	font-size: 2.291em;
-	line-height: 1.416;
+	line-height: 1;
+}
+h1{
+	font-size: 3em;
 }
 h2{
-	margin: 0;
-	font-size: 1.875em;
+	font-size: 2.25em;
 }
-@media screen and (max-width: 480px){
-	h1{
-		font-size:  1.425em;
-	}
-	h2{
-		font-size: 1.275em;
-	}
+h3{
+	font-size: 1.5em;
 }
-p{
-	padding: {bottom:1.75em;}
-	font-size: 1.25em;
-	line-height: 1.75em;
-	&:last-child{
-		padding{bottom: 0;}
-	}
-	@media screen and (max-width: 480px){
-		font-size: .9em;
-		line-height: 1.45em;
+h4{
+	font-size: 1.3125em;
+}
+h5{
+	font-size: 1.125em;
+}
+h6{
+	font-size: 1.025em;
+}
+p,ul,ol{
+	font-size: 1em;
+	color: currentcolor;
+ 	margin-bottom: $pad;
+	&:last-child {
+		margin:{bottom:0;}
 	}
 }
 a{
