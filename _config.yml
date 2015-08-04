@@ -7,7 +7,9 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://dommagnifi.co" # the base hostname & protocol for your site
 twitter_username: magnificode
 github_username:  magnificode
-
+navigation:
+- text: About
+  url: /about.html
 # Build settings
 markdown: kramdown
 
