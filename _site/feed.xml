@@ -6,9 +6,30 @@
 </description>
     <link>http://dommagnifi.co/</link>
     <atom:link href="http://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Aug 2015 00:28:01 -0600</pubDate>
-    <lastBuildDate>Tue, 04 Aug 2015 00:28:01 -0600</lastBuildDate>
+    <pubDate>Tue, 04 Aug 2015 07:54:18 -0600</pubDate>
+    <lastBuildDate>Tue, 04 Aug 2015 07:54:18 -0600</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>On Community</title>
+        <description>&lt;p&gt;It never ceases to amaze me how helpful the web development community is. It’s incredible to encounter people who are passionate about their craft.&lt;/p&gt;
+
+&lt;p&gt;There’s been a lot of talk lately about suspending new features on the web. Some folks seem to think that it’s becoming too feature rich, too quickly. While I disagree with this sentiment, it’s this type of active discussion that I love. There have been countless responses both for and against that idea, and they all have good points! That’s what is so fascinating about what we do. We have the ability to disagree with an idea, but what empowers us is our logical mind. As much as we want to yell about how wrong the idea may be, or jump straight to Twitter, we pause and let that logic wash over us.&lt;/p&gt;
+
+&lt;p&gt;This fosters a community of discussion and learning for everyone. We see both sides of the same coin and are then empowered to form our own opinion. It would seem that there are few other fields of work where this ecosystem exists. The stigma of the boring 9 to 5, go to work, head down all day, a slave to the clock. But (most of us) don’t have that. And even if we do, in reality, we can come to any number of places online and feel challenged. No matter how terrible you think your job is, this community provides an outlet to get back on the right path.&lt;/p&gt;
+
+&lt;p&gt;The people (obviously) are what make the community so great. It blows me away how helpful and open to growth we all are. I, much like you I’m sure, have heard “Mind taking a look at this?” or “Think I could bounce a couple of ideas off you?” countless times. I don’t know about you, but every time I am asked any variation of that I get excited. Excited to help solve a new problem, or help to propel a colleague towards success in their project, to be part of a larger whole. Granted we all have our off days, I’m not exempt from that. But by and large the fact that anyone is asking you for help, is a huge compliment, and one that should not be taken lightly.&lt;/p&gt;
+
+&lt;p&gt;The bottom line is I am thrilled to be a part of this community. There are countless opportunities right around the corner, and a horde of amazing people offering their support.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 04 Aug 2015 01:47:00 -0600</pubDate>
+        <link>http://dommagnifi.co/update/2015/08/04/on-community.html</link>
+        <guid isPermaLink="true">http://dommagnifi.co/update/2015/08/04/on-community.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Enhancing Progressive Enhancement</title>
