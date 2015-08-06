@@ -102,6 +102,9 @@
         margin: 0 auto;
     }
 }
+.skills{
+    overflow: hidden;
+}
 .skill-cat--core {
     color: $color-3;
 }
@@ -109,7 +112,21 @@
     color: $color-4;
 }
 .skill-cat{
+    position: relative;
+    width: 50%;
+    float: left;
     text-align: center;
+    &:first-child{
+        &:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: $color-1;
+            width: 1px;
+        }
+    }
     .skill-cat__icon{
         display: block;
         margin: 0 auto;
@@ -160,7 +177,7 @@
             }
             &:after{
                 bottom: 0;
-            }    
+            }
         }
     }
     @media (max-width: 768px){
