@@ -1,0 +1,65 @@
+/*------------------------------------*
+    ::Resume
+*------------------------------------*/
+.resume{
+    overflow: hidden;
+    margin: {top:$pad*2;}
+    border-top: 4px solid $color-3 ;
+    border-bottom: 4px solid $color-3 ;
+    &__inner{
+        max-width: 960px;
+        margin: {top:$pad*2;}
+    }
+}
+.resume__address,
+.resume__title{
+    float: left;
+    width: 50%;
+}
+.resume__address{
+    padding: {top:$pad;}
+    text-align: right;
+    p{
+        margin: {top: 0;bottom:0;}
+    }
+}
+.resume__section{
+    display: block;
+    float: left;
+    width: 100%;
+    padding: {top:$pad*2;bottom:$pad*2;}
+    border-bottom: 1px dotted $color-1;
+    &:last-child{
+        border-bottom: none;
+    }
+}
+.resume__subhead,
+.resume__description,
+.resume__skills{
+    float: left;
+}
+.resume__skills{
+    width: 30.333333%;
+}
+.resume__subhead{
+    width: 25%;
+    h2{
+        margin: 0;
+    }
+}
+.resume__description{
+    width: 75%;
+    ul{
+        padding: {left:$pad;}
+        margin: {top:0;}
+    }
+}
+.resume__job{
+    padding: {bottom:$pad*2;}
+}
+.resume__job-title{
+    h3,p{
+        margin: 0;
+        padding: 0;
+    }
+}

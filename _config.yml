@@ -12,6 +12,8 @@ navigation:
   url: /about.html
 - text: Work
   url: /work.html
+- text: Resume
+  url: /resume.html
 # Build settings
 markdown: kramdown
 
