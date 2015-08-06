@@ -1,0 +1,75 @@
+/*------------------------------------*
+    ::About
+*------------------------------------*/
+.about-blurb{
+    overflow: hidden;
+    padding: $pad*2 $pad*3;
+}
+.about-blurb__content{
+    width: 100%;
+    text-align: center;
+    letter-spacing: 1px;
+    strong{
+        color: $color-3;
+    }
+    @media (min-width: 768px){
+        width: 75%;
+        padding: {left:$pad;right:$pad;}
+        margin: 0 auto;
+    }
+}
+.skills{
+    overflow: hidden;
+}
+.skill-cat--core {
+    color: $color-3;
+}
+.skill-cat--pondering {
+    color: $color-4;
+}
+.skill-cat{
+    position: relative;
+    width: 50%;
+    float: left;
+    text-align: center;
+    &:first-child{
+        &:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: $color-1;
+            width: 1px;
+        }
+    }
+    .skill-cat__icon{
+        display: block;
+        margin: 0 auto;
+    }
+    svg{
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        height: auto;
+        fill: currentcolor;
+    }
+    h2{
+        position: relative;
+        display: inline-block;
+        &:after{
+            content: "";
+            display: block;
+            height: 3px;
+            width: 125px;
+            margin: 5px auto;
+            background: currentcolor;
+        }
+    }
+    ul{
+        margin: {bottom:$pad*2;}
+        padding: 0;
+        font-size: 1.25em;
+        list-style: none;
+    }
+}

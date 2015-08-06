@@ -1,0 +1,30 @@
+/*------------------------------------*\
+    ::Post Excertps
+\*------------------------------------*/
+.posts{
+	article{
+		background: darken($color-2, 5%);
+		padding: $pad*3;
+	}
+}
+.post{
+        padding: {left:$pad;right:$pad;}
+        margin: {bottom:$pad*2;}
+        &:first-child{
+            margin: {top:$pad*2;}
+        }
+        p{
+            padding: {bottom: 0;}
+        }
+}
+.post-meta{
+	margin: {top:$pad;}
+	svg{
+		width: 15px;
+		height: 15px;
+		margin: {right: $pad/2;}
+	}
+}
+.rss-subscribe{
+	text-align: center;
+}

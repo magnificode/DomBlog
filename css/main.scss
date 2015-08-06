@@ -5,12 +5,14 @@
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        // "ogranisms/**/*",
         "variables",
         "fonts",
         "base",
         "typography",
-        "layouts",
-        "styles",
+        "layout-single-post",
+        "layout-about",
+        "layout-work",
+        "organism-excerpts",
+        "organism-header",
         "syntax-highlighting"
 ;
