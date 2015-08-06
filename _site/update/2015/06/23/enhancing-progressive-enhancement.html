@@ -40,7 +40,6 @@
   <title>Enhancing Progressive Enhancement</title>
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/kudos.css">
   <link rel="canonical" href="http://dommagnifi.co/update/2015/06/23/enhancing-progressive-enhancement.html">
   <link rel="alternate" type="application/atom+xml" title="Dominic Magnifico" href="http://dommagnifi.co/feed.xml" />
 
@@ -55,6 +54,7 @@
 
    </script>
 </head>
+
 
   <body>
 
@@ -112,15 +112,6 @@
 
 <p>Much like the websites of yesteryear, we as developers need to be fluid. Able to adapt and interpret at the drop of a hat. Yes the description for Progressive Enhancement may be overtly specific, but much like any other process or principal, it’s the core of the idea that we need to take away. In regards to Progressive Enhancement that idea is the fact that not everyone is sitting on their MacBook Pro connected to their fancy Google Fiber internet connection. People on trains on their smartphones going through tunnels losing service, people who can’t afford the latest and greatest who are ecstatic to receive a donated cellphone or laptop with spotty service and connectivity, those are the people we need to keep in mind when we are developing. Our apps, our blogs, our client work, all of it needs to take into account the end user. We need to figure out how to give them the best experience utilizing the principals that an idea like Progressive Enhancement provides us.</p>
 
-                <figure class="kudo kudoable" data-id="1">
-                    <a class="kudobject">
-                        <div class="opening"><div class="circle">&nbsp;</div></div>
-                    </a>
-                    <a href="#kudo" class="count">
-                        <span class="num">0</span>
-                        <span class="txt">Kudos</span>
-                    </a>
-                </figure>
 	  </article>
   </div>
 
@@ -131,53 +122,4 @@
 
   </body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script type="text/javascript" src="/js/kudos.js"></script>
-<script type="text/javascript">
-      // needs to be a string for jquery.cookie
-      var postId = '1';
-      $(function()
-      {
-        // initialize kudos
-        $("figure.kudoable").kudoable();
-        // check to see if user has already kudod
-        // fyi cookies do not work when you are viewing this as a file
-        if($.cookie(postId) == 'true') {
-          // make kudo already kudod
-          $("figure.kudoable").removeClass("animate").addClass("complete");
-          // your server would take care of the proper kudos count, but because this is a
-          // static page, we need to set it here so it doesn't become -1 when you remove
-          // the kudos after a reload
-          $(".num").html(1);
-        }
-        // when kudoing
-        $("figure.kudo").bind("kudo:active", function(e)
-        {
-          console.log("kudoing active");
-        });
-        // when not kudoing
-        $("figure.kudo").bind("kudo:inactive", function(e)
-        {
-          console.log("kudoing inactive");
-        });
-        // after kudo'd
-        $("figure.kudo").bind("kudo:added", function(e)
-        {
-          var element = $(this);
-          // ajax'y stuff or whatever you want
-          console.log("Kodo'd:", element.data('id'), ":)");
-          // set cookie so user cannot kudo again for 7 days
-          $.cookie(postId, 'true', { expires: 7 });
-        });
-        // after removing a kudo
-        $("figure.kudo").bind("kudo:removed", function(e)
-        {
-          var element = $(this);
-          // ajax'y stuff or whatever you want
-          console.log("Un-Kudo'd:", element.data('id'), ":(");
-          // remove cookie
-          $.removeCookie(postId);
-        });
-      });
-    </script>
 </html>
