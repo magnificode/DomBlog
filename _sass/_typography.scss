@@ -51,3 +51,14 @@ blockquote{
 	font-size: 0.875em;
 	letter-spacing: 0.056em;
 }
+
+/*------------------------------------*
+    ::Button
+*------------------------------------*/
+.btn{
+	display: inline-block;
+	padding: $pad;
+	color: $color-2;
+	text-align: center;
+	background: $color-1;
+}
