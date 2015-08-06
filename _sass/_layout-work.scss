@@ -1,6 +1,13 @@
 /*------------------------------------*
     ::Work
 *------------------------------------*/
+.work__inner{
+    article{
+        &:nth-of-type(2n){
+            flex-direction: row-reverse;
+        }
+    }
+}
 .work__item{
     display: flex;
     justify-content: space-around;
