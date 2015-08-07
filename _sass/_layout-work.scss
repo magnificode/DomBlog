@@ -40,6 +40,7 @@
     flex-basis: 55%;
     transition: transform 600ms, top 600ms, bottom 600ms ;
     h6{
+        margin: {top:$pad/2;}
         font-weight: 100;
         font-style: italic;
     }
