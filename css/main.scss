@@ -17,3 +17,14 @@
         "organism-header",
         "syntax-highlighting"
 ;
+@media print{
+    .site-header{
+        display: none;
+    }
+    .resume{
+        font-size: 130%;
+        height: 100%;
+        margin: 0;
+        padding: $pad*3;
+    }
+}
