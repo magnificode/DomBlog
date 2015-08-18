@@ -34,22 +34,22 @@ Each story is assigned a point value, or a level of effort, and based off of tha
 
 ##CMS
 
-Every client that we work with needs to be able to update their content, or utilize a blogging platform. We use [Wordpress](http://www.wordpress.org) for that. Most of the sites that we develop are Wordpress sites, and we have some processes that go along with that.
+Every client that we work with needs to be able to update their content, or utilize a blogging platform. We use [WordPress](http://www.WordPress.org) for that. Most of the sites that we develop are WordPress sites, and we have some processes that go along with that.
 
 **Starter Theme**
 
-If you google “Wordpress Starter Theme” you’ll get a million results...Bones, Genesis, _S, Starkers etc. I’ve used a few of these, and Zenman started out with starkers, however a lot of these come with some bloat that we don’t necessarily need. So like all good developers, we built our own tool for the job. [Zemplate](https://github.com/zenman/zemplate). Very minimal, with a sprinkle of mixins, functions, and ideologies that we at Zenman find very useful.
+If you google “WordPress Starter Theme” you’ll get a million results...Bones, Genesis, _S, Starkers etc. I’ve used a few of these, and Zenman started out with starkers, however a lot of these come with some bloat that we don’t necessarily need. So like all good developers, we built our own tool for the job. [Zemplate](https://github.com/zenman/zemplate). Very minimal, with a sprinkle of mixins, functions, and ideologies that we at Zenman find very useful.
 
 Our template utilizes BEM for class naming structure, which helps to keep things clean and easy to understand regardless of the developer that looks at the project. We implemented a galactic version of Brad Frost’s [Atomic Design System](http://bradfrost.com/blog/post/atomic-web-design/) to help keep things modular. We not only modularize our SASS, but we also modularize our template parts, and javascript. Pretty much everything is modular.
 
 **ACF**
 
-We found that keeping things modular allows us to build bits and pieces separate from everything else so that they can work anywhere on the site. We utilize a plugin called [Advanced Custom Fields](http://www.advancedcustomfields.com/). Within advanced custom fields is a piece called Flexible Content. By default Wordpress only has one text area for clients to manage content, and that didn’t work for us. Our layouts are complex enough that it is imperative for clients to be able to edit content throughout the site. ACF and flexible content allow us to do this. Because we build all our components modularly, we are able to build a call to action section once, and then utilize it anywhere on the site. The client has the ability in the backend to add this piece to any page and have it work every single time. This is huge, and if you use Wordpress I would highly highly recommend using ACF.
+We found that keeping things modular allows us to build bits and pieces separate from everything else so that they can work anywhere on the site. We utilize a plugin called [Advanced Custom Fields](http://www.advancedcustomfields.com/). Within advanced custom fields is a piece called Flexible Content. By default WordPress only has one text area for clients to manage content, and that didn’t work for us. Our layouts are complex enough that it is imperative for clients to be able to edit content throughout the site. ACF and flexible content allow us to do this. Because we build all our components modularly, we are able to build a call to action section once, and then utilize it anywhere on the site. The client has the ability in the backend to add this piece to any page and have it work every single time. This is huge, and if you use WordPress I would highly highly recommend using ACF.
 
 
 ##Local Development
 
-This one’s pretty easy, and there isn’t much process involved with this. We use [MAMP](https://www.mamp.info/en/) to develop locally. This gives you the ability to spin up a server locally and run a Wordpress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with `l1_`, we then utilize git and push to our git server which then pushes out to our development `d1_`, testing `t1_` and staging `s1_` servers.
+This one’s pretty easy, and there isn’t much process involved with this. We use [MAMP](https://www.mamp.info/en/) to develop locally. This gives you the ability to spin up a server locally and run a WordPress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with `l1_`, we then utilize git and push to our git server which then pushes out to our development `d1_`, testing `t1_` and staging `s1_` servers.
 
 This utilizes some git hook sorcery that I will not pretend to be privy to. But it’s awesome, and my co-worker [Tomas Mulder](http://www.codepen.io/tcmulder) is a git sorcerer. Ask him about it, and it’ll go right over your head.
 

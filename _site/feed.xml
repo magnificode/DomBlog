@@ -6,8 +6,8 @@
 </description>
     <link>http://dommagnifi.co/</link>
     <atom:link href="http://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 17 Aug 2015 11:18:58 -0600</pubDate>
-    <lastBuildDate>Mon, 17 Aug 2015 11:18:58 -0600</lastBuildDate>
+    <pubDate>Tue, 18 Aug 2015 10:10:48 -0600</pubDate>
+    <lastBuildDate>Tue, 18 Aug 2015 10:10:48 -0600</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -125,21 +125,21 @@
 
 &lt;h2 id=&quot;cms&quot;&gt;CMS&lt;/h2&gt;
 
-&lt;p&gt;Every client that we work with needs to be able to update their content, or utilize a blogging platform. We use &lt;a href=&quot;http://www.wordpress.org&quot;&gt;Wordpress&lt;/a&gt; for that. Most of the sites that we develop are Wordpress sites, and we have some processes that go along with that.&lt;/p&gt;
+&lt;p&gt;Every client that we work with needs to be able to update their content, or utilize a blogging platform. We use &lt;a href=&quot;http://www.WordPress.org&quot;&gt;WordPress&lt;/a&gt; for that. Most of the sites that we develop are WordPress sites, and we have some processes that go along with that.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Starter Theme&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;If you google “Wordpress Starter Theme” you’ll get a million results…Bones, Genesis, _S, Starkers etc. I’ve used a few of these, and Zenman started out with starkers, however a lot of these come with some bloat that we don’t necessarily need. So like all good developers, we built our own tool for the job. &lt;a href=&quot;https://github.com/zenman/zemplate&quot;&gt;Zemplate&lt;/a&gt;. Very minimal, with a sprinkle of mixins, functions, and ideologies that we at Zenman find very useful.&lt;/p&gt;
+&lt;p&gt;If you google “WordPress Starter Theme” you’ll get a million results…Bones, Genesis, _S, Starkers etc. I’ve used a few of these, and Zenman started out with starkers, however a lot of these come with some bloat that we don’t necessarily need. So like all good developers, we built our own tool for the job. &lt;a href=&quot;https://github.com/zenman/zemplate&quot;&gt;Zemplate&lt;/a&gt;. Very minimal, with a sprinkle of mixins, functions, and ideologies that we at Zenman find very useful.&lt;/p&gt;
 
 &lt;p&gt;Our template utilizes BEM for class naming structure, which helps to keep things clean and easy to understand regardless of the developer that looks at the project. We implemented a galactic version of Brad Frost’s &lt;a href=&quot;http://bradfrost.com/blog/post/atomic-web-design/&quot;&gt;Atomic Design System&lt;/a&gt; to help keep things modular. We not only modularize our SASS, but we also modularize our template parts, and javascript. Pretty much everything is modular.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;ACF&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;We found that keeping things modular allows us to build bits and pieces separate from everything else so that they can work anywhere on the site. We utilize a plugin called &lt;a href=&quot;http://www.advancedcustomfields.com/&quot;&gt;Advanced Custom Fields&lt;/a&gt;. Within advanced custom fields is a piece called Flexible Content. By default Wordpress only has one text area for clients to manage content, and that didn’t work for us. Our layouts are complex enough that it is imperative for clients to be able to edit content throughout the site. ACF and flexible content allow us to do this. Because we build all our components modularly, we are able to build a call to action section once, and then utilize it anywhere on the site. The client has the ability in the backend to add this piece to any page and have it work every single time. This is huge, and if you use Wordpress I would highly highly recommend using ACF.&lt;/p&gt;
+&lt;p&gt;We found that keeping things modular allows us to build bits and pieces separate from everything else so that they can work anywhere on the site. We utilize a plugin called &lt;a href=&quot;http://www.advancedcustomfields.com/&quot;&gt;Advanced Custom Fields&lt;/a&gt;. Within advanced custom fields is a piece called Flexible Content. By default WordPress only has one text area for clients to manage content, and that didn’t work for us. Our layouts are complex enough that it is imperative for clients to be able to edit content throughout the site. ACF and flexible content allow us to do this. Because we build all our components modularly, we are able to build a call to action section once, and then utilize it anywhere on the site. The client has the ability in the backend to add this piece to any page and have it work every single time. This is huge, and if you use WordPress I would highly highly recommend using ACF.&lt;/p&gt;
 
 &lt;h2 id=&quot;local-development&quot;&gt;Local Development&lt;/h2&gt;
 
-&lt;p&gt;This one’s pretty easy, and there isn’t much process involved with this. We use &lt;a href=&quot;https://www.mamp.info/en/&quot;&gt;MAMP&lt;/a&gt; to develop locally. This gives you the ability to spin up a server locally and run a Wordpress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with &lt;code&gt;l1_&lt;/code&gt;, we then utilize git and push to our git server which then pushes out to our development &lt;code&gt;d1_&lt;/code&gt;, testing &lt;code&gt;t1_&lt;/code&gt; and staging &lt;code&gt;s1_&lt;/code&gt; servers.&lt;/p&gt;
+&lt;p&gt;This one’s pretty easy, and there isn’t much process involved with this. We use &lt;a href=&quot;https://www.mamp.info/en/&quot;&gt;MAMP&lt;/a&gt; to develop locally. This gives you the ability to spin up a server locally and run a WordPress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with &lt;code&gt;l1_&lt;/code&gt;, we then utilize git and push to our git server which then pushes out to our development &lt;code&gt;d1_&lt;/code&gt;, testing &lt;code&gt;t1_&lt;/code&gt; and staging &lt;code&gt;s1_&lt;/code&gt; servers.&lt;/p&gt;
 
 &lt;p&gt;This utilizes some git hook sorcery that I will not pretend to be privy to. But it’s awesome, and my co-worker &lt;a href=&quot;http://www.codepen.io/tcmulder&quot;&gt;Tomas Mulder&lt;/a&gt; is a git sorcerer. Ask him about it, and it’ll go right over your head.&lt;/p&gt;
 
@@ -282,7 +282,7 @@
 
 &lt;p&gt;DON’T DO IT! Sticking to the process may incur a little bit of extra time up front, but for the love of God it has the potential to save your ass in the long run.&lt;/p&gt;
 
-&lt;p&gt;Nothing like an example to help justify my claim…one of our steps in the process, almost immediately after our discovery meeting, is to run a smoke test on the clients server. A smoke test for anyone interested is just an automated test that runs through a series of tasks to ensure that, in our case, the clients server is set up to handle a wordpress installation. There have been a few times where the process doesn’t get followed, the client drags their feet in getting us hosting credentials, and all of the sudden, it’s time to launch the site! Hooray right? Not exactly. I’ve tried to launch to a server where a smoke test was not ran before and run into castrophic problems…it’s running on PHP4…ssh isn’t enabled…the server was bit by a PC and is now a windows server…awful awful terrible things like that. And because of these things, the site didn’t get launched, and the project delivery date had to be extended, sometimes as long as weeks after the initial go live date.&lt;/p&gt;
+&lt;p&gt;Nothing like an example to help justify my claim…one of our steps in the process, almost immediately after our discovery meeting, is to run a smoke test on the clients server. A smoke test for anyone interested is just an automated test that runs through a series of tasks to ensure that, in our case, the clients server is set up to handle a WordPress installation. There have been a few times where the process doesn’t get followed, the client drags their feet in getting us hosting credentials, and all of the sudden, it’s time to launch the site! Hooray right? Not exactly. I’ve tried to launch to a server where a smoke test was not ran before and run into castrophic problems…it’s running on PHP4…ssh isn’t enabled…the server was bit by a PC and is now a windows server…awful awful terrible things like that. And because of these things, the site didn’t get launched, and the project delivery date had to be extended, sometimes as long as weeks after the initial go live date.&lt;/p&gt;
 
 &lt;p&gt;If process had been followed, we wouldn’t have run into these issues, they would have been resolved while development was happening, and the site would have gone live on the day it was supposed to.&lt;/p&gt;
 
@@ -332,7 +332,7 @@
   &lt;li&gt;&lt;a href=&quot;http://backbonejs.org/&quot;&gt;Backbone&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Obviously some of these are front end, others are backend. We are looking at all of these options and how they pair together. Each has their pros and cons but at the moment we need to figure out what set of tools will not only be most effective for the project, but we need to also figure out which tools play to the skills we currently have. Zenman is primarily a wordpress shop. That being said we have a pretty solid understanding of PHP, which makes us lean towards utilizing symfony as a the backend framework. We are still in the process but I think we have a good start. Updates to come as they develop.&lt;/p&gt;
+&lt;p&gt;Obviously some of these are front end, others are backend. We are looking at all of these options and how they pair together. Each has their pros and cons but at the moment we need to figure out what set of tools will not only be most effective for the project, but we need to also figure out which tools play to the skills we currently have. Zenman is primarily a WordPress shop. That being said we have a pretty solid understanding of PHP, which makes us lean towards utilizing symfony as a the backend framework. We are still in the process but I think we have a good start. Updates to come as they develop.&lt;/p&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 08:51:00 -0700</pubDate>
         <link>http://dommagnifi.co/update/2015/02/19/choosing-your-stack-part-1.html</link>
