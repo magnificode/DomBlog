@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Being Comfortable With Being Uncomfortable"
+date:   2015-09-25 16:44:00
+categories: update
+---
+
+I'm a creature of habit. I think that's probably true for most people, especially developers. We find comfort in the repetition of a well written loop. Everything comes out exactly uniform, just how we intended it.
+
+That uniformity, that comfort is something we all look for in times of stress. If things aren't going right we always know we have that thing to be able to fall back on. If things get too uncomfortable we know where to look, and we know where we can go to fall back into the same routine. Quite recently I've realized the importance of reversing that train of thought. I've realized that it's beneficial to be comfortable with being uncomfortable.
+
+*That's why I left my job.*
+
+Throughout some of my blog posts you may notice my mention of the company I worked for, Zenman. I want to preface this with the fact that the folks that work at Zenman are among some of the best people I know. Quite truly they were like family, and that's what a good position at a good company does for you. It makes you feel at home. It makes you feel that if the job itself gets stressful, the people you spend your time with for most of your waking hours are the people you can fall back on. And that's the truth about the position I held at Zenman. My colleagues were more than just that, they became friends, some even great friends, and I couldn't be more thankful for that.
+
+Unfortunately there comes a time where you realize that perhaps you're far too comfortable where you're at. Maybe you're not being challenged enough. And that's the point that I got to quite recently. Because I ate and breathed Zenman for the past four years, I was not willing to come to terms with this. I'm 25 years old in a **Senior** Development position. What on earth could I possibly have to complain about? The fact was that I didn't feel challenged enough. And it got to the point where I decided that I needed to do what was best for me, and explore my options.
+
+For anyone out there who may be in a similar position than me let me just say one thing; There's nothing more important than being completely and utterly respectful when you're looking for a new job. Don't let your work slip, don't ditch your responsibilities and just say "Fuck it!". Have the capacity and professionalism to realize that the place you're working at right now was kind enough to hire you. They are still paying you to do quality work. Don't let your peers down.
+
+It's a weird spot to be in, looking out for yourself while still looking out for your colleagues. It certainly felt strange to me. I felt selfish. Since I was in a leadership position perhaps it was my job to burden all this stress for the sake of the team, so that they didn't have to feel it. I rode with that for a while. I remember thinking this exact thought about 6 months ago and just riding it out thinking that it was my responsibility to handle it. But it reached a breaking point and I needed to make a change.
+
+I'll never be able to repay the owner at Zenman for all the kindness he showed to me, or my co-workers for everything that they taught me. That is without a doubt the single biggest thing that I will miss, the people. But, as the title of this blog says, it's time for me to start being comfortable with being uncomfortable. And there's nothing more uncomfortable than starting a new job. But the biggest piece of advice I can offer to you dearest reader, is stick to your guns, realize when you begin to feel yourself slip into the icy grip of comfortability and make a change. Perhaps it doesn't need to be as radical as leaving the company you work for. Perhaps it's best to identify pain points in what you're doing currently and offer solutions that may keep you on your toes a little more.
+
+Some change is good, as hard as it is to recognize. The change that you make will hopefully cultivate new exciting opportunities for you. And if it doesn't...at least you know you tried.
