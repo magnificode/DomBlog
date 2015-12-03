@@ -1,56 +1,57 @@
 /*------------------------------------*\
-    ::Site Header
+::Site Header
 \*------------------------------------*/
 .site-header{
-    text-align: center;
-    h1{
-		color: $color-1;
-		font-family: open_sansextrabold, sans-serif;
-		font-size: 4em;
-		text-transform: uppercase;
-		a{
-			color: $color-1;
-			&:hover{
-				color: lighten($color-1, 20%);
-			}
-		}
-	}
-    .header__social{
-	    display: flex;
-        justify-content: center;
-        a{
-            &:nth-of-type(2){
-                padding: {left:$pad;right:$pad;}
-            }
-        }
+  text-align: center;
+  h1{
+    color: $color-1;
+    font-family: open_sansextrabold, sans-serif;
+    font-size: 4em;
+    text-transform: uppercase;
+    a{
+      color: $color-1;
+      &:hover{
+        color: lighten($color-1, 20%);
+      }
     }
+  }
+  .header__social{
+    display: flex;
+    justify-content: center;
+    padding: {bottom:0.9375rem;}
+    a{
+      &:nth-of-type(2){
+        padding: {left:$pad;right:$pad;}
+      }
+    }
+  }
 }
 /*------------------------------------*\
-    ::Header Nav
+::Header Nav
 \*------------------------------------*/
 .header__nav{
-    padding: {top:$pad;bottom:$pad*2;}
-    a{
-        position: relative;
-        padding: {left:$pad;right:$pad;}
-        color: $color-1;
-        &:after{
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            right: 50%;
-            height: 1px;
-            background: lighten($color-1, 70%);
-            transition: all 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-        }
-        &:hover,
-        &.active{
-            color: $color-3;
-            &:after{
-                left: $pad/2;
-                right: $pad/2;
-            }
-        }
+  padding: {top:$pad;bottom:$pad;}
+  a{
+    position: relative;
+    padding: {left:$pad;right:$pad;}
+    color: $color-1;
+    &:after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: 50%;
+      height: 1px;
+      background: lighten($color-1, 70%);
+      transition: all 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
     }
+    &:hover,
+    &.active{
+      color: $color-3;
+      &:after{
+        left: $pad/2;
+        right: $pad/2;
+      }
+    }
+  }
 }
