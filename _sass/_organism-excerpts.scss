@@ -1,21 +1,26 @@
 /*------------------------------------*\
-    ::Post Excertps
+::Post Excertps
 \*------------------------------------*/
 .posts{
 	article{
 		background: darken($color-2, 5%);
 		padding: $pad*3;
 	}
+	a{
+		p{
+			color: $color-1;
+		}
+	}
 }
 .post{
-        padding: {left:$pad;right:$pad;}
-        margin: {bottom:$pad*2;}
-        &:first-child{
-            margin: {top:$pad*2;}
-        }
-        p{
-            padding: {bottom: 0;}
-        }
+	padding: {left:$pad; right:$pad;}
+	margin: {bottom:$pad*2;}
+	&:first-child{
+		margin: {top:$pad*2;}
+	}
+	p{
+		padding: {bottom: 0;}
+	}
 }
 .post-meta{
 	margin: {top:$pad;}
