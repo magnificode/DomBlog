@@ -62,7 +62,7 @@
     <header class="site-header">
 	<h1><a href="/">Dominic Magnifico</a></h1>
 	<nav class="header__nav">
-		<a  href="/about.html">About</a><a  href="/work.html">Work</a><a  href="/resume.html">R&eacute;sum&eacute;</a>
+		<a  href="/about">About</a><a  href="/work">Work</a><a  href="/resume">R&eacute;sum&eacute;</a>
 	</nav>
 	<div class="header__social">
           
@@ -141,7 +141,7 @@
 
 <h2 id="local-development">Local Development</h2>
 
-<p>This one’s pretty easy, and there isn’t much process involved with this. We use <a href="https://www.mamp.info/en/">MAMP</a> to develop locally. This gives you the ability to spin up a server locally and run a WordPress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with <code>l1_</code>, we then utilize git and push to our git server which then pushes out to our development <code>d1_</code>, testing <code>t1_</code> and staging <code>s1_</code> servers.</p>
+<p>This one’s pretty easy, and there isn’t much process involved with this. We use <a href="https://www.mamp.info/en/">MAMP</a> to develop locally. This gives you the ability to spin up a server locally and run a WordPress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with <code class="highlighter-rouge">l1_</code>, we then utilize git and push to our git server which then pushes out to our development <code class="highlighter-rouge">d1_</code>, testing <code class="highlighter-rouge">t1_</code> and staging <code class="highlighter-rouge">s1_</code> servers.</p>
 
 <p>This utilizes some git hook sorcery that I will not pretend to be privy to. But it’s awesome, and my co-worker <a href="http://www.codepen.io/tcmulder">Tomas Mulder</a> is a git sorcerer. Ask him about it, and it’ll go right over your head.</p>
 
@@ -163,7 +163,7 @@
 
 <p><strong>Code Audit</strong></p>
 
-<p>The developer and a Senior Developer will then sit down and go over the code at a high level. This step is crucial to ensure a consistency in the way that our code is written. We’ve found that when working with multiple developers it is crucial to ensure the code can be traversed by any developer at the company. We ensure things are modular, that the BEM class naming structure has been adhered to. We test the site speed and make sure that the site does not choke on slower connections or is unreasonably slow. Is the code commented in places where it makes sense (i.e complex javascript or PHP. Including usage examples). Are you using <code>!importants</code>? I’m pretty well known at Zenman for making developers write out explanations when an <code>!important</code> is used…I’m very specific about specificity.</p>
+<p>The developer and a Senior Developer will then sit down and go over the code at a high level. This step is crucial to ensure a consistency in the way that our code is written. We’ve found that when working with multiple developers it is crucial to ensure the code can be traversed by any developer at the company. We ensure things are modular, that the BEM class naming structure has been adhered to. We test the site speed and make sure that the site does not choke on slower connections or is unreasonably slow. Is the code commented in places where it makes sense (i.e complex javascript or PHP. Including usage examples). Are you using <code class="highlighter-rouge">!importants</code>? I’m pretty well known at Zenman for making developers write out explanations when an <code class="highlighter-rouge">!important</code> is used…I’m very specific about specificity.</p>
 
 <p>These meetings are great because the Senior Dev gets to see the progression of the other developers at the company, but also gets to help shape the quality of code that the company produces. Every single one of these that I have done has yielded a learning experience on both ends of the table. If you can afford one more step in your process, add a Code Audit. It’ll dramatically change the code quality your company produces.</p>
 
@@ -189,7 +189,7 @@
   <li>Ensure it is before 2:00 MST.</li>
   <li>Back up live code and database to Zenman servers.</li>
   <li>Identify in changelog that the site is being staged.</li>
-  <li>Begin staging preparation locally on the <code>stage</code> branch.</li>
+  <li>Begin staging preparation locally on the <code class="highlighter-rouge">stage</code> branch.</li>
   <li>Confirm Google Analytics code is added (may not start tracking until the site is live).</li>
   <li>Confirm site uses compressed JavaScript files.</li>
   <li>Confirm style.css is compressed.</li>
@@ -220,7 +220,7 @@
 </div>
 
 
-    
+    <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
 
   </body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

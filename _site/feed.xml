@@ -6,9 +6,9 @@
 </description>
     <link>http://dommagnifi.co/</link>
     <atom:link href="http://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Sep 2015 17:19:06 -0600</pubDate>
-    <lastBuildDate>Fri, 25 Sep 2015 17:19:06 -0600</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <pubDate>Wed, 02 Dec 2015 22:00:49 -0700</pubDate>
+    <lastBuildDate>Wed, 02 Dec 2015 22:00:49 -0700</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
     
       <item>
         <title>Being Comfortable With Being Uncomfortable</title>
@@ -168,7 +168,7 @@
 
 &lt;h2 id=&quot;local-development&quot;&gt;Local Development&lt;/h2&gt;
 
-&lt;p&gt;This one’s pretty easy, and there isn’t much process involved with this. We use &lt;a href=&quot;https://www.mamp.info/en/&quot;&gt;MAMP&lt;/a&gt; to develop locally. This gives you the ability to spin up a server locally and run a WordPress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with &lt;code&gt;l1_&lt;/code&gt;, we then utilize git and push to our git server which then pushes out to our development &lt;code&gt;d1_&lt;/code&gt;, testing &lt;code&gt;t1_&lt;/code&gt; and staging &lt;code&gt;s1_&lt;/code&gt; servers.&lt;/p&gt;
+&lt;p&gt;This one’s pretty easy, and there isn’t much process involved with this. We use &lt;a href=&quot;https://www.mamp.info/en/&quot;&gt;MAMP&lt;/a&gt; to develop locally. This gives you the ability to spin up a server locally and run a WordPress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with &lt;code class=&quot;highlighter-rouge&quot;&gt;l1_&lt;/code&gt;, we then utilize git and push to our git server which then pushes out to our development &lt;code class=&quot;highlighter-rouge&quot;&gt;d1_&lt;/code&gt;, testing &lt;code class=&quot;highlighter-rouge&quot;&gt;t1_&lt;/code&gt; and staging &lt;code class=&quot;highlighter-rouge&quot;&gt;s1_&lt;/code&gt; servers.&lt;/p&gt;
 
 &lt;p&gt;This utilizes some git hook sorcery that I will not pretend to be privy to. But it’s awesome, and my co-worker &lt;a href=&quot;http://www.codepen.io/tcmulder&quot;&gt;Tomas Mulder&lt;/a&gt; is a git sorcerer. Ask him about it, and it’ll go right over your head.&lt;/p&gt;
 
@@ -190,7 +190,7 @@
 
 &lt;p&gt;&lt;strong&gt;Code Audit&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;The developer and a Senior Developer will then sit down and go over the code at a high level. This step is crucial to ensure a consistency in the way that our code is written. We’ve found that when working with multiple developers it is crucial to ensure the code can be traversed by any developer at the company. We ensure things are modular, that the BEM class naming structure has been adhered to. We test the site speed and make sure that the site does not choke on slower connections or is unreasonably slow. Is the code commented in places where it makes sense (i.e complex javascript or PHP. Including usage examples). Are you using &lt;code&gt;!importants&lt;/code&gt;? I’m pretty well known at Zenman for making developers write out explanations when an &lt;code&gt;!important&lt;/code&gt; is used…I’m very specific about specificity.&lt;/p&gt;
+&lt;p&gt;The developer and a Senior Developer will then sit down and go over the code at a high level. This step is crucial to ensure a consistency in the way that our code is written. We’ve found that when working with multiple developers it is crucial to ensure the code can be traversed by any developer at the company. We ensure things are modular, that the BEM class naming structure has been adhered to. We test the site speed and make sure that the site does not choke on slower connections or is unreasonably slow. Is the code commented in places where it makes sense (i.e complex javascript or PHP. Including usage examples). Are you using &lt;code class=&quot;highlighter-rouge&quot;&gt;!importants&lt;/code&gt;? I’m pretty well known at Zenman for making developers write out explanations when an &lt;code class=&quot;highlighter-rouge&quot;&gt;!important&lt;/code&gt; is used…I’m very specific about specificity.&lt;/p&gt;
 
 &lt;p&gt;These meetings are great because the Senior Dev gets to see the progression of the other developers at the company, but also gets to help shape the quality of code that the company produces. Every single one of these that I have done has yielded a learning experience on both ends of the table. If you can afford one more step in your process, add a Code Audit. It’ll dramatically change the code quality your company produces.&lt;/p&gt;
 
@@ -216,7 +216,7 @@
   &lt;li&gt;Ensure it is before 2:00 MST.&lt;/li&gt;
   &lt;li&gt;Back up live code and database to Zenman servers.&lt;/li&gt;
   &lt;li&gt;Identify in changelog that the site is being staged.&lt;/li&gt;
-  &lt;li&gt;Begin staging preparation locally on the &lt;code&gt;stage&lt;/code&gt; branch.&lt;/li&gt;
+  &lt;li&gt;Begin staging preparation locally on the &lt;code class=&quot;highlighter-rouge&quot;&gt;stage&lt;/code&gt; branch.&lt;/li&gt;
   &lt;li&gt;Confirm Google Analytics code is added (may not start tracking until the site is live).&lt;/li&gt;
   &lt;li&gt;Confirm site uses compressed JavaScript files.&lt;/li&gt;
   &lt;li&gt;Confirm style.css is compressed.&lt;/li&gt;
