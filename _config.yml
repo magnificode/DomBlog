@@ -8,8 +8,6 @@ url: "http://dommagnifi.co" # the base hostname & protocol for your site
 twitter_username: magnificode
 github_username:  magnificode
 gems: [jekyll-prism-plugin]
-paginate: 5
-paginate_path: "/:num/"
 navigation:
 - text: About
   url: /about.html

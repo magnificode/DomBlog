@@ -6,7 +6,7 @@ layout: default
 
 <section class="posts">
     <div class="posts__inner">
-    {% for post in site.posts limit:5 %}
+    {% for post in site.posts %}
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
         <article class="post">
           <h2>{{ post.title }}</h2>
@@ -17,9 +17,6 @@ layout: default
         </article>
       </a>
     {% endfor %}
-    <div class="posts__navigation">
-      <p><a href="{{ "/archive" | prepend: site.baseurl }}">View the archive &rarr;</a></p>
-    </div>
    </div>
 </section>
 
