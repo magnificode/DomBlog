@@ -44,6 +44,9 @@ blockquote{
 	border-left: 5px solid $color-3;
 	padding: $pad;
 	font-style: italic;
+	p{
+		margin: {top:0;}
+	}
 }
 .post-meta{
 	color: lighten($color-1, 55%);
