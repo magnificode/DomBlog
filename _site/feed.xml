@@ -6,8 +6,8 @@
 </description>
     <link>http://dommagnifi.co/</link>
     <atom:link href="http://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Dec 2015 23:24:27 -0700</pubDate>
-    <lastBuildDate>Sun, 20 Dec 2015 23:24:27 -0700</lastBuildDate>
+    <pubDate>Sun, 20 Dec 2015 23:26:00 -0700</pubDate>
+    <lastBuildDate>Sun, 20 Dec 2015 23:26:00 -0700</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -36,7 +36,7 @@
 
 &lt;p&gt;In my case, the only thing in my CNAME file is the following:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://dommagnifi.co&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; test &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;https://dommagnifi.co&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Now, I’m not a super savvy hosting person, so forgive me if my instructions on the next few steps are a bit fuzzy. Do feel free to shoot me an email (hello [at] dommagnifi.co) with suggestions for improvements and I’ll be happy to consider them.&lt;/p&gt;
 
