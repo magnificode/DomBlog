@@ -3,7 +3,6 @@ layout: post
 title:  👋 2015
 date:   2015-12-29 16:44:00
 categories: update
-permalink: /:categories/:year/:month/:day/👋-:title
 ---
 
 I've been seeing these fantastic year in review retro articles pop up all over the place this week. I'm going to take a stab at reviewing my year both professionally and personally, and then set a few goals for myself for the upcoming year. I really love this format as I feel like it will hold me accountable, and help me strive to hit my goals. The last thing I want is to let you down, dear reader!

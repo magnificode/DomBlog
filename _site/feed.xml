@@ -6,8 +6,8 @@
 </description>
     <link>https://dommagnifi.co/</link>
     <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 29 Dec 2015 23:52:09 -0700</pubDate>
-    <lastBuildDate>Tue, 29 Dec 2015 23:52:09 -0700</lastBuildDate>
+    <pubDate>Tue, 29 Dec 2015 23:53:42 -0700</pubDate>
+    <lastBuildDate>Tue, 29 Dec 2015 23:53:42 -0700</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -121,8 +121,21 @@
 &lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/yRw8QdcPFRyec/giphy.gif&quot; alt=&quot;STAR WARS!&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 29 Dec 2015 09:44:00 -0700</pubDate>
-        <link>https://dommagnifi.co/update/2015/12/29/👋-2015</link>
-        <guid isPermaLink="true">https://dommagnifi.co/update/2015/12/29/👋-2015</guid>
+        <link>https://dommagnifi.co/update/2015/12/29/2015.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2015/12/29/2015.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>What can we do with ServiceWorker</title>
+        <description>&lt;p&gt;Before you read on, be sure to check out &lt;a href=&quot;/update/2015/12/20/service-workin-for-the-weekend.html&quot;&gt;my first blog post&lt;/a&gt; about the Service Worker API. Service workers require a secure connection, and that post will show you how to set your site up with CloudFlare in order to serve your site via https.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 23 Dec 2015 09:44:00 -0700</pubDate>
+        <link>https://dommagnifi.co/update/2015/12/23/what-can-we-do-with-service-workers.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2015/12/23/what-can-we-do-with-service-workers.html</guid>
         
         
         <category>update</category>
@@ -500,52 +513,6 @@
         <pubDate>Thu, 14 May 2015 09:51:00 -0600</pubDate>
         <link>https://dommagnifi.co/update/2015/05/14/spinning-up-process.html</link>
         <guid isPermaLink="true">https://dommagnifi.co/update/2015/05/14/spinning-up-process.html</guid>
-        
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Choosing Your Stack: Part 1</title>
-        <description>&lt;p&gt;Ah yes. The question that plagues every developer looking to break into the Web App development field. A question that I have had to ask myself recently as well. Everyone knows there’s a million frameworks out there that will lead you down a particular path. Some are all encompassing stacks, like &lt;a href=&quot;http://mean.io/#!/&quot;&gt;MEAN&lt;/a&gt;, and of course you can mix and match your own. But how the heck are you supposed to choose between &lt;a href=&quot;http://emberjs.com/&quot;&gt;Ember&lt;/a&gt;, &lt;a href=&quot;http://backbonejs.org/&quot;&gt;Backbone&lt;/a&gt;, &lt;a href=&quot;https://angularjs.org/&quot;&gt;Angular&lt;/a&gt;, or &lt;a href=&quot;http://laravel.com/&quot;&gt;Laravel&lt;/a&gt; or the countless thousand other frameworks that exist.&lt;/p&gt;
-
-&lt;p&gt;Through the next few posts, I’m going to walk you through the process that lead to the team I work with to choose our stack.&lt;/p&gt;
-
-&lt;h2 id=&quot;choosing-your-projects&quot;&gt;Choosing Your Projects&lt;/h2&gt;
-
-&lt;p&gt;The first and clearly most important step to this process is choosing which types of projects you want to work on. Are they single page apps? Or as the &lt;a href=&quot;http://en.wikipedia.org/wiki/Single-page_application&quot;&gt;Wikipedia&lt;/a&gt; page puts it…&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;…a web application or web site that fits on a single web page with the goal of providing a more fluid user experience akin to a desktop application.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Or are you looking to build apps that adhere to the MVC (Model - View - Controller) principle, again, defined by &lt;a href=&quot;http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&quot;&gt;Wikipedia&lt;/a&gt; as…&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;…a software architectural pattern for implementing user interfaces. It divides a given software application into three interconnected parts, so as to separate internal representations of information from the ways that information is presented to or accepted from the user&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The team I am working with landed on the single page app approach. After further research we established that this title of “single page” does not directly translate to a literal one page application, but actually describes an app that uses AJAX and api calls to render page content fluidly without a page load. Thus giving the illusion of a “single page” application.&lt;/p&gt;
-
-&lt;p&gt;So far so good, we’ve established what type of apps we want to build. Currently we are in the phase of choosing actual tools to help us build the thing we want. I don’t have too much more info at the moment, but let me show you the tools we are looking into.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://emberjs.com/&quot;&gt;Ember&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://angularjs.org/&quot;&gt;Angular&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.meteor.com/&quot;&gt;Meteor.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://facebook.github.io/react/&quot;&gt;React.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot;&gt;Node&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://iojs.org/en/index.html&quot;&gt;io.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://symfony.com/&quot;&gt;Symfony&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://backbonejs.org/&quot;&gt;Backbone&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Obviously some of these are front end, others are backend. We are looking at all of these options and how they pair together. Each has their pros and cons but at the moment we need to figure out what set of tools will not only be most effective for the project, but we need to also figure out which tools play to the skills we currently have. Zenman is primarily a WordPress shop. That being said we have a pretty solid understanding of PHP, which makes us lean towards utilizing symfony as a the backend framework. We are still in the process but I think we have a good start. Updates to come as they develop.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 19 Feb 2015 08:51:00 -0700</pubDate>
-        <link>https://dommagnifi.co/update/2015/02/19/choosing-your-stack-part-1.html</link>
-        <guid isPermaLink="true">https://dommagnifi.co/update/2015/02/19/choosing-your-stack-part-1.html</guid>
         
         
         <category>update</category>
