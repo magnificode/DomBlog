@@ -6,9 +6,128 @@
 </description>
     <link>https://dommagnifi.co/</link>
     <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Dec 2015 23:45:59 -0700</pubDate>
-    <lastBuildDate>Sun, 20 Dec 2015 23:45:59 -0700</lastBuildDate>
+    <pubDate>Tue, 29 Dec 2015 23:47:24 -0700</pubDate>
+    <lastBuildDate>Tue, 29 Dec 2015 23:47:24 -0700</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>👋 2015</title>
+        <description>&lt;p&gt;I’ve been seeing these fantastic year in review retro articles pop up all over the place this week. I’m going to take a stab at reviewing my year both professionally and personally, and then set a few goals for myself for the upcoming year. I really love this format as I feel like it will hold me accountable, and help me strive to hit my goals. The last thing I want is to let you down, dear reader!&lt;/p&gt;
+
+&lt;h2 id=&quot;lets-start-professional&quot;&gt;Let’s Start Professional&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I Moved on from my job of almost 4 years with no new job lined up.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This was a massive one for me, and really falls into both the professional and personal category. The group of folks I worked with were like family, and I &lt;a href=&quot;https://dommagnifi.co/update/2015/09/25/being-comfortable-with-being-uncomfortable.html&quot;&gt;wrote at length about that.&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I Learned some Backbone, Handlebars, and Node.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What I didn’t get a chance to write about is what followed. A week or so after leaving I got a contracting gig with an awesome agency. I was fortunate enough to work with a pal of mine, and got to learn some Backbone, Handlebars, and Node in the process.&lt;/p&gt;
+
+&lt;p&gt;It was really the first time I got to play around with an MV* framework in production, and it was great! Backbone provided a really easy way to set up user signup, and the basic CRUD needed for the project pages associated with the site. The gig only lasted six weeks, but in those six weeks I was able to learn quite a bit. Not to mention the couple of cool components I got to build.&lt;/p&gt;
+
+&lt;p data-height=&quot;268&quot; data-theme-id=&quot;21523&quot; data-slug-hash=&quot;GpqGOm&quot; data-default-tab=&quot;result&quot; data-user=&quot;magnificode&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/magnificode/pen/GpqGOm/&quot;&gt;Neat Parallax Hero Effect&lt;/a&gt; by Dominic Magnifico (&lt;a href=&quot;http://codepen.io/magnificode&quot;&gt;@magnificode&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;p data-height=&quot;268&quot; data-theme-id=&quot;21523&quot; data-slug-hash=&quot;VvyJNQ&quot; data-default-tab=&quot;result&quot; data-user=&quot;magnificode&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/magnificode/pen/VvyJNQ/&quot;&gt;Marty McFlyout Nav&lt;/a&gt; by Dominic Magnifico (&lt;a href=&quot;http://codepen.io/magnificode&quot;&gt;@magnificode&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I gave my first ever presentation at a local meetup!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This was probably one of the more nerve-racking things I’ve had to do. I don’t fancy myself a very apt public speaker, however it turned out great. &lt;a href=&quot;https://dommagnifi.co/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html&quot;&gt;I wrote about what I learned&lt;/a&gt;, but the short of it is that speaking to a group of people helped me understand the subject I was talking about even better, and opened the door for me to feel comfortable giving more talks to larger audiences.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I started writing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You’re reading the result of that. I rebuilt my blog with Jekyll and starting writing. The magnificode blog saw a staggering one post in 2014. I increased that number tenfold in 2015! I got super close to averaging one post a month, which I’m pretty happy about.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I started a new job.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Last, and certainly not least, is my new job as Senior Front-End (Frontend/Front End/Front-end) Engineer (Developer, Designer, Code Pusher). I could go on and on about how much I’ve learned in the couple months that it’s been since I started, but I’ll try and keep it short.&lt;/p&gt;
+
+&lt;p&gt;I’ve learned &lt;a href=&quot;https://vip.wordpress.com/2014/06/20/the-importance-of-escaping-all-the-things/&quot;&gt;the importance of escaping all the things&lt;/a&gt; in WordPress.&lt;/p&gt;
+
+&lt;p&gt;I’ve learned how insanely extensible WordPress is by itself through the use of hooks. I almost exclusively used to use Advanced Custom Fields for extend WordPress, but I’ve learned how to eliminate the need for that almost completely. (Repeater fields, and the Flexible Content Type in ACF are still immensely helpful).&lt;/p&gt;
+
+&lt;p&gt;I’ve learned how to set up a local environment for enterprise level clients with &lt;a href=&quot;https://github.com/Varying-Vagrant-Vagrants/VVV&quot;&gt;vvv&lt;/a&gt; and how to deploy those sites with &lt;a href=&quot;http://beanstalkapp.com/&quot;&gt;beanstalk&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And lastly, the company I work for was kind enough to purchase the awesome &lt;a href=&quot;https://reactforbeginners.com/&quot;&gt;React for Beginners&lt;/a&gt; course by &lt;a href=&quot;http://wesbos.com/&quot;&gt;Wes Bos&lt;/a&gt;. I came out of that with two pages of dense notes, a hugely commented project, and a solid beginners understanding of the React framework.&lt;/p&gt;
+
+&lt;p&gt;As I write this, I’ve been fighting the feeling that I’m not growing, or expanding quick enough professionally. But the sheer amount that I have written above has proven that worry utterly wrong. In the past 365 days I have learned a ton!&lt;/p&gt;
+
+&lt;h2 id=&quot;gettin-personal&quot;&gt;Gettin’ Personal&lt;/h2&gt;
+
+&lt;p&gt;Personally I hit a few milestones that I find to be quite awesome.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I moved out of a house I was living in with 4 of my closest friends, and into a house with my girlfriend.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Always a terrifying step in any relationship, but I’m pretty damn lucky to have such an awesome woman. The first half of the year was spent long distance as she finished up school in New York. She then moved into the house with me and my four buddies, a bold step for a girlfriend, but it worked out great. She’s without a doubt one of my closest friends, and the transition was seamless.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I logged over 200 workouts at the gym, lifting a little over 7.5 million pounds in the process, and started eating much healthier.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This was a big goal for me. Towards the middle of 2013 I really put a focus on my health ( Before I moved into the house with my friends I lived by myself, and living by yourself has a sneaky way of making it easy to eat EVERYTHING ALWAYS). I made it a point then to go to start going the gym, In the past year I’ve lost almost 10 pounds, and my main lifts continue to increase. Hooray progress!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I drove from New York to Denver in 2 days.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I’ve never been out of the country, so any travel that I do get to do is super exciting. Once my girlfriend finished school, I flew out to New York to help her move back to Denver. We drove to Chicago in one day, had a lovely dinner on the river. We then drove from to Chicago to Denver in one shot. We had to avoid some nasty storms and tornadoes in Kansas to boot!&lt;/p&gt;
+
+&lt;h2 id=&quot;looking-ahead&quot;&gt;Looking Ahead&lt;/h2&gt;
+
+&lt;p&gt;This is the hard part for me, I have an insatiable desire to learn all the things, and learn them immediately, so setting reasonable goals for myself is tough, but here it goes…my professional and personal goals for 2016.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Gain a better understanding of vanilla Javascript&lt;/li&gt;
+  &lt;li&gt;To go along with that dive into WebGL and libraries like Three.js
+    &lt;ul&gt;
+      &lt;li&gt;I want to get to the point where I can make something like the folks at &lt;a href=&quot;http://activetheory.net/home&quot;&gt;Active Theory&lt;/a&gt; have in ther &lt;a href=&quot;http://activetheory.net/lab&quot;&gt;lab&lt;/a&gt;…brilliant, beautiful stuff.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Speak at three or more separate conferences/meetups&lt;/li&gt;
+  &lt;li&gt;Attend 6 or more conferences/meetups, network, meet people, collaborate!
+    &lt;ul&gt;
+      &lt;li&gt;I’m actually part of the way there, the folks at CodePen and myself have organized Denver’s first &lt;a href=&quot;https://nvite.com/CodePenDenver/&quot;&gt;CodePen Meetup&lt;/a&gt; in February. You should come!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Draw a lot more
+    &lt;ul&gt;
+      &lt;li&gt;I have a neat little drawing tablet and recently purchased some great pens for line art and illustration. I’m drawing a ton of inspiration &lt;a href=&quot;http://www.hydro74.com/portfolio/illustration/&quot;&gt;from&lt;/a&gt; &lt;a href=&quot;https://www.instagram.com/sonywicaksana/&quot;&gt;all&lt;/a&gt; &lt;a href=&quot;http://chasetafoyaart.com/section/196443_Design.html&quot;&gt;of&lt;/a&gt; &lt;a href=&quot;http://tattoosbylaurajade.com/tattoos/&quot;&gt;these&lt;/a&gt; &lt;a href=&quot;https://www.behance.net/gallery/32179625/Fifi-Pascale&quot;&gt;talented&lt;/a&gt; &lt;a href=&quot;https://www.behance.net/JackHarvatt&quot;&gt;folks&lt;/a&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Read more
+    &lt;ul&gt;
+      &lt;li&gt;I love books, I just need to make the time to read, at the very least 30 minutes five days a week before bed.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Get &lt;a href=&quot;http://img07.deviantart.net/5122/i/2006/134/9/f/goodbye_blue_sky_by_domkantthink.jpg&quot;&gt;my 1972 Pontiac LeMans&lt;/a&gt; repainted, and back to it’s former glory.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2015 has been a year of much learning and much growth. Oh also…you know…&lt;strong&gt;Star Wars&lt;/strong&gt;…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/yRw8QdcPFRyec/giphy.gif&quot; alt=&quot;STAR WARS!&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 29 Dec 2015 09:44:00 -0700</pubDate>
+        <link>https://dommagnifi.co/update/2015/12/29/👋-2015</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2015/12/29/👋-2015</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Service Workin&#39; for the Weekend</title>
@@ -427,37 +546,6 @@
         <pubDate>Thu, 19 Feb 2015 08:51:00 -0700</pubDate>
         <link>https://dommagnifi.co/update/2015/02/19/choosing-your-stack-part-1.html</link>
         <guid isPermaLink="true">https://dommagnifi.co/update/2015/02/19/choosing-your-stack-part-1.html</guid>
-        
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>The Internet’s Own Boy</title>
-        <description>&lt;p&gt;I had the pleasure of watching &lt;strong&gt;&lt;em&gt;The Internet’s Own Boy: The Story of Aaron Swartz&lt;/em&gt;&lt;/strong&gt;, and let me tell you, this documentary that highlights tragedy that is the US Justice system was quite eye opening.&lt;/p&gt;
-
-&lt;p&gt;I’d like to preface with the fact that I think Aaron Swartz  was  one of the internet’s, if not this generation’s most influential figures. The guy was a damn genius, had incredible ideas for the web itself, and had an amazing desire to make documents that were in the public domain, easily accessible to the public.&lt;/p&gt;
-
-&lt;p&gt;Public documents easily accessible to the public…not a crazy desire.&lt;/p&gt;
-
-&lt;p&gt;The documentary goes into detail about what Mr. Swartz did with the whole Jstor MIT debacle, and essentially the FBI ended up investigating this person because he downloaded too many public documents, too quickly. It appears he had no intention of reselling these papers, or even posting them up for public viewing, it appears his intentions were to analyze the massive amounts of data, like he had done in the past, to try to improve specific things.&lt;/p&gt;
-
-&lt;p&gt;I really connected with the documentary because of how deeply this person seemed to have touched the lives of every single person around him. Mr. Swartz was described as a person who just wanted to make the world a better place.&lt;/p&gt;
-
-&lt;p&gt;The other thing that really made me pay attention was the fact that some people in the documentary had the view that the government was trying to make an example of Aaron to prevent people from shaking things up too much. “Hackers” like Aaron posed a threat to the government, and they wanted to scare the shit out of that group of people to prevent that shakeup from affecting their bottom dollar. It’s mind blowing to me that they drove this genius of a man to end his own life.&lt;/p&gt;
-
-&lt;p&gt;In addition his contributions to slowing down and killing SOPA are possibly some of the most important contributions to preserving free speech on the internet to date.&lt;/p&gt;
-
-&lt;p&gt;There was so much more Mr. Swartz had left to accomplish, so much good that he could have done for this broken system that we have, that we blissfully ignore and accept. The man saw a thing that was broken, that was censoring people and materials that should be available to everyone to further their knowledge. But the government realized how scary an informed public is, and ran him into the ground. The story is tragic, but it is one that every single person needs to be aware of, and informed about so that we can carry on his legacy and his goal to make the world a better place.&lt;/p&gt;
-
-&lt;p&gt;If you want to watch the video it’s on Youtube and multiple other places. Check it out.&lt;/p&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/vXr-2hwTk58&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-</description>
-        <pubDate>Sat, 13 Dec 2014 18:09:00 -0700</pubDate>
-        <link>https://dommagnifi.co/update/2014/12/13/the-internets-own-boy.html</link>
-        <guid isPermaLink="true">https://dommagnifi.co/update/2014/12/13/the-internets-own-boy.html</guid>
         
         
         <category>update</category>
