@@ -5,7 +5,7 @@ this.addEventListener('install', function(event) {
 				'/offline/',
         '/offline/index.html',
 				'/js/app.js',
-				'/js/sw.js'
+				'sw.js'
       ]);
     })
   );
