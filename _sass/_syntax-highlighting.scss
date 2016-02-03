@@ -1,6 +1,7 @@
 .highlight { background-color: #49483e; color: #f8f8f2; margin: 0; }
-.highlight pre { padding: .5em; }
+.highlight pre { padding: .5em; overflow-x: scroll; }
 .highlight .c { color: #75715e } /* Comment */
+.highlight .c1 { word-wrap: break-word; } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
 .highlight .k { color: #66d9ef } /* Keyword */
 .highlight .l { color: #ae81ff } /* Literal */
