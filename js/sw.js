@@ -1,6 +1,6 @@
 this.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v1').then(function(cache) {
+    caches.open('offline').then(function(cache) {
       return cache.addAll([
         '/offline/',
         '/offline/index.html'
