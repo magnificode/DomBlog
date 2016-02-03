@@ -1,8 +1,65 @@
 ---
 layout: post
 title:  What can we do with ServiceWorker
-date:   2015-12-23 16:44:00
+date:   2016-01-18 16:44:00
 categories: update
 ---
 
 Before you read on, be sure to check out [my first blog post](/update/2015/12/20/service-workin-for-the-weekend.html) about the Service Worker API. Service workers require a secure connection, and that post will show you how to set your site up with CloudFlare in order to serve your site via https.
+
+##First things First
+
+Regardless of our end game, we need to register our service worker. We're essentially going to be working in two javascript files. The first one we'll call `app.js` which is where the initial scripts for your site are housed. That is where this first snippet below will be housed.
+
+{% highlight javascript %}
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/your-site/serviceworker.js').then(function(reg) {
+    console.log('Registration succeeded.');
+  }).catch(function(error) {
+    console.log('Registration failed with ' + error);
+  });
+}
+{% endhighlight %}
+
+Lets break this down and establish what is happening here.
+
+{% highlight javascript %}
+//Check to see if service worker is supported in the current browser
+if ('serviceWorker' in navigator) {
+  // Register our service worker. The register function relates
+  // to the javascript file within your site containing the
+  // service worker directives.
+  navigator.serviceWorker.register('/your-site/serviceworker.js').then(function(reg) {
+  // If the registration worked, success!
+    console.log('Registration succeeded.');
+  }).catch(function(error) {
+    // Registration failed.
+    console.log('Registration failed with ' + error);
+  });
+}
+{% endhighlight %}
+
+The code above is not the service worker itself, rather it is registering our service worker within a scope. That being said, once a page within the scope is loaded, the service worker will run. This happens individually on each page load so long as it is within scope.
+
+##Cache Rules Everything Around Me
+
+Now we get to the juicy stuff. Now that we have registered a service worker, let's look at how we can utilize the cache to grab the files you'd like to utilize for offline mode on your site. In our second file, which I'm calling `sw.js` place this next snippet.
+
+{% highlight javascript %}
+this.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open('offline').then(function(cache) {
+      return cache.addAll([
+        '/offline/',
+        '/offline/index.html'
+      ]);
+    })
+  );
+});
+{% endhighlight %}
+
+Since we are within the the registered service worker the scope allows us to utilize `this`. The first line of this snippet adds an install event listener. We then chain the `waitUntil` method which delays the proceeding code from running until the ES6 promise has been fulfilled. Then, utilizing the `caches.open` method, we open a new cache titled offline. This is where our cached files will be stored. This returns a promise for the cache, and once that is fulfilled we utilize the `addAll` function which adds the specified files to the cache.
+
+I've added myself an offline folder which houses a basic message that returns telling the user that they are offline and offers them my latest post to read until they can get online again.
+
+You can check out my versions of both the [app.js](https://github.com/magnificode/magnificode.github.io/blob/master/js/app.js) and the [sw.js](https://github.com/magnificode/magnificode.github.io/blob/master/js/sw.js) files.
