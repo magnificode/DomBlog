@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  What can we do with ServiceWorker
-date:   2016-01-18 16:44:00
+date:   2016-02-02 16:44:00
 categories: update
 ---
 
@@ -43,15 +43,20 @@ The code above is not the service worker itself, rather it is registering our se
 
 ##Cache Rules Everything Around Me
 
-Now we get to the juicy stuff. Now that we have registered a service worker, let's look at how we can utilize the cache to grab the files you'd like to utilize for offline mode on your site. In our second file, which I'm calling `sw.js` place this next snippet.
+Now we get to the juicy stuff. Now that we have registered a service worker, let's look at how we can utilize the cache to grab the files you'd like to utilize for offline mode on your site. In our second file, which I'm calling `serviceworker.js` place this next snippet.
 
 {% highlight javascript %}
 this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('offline').then(function(cache) {
       return cache.addAll([
-        '/offline/',
-        '/offline/index.html'
+        '/',
+        '/index.html',
+        '/update/2015/12/29/2015.html',
+        '/css',
+        '/css/main.css',
+        '/app.js',
+        '/serviceworker.js'
       ]);
     })
   );
@@ -60,6 +65,25 @@ this.addEventListener('install', function(event) {
 
 Since we are within the the registered service worker the scope allows us to utilize `this`. The first line of this snippet adds an install event listener. We then chain the `waitUntil` method which delays the proceeding code from running until the ES6 promise has been fulfilled. Then, utilizing the `caches.open` method, we open a new cache titled offline. This is where our cached files will be stored. This returns a promise for the cache, and once that is fulfilled we utilize the `addAll` function which adds the specified files to the cache.
 
-I've added myself an offline folder which houses a basic message that returns telling the user that they are offline and offers them my latest post to read until they can get online again.
+I've added myself the homepage of my site, along with the latest post.
 
-You can check out my versions of both the [app.js](https://github.com/magnificode/magnificode.github.io/blob/master/js/app.js) and the [sw.js](https://github.com/magnificode/magnificode.github.io/blob/master/js/sw.js) files.
+Lastly we're going to need to tell the browser that when it detects that it's offline, to access the cache that we created with the service worker and utilize the files found there.
+
+{% highlight javascript %}
+this.addEventListener('fetch', function(event) {
+  var response;
+  event.respondWith(caches.match(event.request).catch(function() {
+    return fetch(event.request);
+  }).then(function(r) {
+    response = r;
+    caches.open('offline').then(function(cache) {
+      cache.put(event.request, response);
+    });
+    return response.clone();
+  }));
+});
+{% endhighlight %}
+
+We do this by utilizing the fetch event listener which tells the browser to respond with the cache. The first `.catch` function detects if the promise rejects, and returns the default server response. We then utilize the `.then` method to open our offline cache and put the response onto the page.
+
+You can check out my versions of both the [app.js](https://github.com/magnificode/magnificode.github.io/blob/master/app.js) and the [serviceworker.js](https://github.com/magnificode/magnificode.github.io/blob/master/serviceworker.js) files.

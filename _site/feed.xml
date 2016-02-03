@@ -6,8 +6,8 @@
 </description>
     <link>https://dommagnifi.co/</link>
     <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 02 Feb 2016 23:31:31 -0700</pubDate>
-    <lastBuildDate>Tue, 02 Feb 2016 23:31:31 -0700</lastBuildDate>
+    <pubDate>Tue, 02 Feb 2016 23:50:36 -0700</pubDate>
+    <lastBuildDate>Tue, 02 Feb 2016 23:50:36 -0700</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -46,14 +46,19 @@
 
 &lt;h2 id=&quot;cache-rules-everything-around-me&quot;&gt;Cache Rules Everything Around Me&lt;/h2&gt;
 
-&lt;p&gt;Now we get to the juicy stuff. Now that we have registered a service worker, let’s look at how we can utilize the cache to grab the files you’d like to utilize for offline mode on your site. In our second file, which I’m calling &lt;code class=&quot;highlighter-rouge&quot;&gt;sw.js&lt;/code&gt; place this next snippet.&lt;/p&gt;
+&lt;p&gt;Now we get to the juicy stuff. Now that we have registered a service worker, let’s look at how we can utilize the cache to grab the files you’d like to utilize for offline mode on your site. In our second file, which I’m calling &lt;code class=&quot;highlighter-rouge&quot;&gt;serviceworker.js&lt;/code&gt; place this next snippet.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;install&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;waitUntil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;offline&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addAll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;&#39;/offline/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;&#39;/offline/index.html&#39;&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;/index.html&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;/update/2015/12/29/2015.html&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;/css&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;/css/main.css&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;/app.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&#39;/serviceworker.js&#39;&lt;/span&gt;
       &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -61,13 +66,30 @@
 
 &lt;p&gt;Since we are within the the registered service worker the scope allows us to utilize &lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt;. The first line of this snippet adds an install event listener. We then chain the &lt;code class=&quot;highlighter-rouge&quot;&gt;waitUntil&lt;/code&gt; method which delays the proceeding code from running until the ES6 promise has been fulfilled. Then, utilizing the &lt;code class=&quot;highlighter-rouge&quot;&gt;caches.open&lt;/code&gt; method, we open a new cache titled offline. This is where our cached files will be stored. This returns a promise for the cache, and once that is fulfilled we utilize the &lt;code class=&quot;highlighter-rouge&quot;&gt;addAll&lt;/code&gt; function which adds the specified files to the cache.&lt;/p&gt;
 
-&lt;p&gt;I’ve added myself an offline folder which houses a basic message that returns telling the user that they are offline and offers them my latest post to read until they can get online again.&lt;/p&gt;
+&lt;p&gt;I’ve added myself the homepage of my site, along with the latest post.&lt;/p&gt;
 
-&lt;p&gt;You can check out my versions of both the &lt;a href=&quot;https://github.com/magnificode/magnificode.github.io/blob/master/js/app.js&quot;&gt;app.js&lt;/a&gt; and the &lt;a href=&quot;https://github.com/magnificode/magnificode.github.io/blob/master/js/sw.js&quot;&gt;sw.js&lt;/a&gt; files.&lt;/p&gt;
+&lt;p&gt;Lastly we’re going to need to tell the browser that when it detects that it’s offline, to access the cache that we created with the service worker and utilize the files found there.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;fetch&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;respondWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;offline&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We do this by utilizing the fetch event listener which tells the browser to respond with the cache. The first &lt;code class=&quot;highlighter-rouge&quot;&gt;.catch&lt;/code&gt; function detects if the promise rejects, and returns the default server response. We then utilize the &lt;code class=&quot;highlighter-rouge&quot;&gt;.then&lt;/code&gt; method to open our offline cache and put the response onto the page.&lt;/p&gt;
+
+&lt;p&gt;You can check out my versions of both the &lt;a href=&quot;https://github.com/magnificode/magnificode.github.io/blob/master/app.js&quot;&gt;app.js&lt;/a&gt; and the &lt;a href=&quot;https://github.com/magnificode/magnificode.github.io/blob/master/serviceworker.js&quot;&gt;serviceworker.js&lt;/a&gt; files.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 18 Jan 2016 09:44:00 -0700</pubDate>
-        <link>https://dommagnifi.co/update/2016/01/18/what-can-we-do-with-service-workers.html</link>
-        <guid isPermaLink="true">https://dommagnifi.co/update/2016/01/18/what-can-we-do-with-service-workers.html</guid>
+        <pubDate>Tue, 02 Feb 2016 09:44:00 -0700</pubDate>
+        <link>https://dommagnifi.co/update/2016/02/02/what-can-we-do-with-service-workers.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2016/02/02/what-can-we-do-with-service-workers.html</guid>
         
         
         <category>update</category>
