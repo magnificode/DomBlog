@@ -6,7 +6,6 @@ this.addEventListener('install', function(event) {
 				'/index.html',
 				'/update/2016/02/02/what-can-we-do-with-service-workers.html',
 				'/update/2015/12/29/2015.html',
-				'/css/main.css',
 				'/app.js',
 				'/serviceworker.js'
 			]);
