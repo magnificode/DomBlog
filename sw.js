@@ -1,12 +1,12 @@
 this.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open('offline').then(function(cache) {
-      return cache.addAll([
+	event.waitUntil(
+		caches.open('offline').then(function(cache) {
+			return cache.addAll([
 				'/offline/',
-        '/offline/index.html',
+				'/offline/index.html',
 				'app.js',
 				'sw.js'
-      ]);
-    })
-  );
+			]);
+		})
+	);
 });
