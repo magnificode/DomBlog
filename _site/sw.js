@@ -4,7 +4,7 @@ this.addEventListener('install', function(event) {
       return cache.addAll([
 				'/offline/',
         '/offline/index.html',
-				'/js/app.js',
+				'app.js',
 				'sw.js'
       ]);
     })
