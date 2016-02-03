@@ -101,7 +101,7 @@
 
 <h2 id="first-things-first">First things First</h2>
 
-<p>Regardless of our end game, we need to register our service worker.</p>
+<p>Regardless of our end game, we need to register our service worker. We’re essentially going to be working in two javascript files. The first one we’ll call <code class="highlighter-rouge">app.js</code> which is where the initial scripts for your site are housed. That is where this first snippet below will be housed.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="s1">'serviceWorker'</span> <span class="k">in</span> <span class="nx">navigator</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'/your-site/serviceworker.js'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">reg</span><span class="p">)</span> <span class="p">{</span>
@@ -129,6 +129,27 @@
 
 <p>The code above is not the service worker itself, rather it is registering our service worker within a scope. That being said, once a page within the scope is loaded, the service worker will run. This happens individually on each page load so long as it is within scope.</p>
 
+<h2 id="cache-rules-everything-around-me">Cache Rules Everything Around Me</h2>
+
+<p>Now we get to the juicy stuff. Now that we have registered a service worker, let’s look at how we can utilize the cache to grab the files you’d like to utilize for offline mode on your site. In our second file, which I’m calling <code class="highlighter-rouge">sw.js</code> place this next snippet.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'install'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'offline'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">([</span>
+        <span class="s1">'/offline/'</span><span class="p">,</span>
+        <span class="s1">'/offline/index.html'</span>
+      <span class="p">]);</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Since we are within the the registered service worker the scope allows us to utilize <code class="highlighter-rouge">this</code>. The first line of this snippet adds an install event listener. We then chain the <code class="highlighter-rouge">waitUntil</code> method which delays the proceeding code from running until the ES6 promise has been fulfilled. Then, utilizing the <code class="highlighter-rouge">caches.open</code> method, we open a new cache titled offline. This is where our cached files will be stored. This returns a promise for the cache, and once that is fulfilled we utilize the <code class="highlighter-rouge">addAll</code> function which adds the specified files to the cache.</p>
+
+<p>I’ve added myself an offline folder which houses a basic message that returns telling the user that they are offline and offers them my latest post to read until they can get online again.</p>
+
+<p>You can check out my versions of both the <a href="https://github.com/magnificode/magnificode.github.io/blob/master/js/app.js">app.js</a> and the <a href="https://github.com/magnificode/magnificode.github.io/blob/master/js/sw.js">sw.js</a> files.</p>
+
 	  </article>
   </div>
 
@@ -137,7 +158,7 @@
 
     <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
 
-<script src="js/app.js"></script>
+<script src="app.js"></script>
 
   </body>
 </html>
