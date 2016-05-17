@@ -6,8 +6,8 @@
 </description>
     <link>https://dommagnifi.co/</link>
     <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 16 May 2016 23:44:10 -0600</pubDate>
-    <lastBuildDate>Mon, 16 May 2016 23:44:10 -0600</lastBuildDate>
+    <pubDate>Tue, 17 May 2016 00:02:07 -0600</pubDate>
+    <lastBuildDate>Tue, 17 May 2016 00:02:07 -0600</lastBuildDate>
     <generator>Jekyll v3.1.3</generator>
     
       <item>
@@ -26,7 +26,9 @@
 
 &lt;p&gt;Pretty straight forward. We’ll take this apart piece by piece. The first thing we need to do with vanilla JS is to actually target the element. Now as I’m sure you know there is always the option of utilizing &lt;code class=&quot;highlighter-rouge&quot;&gt;getElementByID&lt;/code&gt;. But in this case, we’re trying to target a class. In reality, we probably want to avoid using an ID if we can since the specificity could cause issues down the road.&lt;/p&gt;
 
-&lt;p&gt;Enter &lt;code class=&quot;highlighter-rouge&quot;&gt;querySelector&lt;/code&gt;. MDN &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector&quot;&gt;states that&lt;/a&gt; querySelector:&lt;/p&gt;
+&lt;h2 id=&quot;enter-queryselector&quot;&gt;Enter querySelector&lt;/h2&gt;
+
+&lt;p&gt;MDN &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector&quot;&gt;states that&lt;/a&gt; querySelector:&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Returns the first element within the document hat matches the specified group of selectors.&lt;/p&gt;
@@ -40,6 +42,8 @@
 
 &lt;p&gt;Perfect, now we need some sort of way to detect when that element is clicked. If you were lucky enough to see the days when folks used the inline &lt;code class=&quot;highlighter-rouge&quot;&gt;onclick&lt;/code&gt; function, then you’ll have probably guessed where we’re headed.&lt;/p&gt;
 
+&lt;h2 id=&quot;the-click&quot;&gt;The Click&lt;/h2&gt;
+
 &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;onclick&lt;/code&gt; property allows us to utilize a function expression, or a named function defined elsewhere right within it. For this example I’ll utilize a function expression just to keep things brief.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;.toggle-me&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -49,6 +53,8 @@
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Sweet! If you check your console you should see our ‘clicked!’ logging.&lt;/p&gt;
+
+&lt;h2 id=&quot;classlist&quot;&gt;classList&lt;/h2&gt;
 
 &lt;p&gt;The last bit of code that we’ll need will do the actual toggling of the class. If you’ve done some searching you’ll have noticed that there’s not an independent toggle property in Javascript. Luckily, &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Element/classList&quot;&gt;classList&lt;/a&gt; comes to the rescue.&lt;/p&gt;
 
@@ -63,6 +69,8 @@
 &lt;p&gt;You’ll notice that the output in the console provides us with a DOMTokenList object. Expanding that object will show that the first value in the object, is “toggle-me”.&lt;/p&gt;
 
 &lt;p&gt;With this object we can now use the &lt;code class=&quot;highlighter-rouge&quot;&gt;toggle()&lt;/code&gt; method associated with the &lt;code class=&quot;highlighter-rouge&quot;&gt;classList&lt;/code&gt; property. Much like with jQuery, in addition to &lt;code class=&quot;highlighter-rouge&quot;&gt;toggle()&lt;/code&gt;, the &lt;code class=&quot;highlighter-rouge&quot;&gt;classList&lt;/code&gt; property gives us access to the &lt;code class=&quot;highlighter-rouge&quot;&gt;add()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;remove()&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;item()&lt;/code&gt; methods. For our purposes, we’ll just stick with &lt;code class=&quot;highlighter-rouge&quot;&gt;toggle()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;result&quot;&gt;Result&lt;/h2&gt;
 
 &lt;p&gt;Unfortunately, with vanilla JS the &lt;code class=&quot;highlighter-rouge&quot;&gt;$(this)&lt;/code&gt; property doesn’t exist. However, since we are caching the the element we are manipulating, all we need to do is attach the &lt;code class=&quot;highlighter-rouge&quot;&gt;classList&lt;/code&gt; property to our element, and then chain our &lt;code class=&quot;highlighter-rouge&quot;&gt;toggle()&lt;/code&gt; method, passing on our active class like so:&lt;/p&gt;
 

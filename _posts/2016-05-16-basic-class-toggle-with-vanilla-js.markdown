@@ -21,7 +21,9 @@ $('.toggle-me').click( function() {
 
 Pretty straight forward. We'll take this apart piece by piece. The first thing we need to do with vanilla JS is to actually target the element. Now as I'm sure you know there is always the option of utilizing `getElementByID`. But in this case, we're trying to target a class. In reality, we probably want to avoid using an ID if we can since the specificity could cause issues down the road.
 
-Enter `querySelector`. MDN [states that](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) querySelector:
+## Enter querySelector
+
+MDN [states that](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) querySelector:
 
 >Returns the first element within the document hat matches the specified group of selectors.
 
@@ -35,6 +37,8 @@ var el = document.querySelector('.toggle-me');
 
 Perfect, now we need some sort of way to detect when that element is clicked. If you were lucky enough to see the days when folks used the inline `onclick` function, then you'll have probably guessed where we're headed.
 
+## The Click
+
 The `onclick` property allows us to utilize a function expression, or a named function defined elsewhere right within it. For this example I'll utilize a function expression just to keep things brief.
 
 {% highlight javascript %}
@@ -46,6 +50,8 @@ el.onclick = function() {
 {% endhighlight %}
 
 Sweet! If you check your console you should see our 'clicked!' logging.
+
+## classList
 
 The last bit of code that we'll need will do the actual toggling of the class. If you've done some searching you'll have noticed that there's not an independent toggle property in Javascript. Luckily, [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) comes to the rescue.
 
@@ -62,6 +68,8 @@ el.onclick = function() {
 You'll notice that the output in the console provides us with a DOMTokenList object. Expanding that object will show that the first value in the object, is "toggle-me".
 
 With this object we can now use the `toggle()` method associated with the `classList` property. Much like with jQuery, in addition to `toggle()`, the `classList` property gives us access to the `add()`, `remove()`, and `item()` methods. For our purposes, we'll just stick with `toggle()`.
+
+## Result
 
 Unfortunately, with vanilla JS the `$(this)` property doesn't exist. However, since we are caching the the element we are manipulating, all we need to do is attach the `classList` property to our element, and then chain our `toggle()` method, passing on our active class like so:
 
