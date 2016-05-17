@@ -99,15 +99,15 @@
 	  <article class="post-content">
 	    <p>In my previous posts I discussed <a href="http://dommagnifi.co/update/2015/05/14/spinning-up-process.html">how to start setting up processes within your team</a>and <a href="http://dommagnifi.co/update/2015/06/01/the-importance-of-company-wide-respect-for-process.html">the integration of that process to the whole team</a>. Feel free to check those posts out as well. This post however is the all about the ellusive development process. Which really is  <a href="http://vincentp.me/blog/my-front-end-development-process-start-to-finish/">not</a> <a href="http://blog.chartbeat.com/2014/01/30/modern-front-end-workflow-start-finish/">that</a> <a href="https://www.codeschool.com/blog/2014/11/14/front-end-process/">ellusive</a> <a href="http://code.tutsplus.com/tutorials/essential-tools-for-a-modern-front-end-development-workflow--pre-66083">at</a> <a href="http://bradfrost.com/blog/post/development-is-design/">all</a>. All of these articles are fantastic by the way, and give insight into the front end development process. What follows is the adaptation I have taken from my few years in the industry. It is by no means comprehensive or perfect. As I mentioned previously no process is perfect, and any good process is iterated upon and constantly changing, so do not take this post as gospel, use it, improve it, and tell me all about it. Next to front end development, front end development process is a passion of mine as well.</p>
 
-<h1 id="the-zenman-development-process">The Zenman Development Process</h1>
+<p>#The Zenman Development Process</p>
 
 <p>So I’ve been with Zenman for almost three years now, and I can tell you first hand that our process has grown and evolved tremendously over those three years. Back in the day we were getting printed out documents that had our schedules for the week on them, we weren’t using much of a client management tool, and our development processes were pretty much developer specific. Now don’t get me wrong, there was a method to this, and it worked pretty damn well for the company at the time. But of course, it needed to evolve.</p>
 
-<h1 id="the-tools">The Tools</h1>
+<p>#The Tools</p>
 
 <p>Of course there is no one set of tools that is perfect. Much like your processes, it’s a long journey of trial and error before you find that sweet spot. I’m going to go over the tools that we use and how they fit into our process.</p>
 
-<h2 id="project-management">Project Management</h2>
+<p>##Project Management</p>
 
 <p>As much as we all loved the printer paper schedule, it was very hard for us to be able to keep track of all the individual items that needed to be done for each of our projects. That’s where <a href="http://www.basecamp.com">basecamp</a> comes in.</p>
 
@@ -115,7 +115,7 @@
 
 <p>Now within basecamp we have a specific structure for to-dos, we have a bunch of pre-defined templates that outline everything from our approval process from clients, to items that need to happen in order for us to consider a site launch successful. We have many many process oriented lists in basecamp that help to streamline our jobs, and these are all specific to Zenman, over the years we have established things that work, and things that do not. Not only for us, but for our clients. These to-do lists, and basecamp documents are incredibly helpful for us to stay on track and for us to keep a running paper trail of all communications with clients. We have protocol that forces us to ensure that everything is documented in basecamp to ensure clear, transparent communications with the client. This way, nobody is out of the loop, and anyone can jump into a project and be informed to tackle any issue or request.</p>
 
-<h2 id="agile-development">Agile Development</h2>
+<p>##Agile Development</p>
 
 <p>There are a few tools out there that help to aid shops in staying agile. All of them center around stories, and an acceptance process with the Product Owner.<a href="http://www.pivotaltracker.com">Pivotal Tracker</a> is our tool of choice for our agile projects. This gives us a much more granular view of exactly what prices need to be built into a website.</p>
 
@@ -125,7 +125,7 @@
 
 <p>Each story is assigned a point value, or a level of effort, and based off of that we set a velocity which then anticipates the amount of stories or points that we can complete each week.</p>
 
-<h2 id="cms">CMS</h2>
+<p>##CMS</p>
 
 <p>Every client that we work with needs to be able to update their content, or utilize a blogging platform. We use <a href="http://www.WordPress.org">WordPress</a> for that. Most of the sites that we develop are WordPress sites, and we have some processes that go along with that.</p>
 
@@ -139,13 +139,13 @@
 
 <p>We found that keeping things modular allows us to build bits and pieces separate from everything else so that they can work anywhere on the site. We utilize a plugin called <a href="http://www.advancedcustomfields.com/">Advanced Custom Fields</a>. Within advanced custom fields is a piece called Flexible Content. By default WordPress only has one text area for clients to manage content, and that didn’t work for us. Our layouts are complex enough that it is imperative for clients to be able to edit content throughout the site. ACF and flexible content allow us to do this. Because we build all our components modularly, we are able to build a call to action section once, and then utilize it anywhere on the site. The client has the ability in the backend to add this piece to any page and have it work every single time. This is huge, and if you use WordPress I would highly highly recommend using ACF.</p>
 
-<h2 id="local-development">Local Development</h2>
+<p>##Local Development</p>
 
 <p>This one’s pretty easy, and there isn’t much process involved with this. We use <a href="https://www.mamp.info/en/">MAMP</a> to develop locally. This gives you the ability to spin up a server locally and run a WordPress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with <code class="highlighter-rouge">l1_</code>, we then utilize git and push to our git server which then pushes out to our development <code class="highlighter-rouge">d1_</code>, testing <code class="highlighter-rouge">t1_</code> and staging <code class="highlighter-rouge">s1_</code> servers.</p>
 
 <p>This utilizes some git hook sorcery that I will not pretend to be privy to. But it’s awesome, and my co-worker <a href="http://www.codepen.io/tcmulder">Tomas Mulder</a> is a git sorcerer. Ask him about it, and it’ll go right over your head.</p>
 
-<h2 id="version-control">Version Control</h2>
+<p>##Version Control</p>
 
 <p>Every development team needs some sort of version control to prevent catastrophic overwrites and terrible terrible headaches. Something I’ve definitely never experienced…</p>
 
@@ -153,7 +153,7 @@
 
 <p>The one thing that we do make sure to do process-wise, is write clean, well thought out commit messages.</p>
 
-<h2 id="reviews-and-testing">Reviews and Testing</h2>
+<p>##Reviews and Testing</p>
 
 <p>Once a developer has completed the development of the project to the best of his or her knowledge we have a few steps to take before we send the project to the client.</p>
 

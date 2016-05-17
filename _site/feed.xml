@@ -6,15 +6,88 @@
 </description>
     <link>https://dommagnifi.co/</link>
     <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Feb 2016 00:09:59 -0700</pubDate>
-    <lastBuildDate>Wed, 03 Feb 2016 00:09:59 -0700</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <pubDate>Mon, 16 May 2016 23:44:10 -0600</pubDate>
+    <lastBuildDate>Mon, 16 May 2016 23:44:10 -0600</lastBuildDate>
+    <generator>Jekyll v3.1.3</generator>
+    
+      <item>
+        <title>Basic Class Toggle with Vanilla JS</title>
+        <description>&lt;p&gt;One of my &lt;a href=&quot;/update/2015/12/29/2015.html&quot;&gt;goals for this year&lt;/a&gt; was to start to grasp vanilla JS a little bit more. While I was in school, Javascript and jQuery pretty much went hand in hand. Little was taught about vanilla JS, beyond the basics of course, in favor of the glory that was jQuery. It’s understandable, that syntactic sugar is pretty irresistible.&lt;/p&gt;
+
+&lt;p&gt;I’m going to walk through a pretty common desire when writing Javascript, the class toggle.&lt;/p&gt;
+
+&lt;p&gt;Let’s take a look at how we would generally do this with jQuery. Beware though, you’re going to see this next snippet and think “Why are we even trying to do this in vanilla JS?!”. I know…but check out &lt;a href=&quot;http://alistapart.com/blog/post/choosing-vanilla-javascript&quot;&gt;all&lt;/a&gt; &lt;a href=&quot;http://gomakethings.com/ditching-jquery-for-vanilla-js/&quot;&gt;these&lt;/a&gt; &lt;a href=&quot;https://teamtreehouse.com/community/pure-javascript-vs-jquery-2&quot;&gt;posts&lt;/a&gt; that advocate for the performance benefits of vanilla JS. I won’t get into that here, this is purely intended to be a reference for when you decide to make the switch.&lt;/p&gt;
+
+&lt;p&gt;Alright, so the basic jQuery class toggling function would look something like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;.toggle-me&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toggleClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;active&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Pretty straight forward. We’ll take this apart piece by piece. The first thing we need to do with vanilla JS is to actually target the element. Now as I’m sure you know there is always the option of utilizing &lt;code class=&quot;highlighter-rouge&quot;&gt;getElementByID&lt;/code&gt;. But in this case, we’re trying to target a class. In reality, we probably want to avoid using an ID if we can since the specificity could cause issues down the road.&lt;/p&gt;
+
+&lt;p&gt;Enter &lt;code class=&quot;highlighter-rouge&quot;&gt;querySelector&lt;/code&gt;. MDN &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector&quot;&gt;states that&lt;/a&gt; querySelector:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Returns the first element within the document hat matches the specified group of selectors.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is perfect for our case, we currently only have one element on the page with a class name of &lt;code class=&quot;highlighter-rouge&quot;&gt;.toggle-me&lt;/code&gt;. If you have multiple elements on the page with the same class name, you’ll need to look into &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll&quot;&gt;querySelectorAll&lt;/a&gt;, which I’ll dive into in another blog post.&lt;/p&gt;
+
+&lt;p&gt;So, lets set our classname to a variable to make it easy to reference.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;.toggle-me&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Perfect, now we need some sort of way to detect when that element is clicked. If you were lucky enough to see the days when folks used the inline &lt;code class=&quot;highlighter-rouge&quot;&gt;onclick&lt;/code&gt; function, then you’ll have probably guessed where we’re headed.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;onclick&lt;/code&gt; property allows us to utilize a function expression, or a named function defined elsewhere right within it. For this example I’ll utilize a function expression just to keep things brief.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;.toggle-me&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onclick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;clicked!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Sweet! If you check your console you should see our ‘clicked!’ logging.&lt;/p&gt;
+
+&lt;p&gt;The last bit of code that we’ll need will do the actual toggling of the class. If you’ve done some searching you’ll have noticed that there’s not an independent toggle property in Javascript. Luckily, &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Element/classList&quot;&gt;classList&lt;/a&gt; comes to the rescue.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;classList&lt;/code&gt; property by itself is pretty self explanatory. It outputs a collection of the class attributes of the passed element. If we were to run that on our &lt;code class=&quot;highlighter-rouge&quot;&gt;.toggle-me&lt;/code&gt; class:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;.toggle-me&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onclick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You’ll notice that the output in the console provides us with a DOMTokenList object. Expanding that object will show that the first value in the object, is “toggle-me”.&lt;/p&gt;
+
+&lt;p&gt;With this object we can now use the &lt;code class=&quot;highlighter-rouge&quot;&gt;toggle()&lt;/code&gt; method associated with the &lt;code class=&quot;highlighter-rouge&quot;&gt;classList&lt;/code&gt; property. Much like with jQuery, in addition to &lt;code class=&quot;highlighter-rouge&quot;&gt;toggle()&lt;/code&gt;, the &lt;code class=&quot;highlighter-rouge&quot;&gt;classList&lt;/code&gt; property gives us access to the &lt;code class=&quot;highlighter-rouge&quot;&gt;add()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;remove()&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;item()&lt;/code&gt; methods. For our purposes, we’ll just stick with &lt;code class=&quot;highlighter-rouge&quot;&gt;toggle()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, with vanilla JS the &lt;code class=&quot;highlighter-rouge&quot;&gt;$(this)&lt;/code&gt; property doesn’t exist. However, since we are caching the the element we are manipulating, all we need to do is attach the &lt;code class=&quot;highlighter-rouge&quot;&gt;classList&lt;/code&gt; property to our element, and then chain our &lt;code class=&quot;highlighter-rouge&quot;&gt;toggle()&lt;/code&gt; method, passing on our active class like so:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;.toggle-me&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onclick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;classList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toggle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;active&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And voilà! You’re now accomplishing a simple class toggle on an element utilizing pure Javascript. Pat yourself on the back for saving that extra HTTP request and removing your dependency on jQuery.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 16 May 2016 10:44:00 -0600</pubDate>
+        <link>https://dommagnifi.co/update/2016/05/16/basic-class-toggle-with-vanilla-js.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2016/05/16/basic-class-toggle-with-vanilla-js.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>What can we do with ServiceWorker</title>
         <description>&lt;p&gt;Before you read on, be sure to check out &lt;a href=&quot;/update/2015/12/20/service-workin-for-the-weekend.html&quot;&gt;my first blog post&lt;/a&gt; about the Service Worker API. Service workers require a secure connection, and that post will show you how to set your site up with CloudFlare in order to serve your site via https.&lt;/p&gt;
 
-&lt;h2 id=&quot;first-things-first&quot;&gt;First things First&lt;/h2&gt;
+&lt;p&gt;##First things First&lt;/p&gt;
 
 &lt;p&gt;Regardless of our end game, we need to register our service worker. We’re essentially going to be working in two javascript files. The first one we’ll call &lt;code class=&quot;highlighter-rouge&quot;&gt;app.js&lt;/code&gt; which is where the initial scripts for your site are housed. That is where this first snippet below will be housed.&lt;/p&gt;
 
@@ -44,7 +117,7 @@
 
 &lt;p&gt;The code above is not the service worker itself, rather it is registering our service worker within a scope. That being said, once a page within the scope is loaded, the service worker will run. This happens individually on each page load so long as it is within scope.&lt;/p&gt;
 
-&lt;h2 id=&quot;cache-rules-everything-around-me&quot;&gt;Cache Rules Everything Around Me&lt;/h2&gt;
+&lt;p&gt;##Cache Rules Everything Around Me&lt;/p&gt;
 
 &lt;p&gt;Now we get to the juicy stuff. Now that we have registered a service worker, let’s look at how we can utilize the cache to grab the files you’d like to utilize for offline mode on your site. In our second file, which I’m calling &lt;code class=&quot;highlighter-rouge&quot;&gt;serviceworker.js&lt;/code&gt; place this next snippet.&lt;/p&gt;
 
@@ -392,15 +465,15 @@
         <title>The Ellusive Development Process</title>
         <description>&lt;p&gt;In my previous posts I discussed &lt;a href=&quot;http://dommagnifi.co/update/2015/05/14/spinning-up-process.html&quot;&gt;how to start setting up processes within your team&lt;/a&gt;and &lt;a href=&quot;http://dommagnifi.co/update/2015/06/01/the-importance-of-company-wide-respect-for-process.html&quot;&gt;the integration of that process to the whole team&lt;/a&gt;. Feel free to check those posts out as well. This post however is the all about the ellusive development process. Which really is  &lt;a href=&quot;http://vincentp.me/blog/my-front-end-development-process-start-to-finish/&quot;&gt;not&lt;/a&gt; &lt;a href=&quot;http://blog.chartbeat.com/2014/01/30/modern-front-end-workflow-start-finish/&quot;&gt;that&lt;/a&gt; &lt;a href=&quot;https://www.codeschool.com/blog/2014/11/14/front-end-process/&quot;&gt;ellusive&lt;/a&gt; &lt;a href=&quot;http://code.tutsplus.com/tutorials/essential-tools-for-a-modern-front-end-development-workflow--pre-66083&quot;&gt;at&lt;/a&gt; &lt;a href=&quot;http://bradfrost.com/blog/post/development-is-design/&quot;&gt;all&lt;/a&gt;. All of these articles are fantastic by the way, and give insight into the front end development process. What follows is the adaptation I have taken from my few years in the industry. It is by no means comprehensive or perfect. As I mentioned previously no process is perfect, and any good process is iterated upon and constantly changing, so do not take this post as gospel, use it, improve it, and tell me all about it. Next to front end development, front end development process is a passion of mine as well.&lt;/p&gt;
 
-&lt;h1 id=&quot;the-zenman-development-process&quot;&gt;The Zenman Development Process&lt;/h1&gt;
+&lt;p&gt;#The Zenman Development Process&lt;/p&gt;
 
 &lt;p&gt;So I’ve been with Zenman for almost three years now, and I can tell you first hand that our process has grown and evolved tremendously over those three years. Back in the day we were getting printed out documents that had our schedules for the week on them, we weren’t using much of a client management tool, and our development processes were pretty much developer specific. Now don’t get me wrong, there was a method to this, and it worked pretty damn well for the company at the time. But of course, it needed to evolve.&lt;/p&gt;
 
-&lt;h1 id=&quot;the-tools&quot;&gt;The Tools&lt;/h1&gt;
+&lt;p&gt;#The Tools&lt;/p&gt;
 
 &lt;p&gt;Of course there is no one set of tools that is perfect. Much like your processes, it’s a long journey of trial and error before you find that sweet spot. I’m going to go over the tools that we use and how they fit into our process.&lt;/p&gt;
 
-&lt;h2 id=&quot;project-management&quot;&gt;Project Management&lt;/h2&gt;
+&lt;p&gt;##Project Management&lt;/p&gt;
 
 &lt;p&gt;As much as we all loved the printer paper schedule, it was very hard for us to be able to keep track of all the individual items that needed to be done for each of our projects. That’s where &lt;a href=&quot;http://www.basecamp.com&quot;&gt;basecamp&lt;/a&gt; comes in.&lt;/p&gt;
 
@@ -408,7 +481,7 @@
 
 &lt;p&gt;Now within basecamp we have a specific structure for to-dos, we have a bunch of pre-defined templates that outline everything from our approval process from clients, to items that need to happen in order for us to consider a site launch successful. We have many many process oriented lists in basecamp that help to streamline our jobs, and these are all specific to Zenman, over the years we have established things that work, and things that do not. Not only for us, but for our clients. These to-do lists, and basecamp documents are incredibly helpful for us to stay on track and for us to keep a running paper trail of all communications with clients. We have protocol that forces us to ensure that everything is documented in basecamp to ensure clear, transparent communications with the client. This way, nobody is out of the loop, and anyone can jump into a project and be informed to tackle any issue or request.&lt;/p&gt;
 
-&lt;h2 id=&quot;agile-development&quot;&gt;Agile Development&lt;/h2&gt;
+&lt;p&gt;##Agile Development&lt;/p&gt;
 
 &lt;p&gt;There are a few tools out there that help to aid shops in staying agile. All of them center around stories, and an acceptance process with the Product Owner.&lt;a href=&quot;http://www.pivotaltracker.com&quot;&gt;Pivotal Tracker&lt;/a&gt; is our tool of choice for our agile projects. This gives us a much more granular view of exactly what prices need to be built into a website.&lt;/p&gt;
 
@@ -418,7 +491,7 @@
 
 &lt;p&gt;Each story is assigned a point value, or a level of effort, and based off of that we set a velocity which then anticipates the amount of stories or points that we can complete each week.&lt;/p&gt;
 
-&lt;h2 id=&quot;cms&quot;&gt;CMS&lt;/h2&gt;
+&lt;p&gt;##CMS&lt;/p&gt;
 
 &lt;p&gt;Every client that we work with needs to be able to update their content, or utilize a blogging platform. We use &lt;a href=&quot;http://www.WordPress.org&quot;&gt;WordPress&lt;/a&gt; for that. Most of the sites that we develop are WordPress sites, and we have some processes that go along with that.&lt;/p&gt;
 
@@ -432,13 +505,13 @@
 
 &lt;p&gt;We found that keeping things modular allows us to build bits and pieces separate from everything else so that they can work anywhere on the site. We utilize a plugin called &lt;a href=&quot;http://www.advancedcustomfields.com/&quot;&gt;Advanced Custom Fields&lt;/a&gt;. Within advanced custom fields is a piece called Flexible Content. By default WordPress only has one text area for clients to manage content, and that didn’t work for us. Our layouts are complex enough that it is imperative for clients to be able to edit content throughout the site. ACF and flexible content allow us to do this. Because we build all our components modularly, we are able to build a call to action section once, and then utilize it anywhere on the site. The client has the ability in the backend to add this piece to any page and have it work every single time. This is huge, and if you use WordPress I would highly highly recommend using ACF.&lt;/p&gt;
 
-&lt;h2 id=&quot;local-development&quot;&gt;Local Development&lt;/h2&gt;
+&lt;p&gt;##Local Development&lt;/p&gt;
 
 &lt;p&gt;This one’s pretty easy, and there isn’t much process involved with this. We use &lt;a href=&quot;https://www.mamp.info/en/&quot;&gt;MAMP&lt;/a&gt; to develop locally. This gives you the ability to spin up a server locally and run a WordPress site on your machine. The only real standardization that we have here is our database naming structure. We have our local databases, prefixed with &lt;code class=&quot;highlighter-rouge&quot;&gt;l1_&lt;/code&gt;, we then utilize git and push to our git server which then pushes out to our development &lt;code class=&quot;highlighter-rouge&quot;&gt;d1_&lt;/code&gt;, testing &lt;code class=&quot;highlighter-rouge&quot;&gt;t1_&lt;/code&gt; and staging &lt;code class=&quot;highlighter-rouge&quot;&gt;s1_&lt;/code&gt; servers.&lt;/p&gt;
 
 &lt;p&gt;This utilizes some git hook sorcery that I will not pretend to be privy to. But it’s awesome, and my co-worker &lt;a href=&quot;http://www.codepen.io/tcmulder&quot;&gt;Tomas Mulder&lt;/a&gt; is a git sorcerer. Ask him about it, and it’ll go right over your head.&lt;/p&gt;
 
-&lt;h2 id=&quot;version-control&quot;&gt;Version Control&lt;/h2&gt;
+&lt;p&gt;##Version Control&lt;/p&gt;
 
 &lt;p&gt;Every development team needs some sort of version control to prevent catastrophic overwrites and terrible terrible headaches. Something I’ve definitely never experienced…&lt;/p&gt;
 
@@ -446,7 +519,7 @@
 
 &lt;p&gt;The one thing that we do make sure to do process-wise, is write clean, well thought out commit messages.&lt;/p&gt;
 
-&lt;h2 id=&quot;reviews-and-testing&quot;&gt;Reviews and Testing&lt;/h2&gt;
+&lt;p&gt;##Reviews and Testing&lt;/p&gt;
 
 &lt;p&gt;Once a developer has completed the development of the project to the best of his or her knowledge we have a few steps to take before we send the project to the client.&lt;/p&gt;
 
@@ -520,7 +593,7 @@
         <title>The Importance of Company-wide Respect for Process</title>
         <description>&lt;p&gt;In my previous post I discussed how to start setting up processes within your team. If you haven’t read it, check it out &lt;a href=&quot;http://dommagnifi.co/update/2015/05/14/spinning-up-process.html&quot;&gt;here&lt;/a&gt;. This post will focus more on the integration of that process to the whole team, and the importance of company wide adoption.&lt;/p&gt;
 
-&lt;h2 id=&quot;start-at-the-top&quot;&gt;Start at The Top&lt;/h2&gt;
+&lt;p&gt;##Start at The Top&lt;/p&gt;
 
 &lt;p&gt;The main point here is that business has to be on board with the process. At Zenman when we decide a process needs to some tweaking, or a new one is necessary, we take a few preliminary steps. We  begin by writing an explanation of any problems that the process will help to reduce. We follow that with any extra time that this process will add to the project. And finally we list any pros and cons associated with this new process.&lt;/p&gt;
 
@@ -528,13 +601,13 @@
 
 &lt;p&gt;&lt;img src=&quot;http://bukk.it/business.jpg&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;project-management&quot;&gt;Project Management&lt;/h2&gt;
+&lt;p&gt;##Project Management&lt;/p&gt;
 
 &lt;p&gt;Once you’ve got business all warm and fuzzy about this fantastic new process, your likely next step will be to talk to project management. It’s important that your Project Managers / Account Managers are aware of this process change so that they can plan accordingly. There’s nothing that will piss off a PM or AM more than a change in process that affects the way they interact with the client. Ensuring that they fully understand the need for this process, and exactly what issues it will help to alleviate is real important.&lt;/p&gt;
 
 &lt;p&gt;As long as your PM or AM is comfortable, and understands the process as well, they’ll have no problem adhering to it and ensuring that the client is aware of the change. Or, at the very least, they will ensure that the process is put into place for the next project.&lt;/p&gt;
 
-&lt;h2 id=&quot;team-participation&quot;&gt;Team Participation&lt;/h2&gt;
+&lt;p&gt;##Team Participation&lt;/p&gt;
 
 &lt;p&gt;Throughout this whole process it’s important to keep your team in the loop. At Zenman we believe in being super transparent. Any time we think about implementing a change that could affect the whole team, we loop them in. From the very beginning we ask for input from the whole team in regards to this new, or improved, process and address any concerns that come up. This step should most definitely be integrated into the planning stage of your new process.&lt;/p&gt;
 
@@ -547,45 +620,6 @@
         <pubDate>Mon, 01 Jun 2015 09:51:00 -0600</pubDate>
         <link>https://dommagnifi.co/update/2015/06/01/the-importance-of-company-wide-respect-for-process.html</link>
         <guid isPermaLink="true">https://dommagnifi.co/update/2015/06/01/the-importance-of-company-wide-respect-for-process.html</guid>
-        
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>Spinning Up Process</title>
-        <description>&lt;p&gt;As every good developer knows, a process is crucial to the success of your project. Without it, clients run amok, design changes seven times, development never has a clear objective, and the project becomes an all around disaster. Process is important, it keeps everyones eye on the prize. At Zenman, I’ve spent the past 3 and a half years cultivating a process that I believe works quite well.&lt;/p&gt;
-
-&lt;p&gt;One thing that I want to preface here, and I’ll refrence this point a bunch, is that your process is never &lt;strong&gt;EVER&lt;/strong&gt; perfect. I can’t think of a single process that I’ve been a part of that didn’t have some room for improvement. So keep in mind, the fact that you’re even trying to lay out a process, is a step in the right direction. You’re going to change it, iterate on it, and ultimately improve upon it.&lt;/p&gt;
-
-&lt;h2 id=&quot;setting-the-right-processes-in-place&quot;&gt;Setting the Right Processes in Place&lt;/h2&gt;
-
-&lt;p&gt;When first developing our process at Zenman we had to establish exactly what it was we were trying to accomplish. Where are we headed? What exactly is that prize we should be keeping our eyes on. What it came down to was simply the fact that we wanted a process that provided designers, developers, and business with all of the information that is needed for the project right off the bat. Leave no stone unturned.&lt;/p&gt;
-
-&lt;p&gt;The first step in attaining this goal was to hold a discovery meeting, which for Zenman, is our first deep dive into what the client is all about. This meeting incorporates every member of the team for this specific project. Everyone from Project Manager and Sales Exec, to Developer and Designer, all the way up to the CEO sits in on this meeting.&lt;/p&gt;
-
-&lt;p&gt;We incorporate everyone in this meeting for a very specific reason, and that is because without full immersion in the process, your process is more likely to fail. Having everyone participate in this meeting gives us all the preparation we need for the project as a whole. And not only that, it gives each department insight into the other departments processes and methodology. This then helps sales people to sell better, because they understand our development process, and can explain to clients more readily and knowledgeably about how that process works. Everyone benefits from having a high level understanding of how the other departments work, thus creating a more seemless project and inevitably a better product.&lt;/p&gt;
-
-&lt;p&gt;Just to give you a little insight into our discovery process, from a development standpoint, during the discovery we ask some technical questions like where is your current site hosted, where is your domain registered, how are your emails set up, and how do we access your google analytics. This gives us the power to complete steps within our process that are both immediate, and further down the line, so that a back and forth does not need to occur between developer and client. Having a clear goal in place makes a project ridiculously more manageable.&lt;/p&gt;
-
-&lt;h2 id=&quot;is-it-scalable&quot;&gt;Is it Scalable?&lt;/h2&gt;
-
-&lt;p&gt;One of the best things about the process that we implemented at Zenman is that it is effective for projects of all sizes. From Fortune 500 companies down to startups, our process works. There is no more tempting time to skip out on process then on a small project. This is where you kind of have to reign in the project managers and sales folks. At this point, a PM or AM will try to tempt you with promises of gold and mir to break process and get the task done in record time.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://bukk.it/noooooooooo.gif&quot; alt=&quot;nope nope nope&quot; title=&quot;noooooooooo&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;DON’T DO IT! Sticking to the process may incur a little bit of extra time up front, but for the love of God it has the potential to save your ass in the long run.&lt;/p&gt;
-
-&lt;p&gt;Nothing like an example to help justify my claim…one of our steps in the process, almost immediately after our discovery meeting, is to run a smoke test on the clients server. A smoke test for anyone interested is just an automated test that runs through a series of tasks to ensure that, in our case, the clients server is set up to handle a WordPress installation. There have been a few times where the process doesn’t get followed, the client drags their feet in getting us hosting credentials, and all of the sudden, it’s time to launch the site! Hooray right? Not exactly. I’ve tried to launch to a server where a smoke test was not ran before and run into castrophic problems…it’s running on PHP4…ssh isn’t enabled…the server was bit by a PC and is now a windows server…awful awful terrible things like that. And because of these things, the site didn’t get launched, and the project delivery date had to be extended, sometimes as long as weeks after the initial go live date.&lt;/p&gt;
-
-&lt;p&gt;If process had been followed, we wouldn’t have run into these issues, they would have been resolved while development was happening, and the site would have gone live on the day it was supposed to.&lt;/p&gt;
-
-&lt;p&gt;This is where I’ll end the post for now. Stay tuned for more like this as I intend to turn this series of posts into a talk that I’ll be giving in August at Refresh Denver. &lt;a href=&quot;http://www.meetup.com/refreshdenver/events/219844847/&quot;&gt;Check it out and RSVP if you’re interested!&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 14 May 2015 09:51:00 -0600</pubDate>
-        <link>https://dommagnifi.co/update/2015/05/14/spinning-up-process.html</link>
-        <guid isPermaLink="true">https://dommagnifi.co/update/2015/05/14/spinning-up-process.html</guid>
         
         
         <category>update</category>

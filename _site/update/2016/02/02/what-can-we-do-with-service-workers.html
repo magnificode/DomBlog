@@ -99,7 +99,7 @@
 	  <article class="post-content">
 	    <p>Before you read on, be sure to check out <a href="/update/2015/12/20/service-workin-for-the-weekend.html">my first blog post</a> about the Service Worker API. Service workers require a secure connection, and that post will show you how to set your site up with CloudFlare in order to serve your site via https.</p>
 
-<h2 id="first-things-first">First things First</h2>
+<p>##First things First</p>
 
 <p>Regardless of our end game, we need to register our service worker. We’re essentially going to be working in two javascript files. The first one we’ll call <code class="highlighter-rouge">app.js</code> which is where the initial scripts for your site are housed. That is where this first snippet below will be housed.</p>
 
@@ -129,7 +129,7 @@
 
 <p>The code above is not the service worker itself, rather it is registering our service worker within a scope. That being said, once a page within the scope is loaded, the service worker will run. This happens individually on each page load so long as it is within scope.</p>
 
-<h2 id="cache-rules-everything-around-me">Cache Rules Everything Around Me</h2>
+<p>##Cache Rules Everything Around Me</p>
 
 <p>Now we get to the juicy stuff. Now that we have registered a service worker, let’s look at how we can utilize the cache to grab the files you’d like to utilize for offline mode on your site. In our second file, which I’m calling <code class="highlighter-rouge">serviceworker.js</code> place this next snippet.</p>
 

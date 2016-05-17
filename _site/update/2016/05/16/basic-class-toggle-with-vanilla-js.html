@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <meta name="description" content="One of my goals for this year was to start to grasp vanilla JS a little bit more. While I was in school, Javascript and jQuery pretty much went hand in hand....">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+<meta content="Dominic Magnifico" property="og:site_name">
+
+  <meta content="Basic Class Toggle with Vanilla JS" property="og:title">
+
+
+  <meta content="article" property="og:type">
+
+
+  <meta content="Dominic Magnifico | Front End Developer
+" property="og:description">
+
+
+  <meta content="https://dommagnifi.co/update/2016/05/16/basic-class-toggle-with-vanilla-js.html" property="og:url">
+
+
+  <meta content="2016-05-16T10:44:00-06:00" property="article:published_time">
+  <meta content="https://dommagnifi.co/about/" property="article:author">
+
+
+  <meta content="/images/logo.png" property="og:image">
+
+
+  
+  <meta content="update" property="article:section">
+  
+
+
+  
+
+
+  <title>Basic Class Toggle with Vanilla JS</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://dommagnifi.co/css/main.css">
+  <link rel="canonical" href="https://dommagnifi.cohttps://dommagnifi.co/update/2016/05/16/basic-class-toggle-with-vanilla-js.html">
+  <link rel="alternate" type="application/atom+xml" title="Dominic Magnifico" href="https://dommagnifi.cohttps://dommagnifi.co/feed.xml" />
+
+  <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsOb  ect']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-43739046-1', 'dommagnifi.co');
+	  ga('send', 'pageview');
+
+   </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+	<h1><a href="/">Dominic Magnifico</a></h1>
+	<nav class="header__nav">
+		<a  href="/about">About</a><a  href="/work">Work</a><a  href="/resume">R&eacute;sum&eacute;</a>
+	</nav>
+	<div class="header__social">
+          
+            <a href="https://github.com/magnificode" target="_blank">
+                <svg viewBox="0 0 16 16">
+                  <path d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+            </a>
+          
+          
+            <a href="https://twitter.com/magnificode" target="_blank">
+                <svg viewBox="0 0 16 16">
+                  <path d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+            </a>
+          
+          <a href="https://codepen.io/magnificode" target="_blank">
+                <svg viewBox="0 0 100 100">
+                  <path d="M50 .5C22.6.5.3 22.7.3 50S22.6 99.5 50 99.5c27.4 0 49.7-22.2 49.7-49.5S77.4.5 50 .5zm0 90.9C27.1 91.4 8.5 72.8 8.5 50S27.1 8.6 50 8.6 91.5 27.2 91.5 50 72.9 91.4 50 91.4zM80.7 40.3v-.4c0-.1 0-.1-.1-.2 0 0 0-.1-.1-.1 0-.1-.1-.1-.1-.2l-.1-.1c0-.1-.1-.1-.1-.2l-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-28.2-18.8c-.9-.6-2-.6-2.9 0L20.5 38.5l-.1.1c-.1 0-.1.1-.1.1l-.1.1-.1.1-.1.1c0 .1-.1.1-.1.2l-.1.1c0 .1-.1.1-.1.2 0 0 0 .1-.1.1 0 .1 0 .1-.1.2v20.1c0 .1 0 .1.1.2 0 0 0 .1.1.1 0 .1.1.1.1.2 0 0 0 .1.1.1 0 .1.1.1.1.2l.1.1.1.1.1.1.1.1.1.1 28.1 18.7c.4.3 1 .4 1.5.4s1-.1 1.5-.4l28.1-18.7.1-.1c.1 0 .1-.1.1-.1l.1-.1.1-.1.1-.1c0-.1.1-.1.1-.2l.1-.1c0-.1.1-.1.1-.2 0 0 0-.1.1-.1 0-.1 0-.1.1-.2V40.3zM52.6 26.9l20.7 13.7-9.2 6.2-11.4-7.6V26.9zm-5.2 0v12.3L36 46.8l-9.2-6.2 20.6-13.7zM24.6 45.6l6.6 4.4-6.6 4.4v-8.8zm22.8 27.5L26.7 59.3l9.2-6.2 11.4 7.6v12.4zM50 56.2L40.7 50l9.3-6.2 9.3 6.2-9.3 6.2zm2.6 16.9V60.8L64 53.2l9.2 6.2-20.6 13.7zm22.8-18.7L68.8 50l6.6-4.4v8.8z"></path>
+                </svg>
+            </a>
+      </div>
+</header>
+
+
+    <div class="post">
+<div class="post__inner">
+	  <header class="post-header">
+	    <h1 class="post-title">Basic Class Toggle with Vanilla JS</h1>
+	    <p class="post-meta"><span class="post-posted">May 16, 2016</span></p>
+	  </header>
+
+	  <article class="post-content">
+	    <p>One of my <a href="/update/2015/12/29/2015.html">goals for this year</a> was to start to grasp vanilla JS a little bit more. While I was in school, Javascript and jQuery pretty much went hand in hand. Little was taught about vanilla JS, beyond the basics of course, in favor of the glory that was jQuery. It’s understandable, that syntactic sugar is pretty irresistible.</p>
+
+<p>I’m going to walk through a pretty common desire when writing Javascript, the class toggle.</p>
+
+<p>Let’s take a look at how we would generally do this with jQuery. Beware though, you’re going to see this next snippet and think “Why are we even trying to do this in vanilla JS?!”. I know…but check out <a href="http://alistapart.com/blog/post/choosing-vanilla-javascript">all</a> <a href="http://gomakethings.com/ditching-jquery-for-vanilla-js/">these</a> <a href="https://teamtreehouse.com/community/pure-javascript-vs-jquery-2">posts</a> that advocate for the performance benefits of vanilla JS. I won’t get into that here, this is purely intended to be a reference for when you decide to make the switch.</p>
+
+<p>Alright, so the basic jQuery class toggling function would look something like this:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s1">'.toggle-me'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">'active'</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Pretty straight forward. We’ll take this apart piece by piece. The first thing we need to do with vanilla JS is to actually target the element. Now as I’m sure you know there is always the option of utilizing <code class="highlighter-rouge">getElementByID</code>. But in this case, we’re trying to target a class. In reality, we probably want to avoid using an ID if we can since the specificity could cause issues down the road.</p>
+
+<p>Enter <code class="highlighter-rouge">querySelector</code>. MDN <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector">states that</a> querySelector:</p>
+
+<blockquote>
+  <p>Returns the first element within the document hat matches the specified group of selectors.</p>
+</blockquote>
+
+<p>This is perfect for our case, we currently only have one element on the page with a class name of <code class="highlighter-rouge">.toggle-me</code>. If you have multiple elements on the page with the same class name, you’ll need to look into <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">querySelectorAll</a>, which I’ll dive into in another blog post.</p>
+
+<p>So, lets set our classname to a variable to make it easy to reference.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.toggle-me'</span><span class="p">);</span></code></pre></figure>
+
+<p>Perfect, now we need some sort of way to detect when that element is clicked. If you were lucky enough to see the days when folks used the inline <code class="highlighter-rouge">onclick</code> function, then you’ll have probably guessed where we’re headed.</p>
+
+<p>The <code class="highlighter-rouge">onclick</code> property allows us to utilize a function expression, or a named function defined elsewhere right within it. For this example I’ll utilize a function expression just to keep things brief.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.toggle-me'</span><span class="p">);</span>
+
+<span class="nx">el</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'clicked!'</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Sweet! If you check your console you should see our ‘clicked!’ logging.</p>
+
+<p>The last bit of code that we’ll need will do the actual toggling of the class. If you’ve done some searching you’ll have noticed that there’s not an independent toggle property in Javascript. Luckily, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList">classList</a> comes to the rescue.</p>
+
+<p>The <code class="highlighter-rouge">classList</code> property by itself is pretty self explanatory. It outputs a collection of the class attributes of the passed element. If we were to run that on our <code class="highlighter-rouge">.toggle-me</code> class:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.toggle-me'</span><span class="p">);</span>
+
+<span class="nx">el</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">el</span><span class="p">.</span><span class="nx">classList</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>You’ll notice that the output in the console provides us with a DOMTokenList object. Expanding that object will show that the first value in the object, is “toggle-me”.</p>
+
+<p>With this object we can now use the <code class="highlighter-rouge">toggle()</code> method associated with the <code class="highlighter-rouge">classList</code> property. Much like with jQuery, in addition to <code class="highlighter-rouge">toggle()</code>, the <code class="highlighter-rouge">classList</code> property gives us access to the <code class="highlighter-rouge">add()</code>, <code class="highlighter-rouge">remove()</code>, and <code class="highlighter-rouge">item()</code> methods. For our purposes, we’ll just stick with <code class="highlighter-rouge">toggle()</code>.</p>
+
+<p>Unfortunately, with vanilla JS the <code class="highlighter-rouge">$(this)</code> property doesn’t exist. However, since we are caching the the element we are manipulating, all we need to do is attach the <code class="highlighter-rouge">classList</code> property to our element, and then chain our <code class="highlighter-rouge">toggle()</code> method, passing on our active class like so:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.toggle-me'</span><span class="p">);</span>
+
+<span class="nx">el</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s1">'active'</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And voilà! You’re now accomplishing a simple class toggle on an element utilizing pure Javascript. Pat yourself on the back for saving that extra HTTP request and removing your dependency on jQuery.</p>
+
+	  </article>
+  </div>
+
+</div>
+
+
+    <p class="rss-subscribe">subscribe <a href="https://dommagnifi.co/feed.xml">via RSS</a></p>
+
+<script src="https://dommagnifi.co/app.js"></script>
+
+  </body>
+</html>
