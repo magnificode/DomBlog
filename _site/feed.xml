@@ -6,9 +6,66 @@
 </description>
     <link>https://dommagnifi.co/</link>
     <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 17 May 2016 00:02:07 -0600</pubDate>
-    <lastBuildDate>Tue, 17 May 2016 00:02:07 -0600</lastBuildDate>
+    <pubDate>Wed, 22 Jun 2016 00:17:03 -0600</pubDate>
+    <lastBuildDate>Wed, 22 Jun 2016 00:17:03 -0600</lastBuildDate>
     <generator>Jekyll v3.1.3</generator>
+    
+      <item>
+        <title>The State of Web Typography</title>
+        <description>&lt;p&gt;I don’t know about you, but I love to look at sites like &lt;a href=&quot;https://medium.com/&quot;&gt;Medium&lt;/a&gt;, the new &lt;a href=&quot;https://fonts.google.com/&quot;&gt;Google Fonts&lt;/a&gt; site, and any other site that has incredible typography. It feels good when a site is able to bring that familiar feel of print to the web. Furthermore, their amazing ability to control the multitude of typographic nuances like kerning (letter-spacing), leading (line-height) and of course font sizes that end up being perfectly balanced. With &lt;a href=&quot;http://caniuse.com/#search=vw&quot;&gt;browser support&lt;/a&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;vh&lt;/code&gt; at an acceptable level, I figured it would be fun to dive into the various methods of achieving typographic bliss.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-root-method&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;:root&lt;/code&gt; Method&lt;/h2&gt;
+
+&lt;p&gt;Lets start with the method I’m currently using myself. &lt;a href=&quot;https://twitter.com/MikeRiethmuller&quot;&gt;Mike Riethmuller&lt;/a&gt; wrote a post titled &lt;a href=&quot;http://madebymike.com.au/writing/precise-control-responsive-typography/&quot;&gt;Precise control over responsive typography&lt;/a&gt;. This method sets out to give developers control of their typography while utilizing &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt; unit. By themselves this unit of measurement don’t really offer us a whole lot of control. If we were to just do something like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5vw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We’d get massive headings on larger browsers, and tiny ones on smaller browsers. The next step here would be to add media queries for various breakpoints and adjust the font size. Furthermore, the scaling of the font would not be smooth, instead at that breakpoint the text would jump from one size to the next. Not ideal.&lt;/p&gt;
+
+&lt;h3 id=&quot;calc-the-root&quot;&gt;calc() the :root&lt;/h3&gt;
+
+&lt;p&gt;The beauty of Mike’s method lies in setting the global font size, and calculating it based on the &lt;code class=&quot;highlighter-rouge&quot;&gt;vw&lt;/code&gt;. Once you’ve done this, you can utilize &lt;code class=&quot;highlighter-rouge&quot;&gt;em&lt;/code&gt;s on your heading or paragraph tags very consistently throughout your site. Here’s Mikes CodePen demo explaining his method:&lt;/p&gt;
+
+&lt;p data-height=&quot;354&quot; data-theme-id=&quot;dark&quot; data-slug-hash=&quot;YPJJYv&quot; data-default-tab=&quot;css&quot; data-user=&quot;MadeByMike&quot; data-embed-version=&quot;2&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/MadeByMike/pen/YPJJYv/&quot;&gt;Precision responsive typography&lt;/a&gt; by Mike (&lt;a href=&quot;http://codepen.io/MadeByMike&quot;&gt;@MadeByMike&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Since Mikes post, a few variations of this method have popped up.&lt;/p&gt;
+
+&lt;h2 id=&quot;variations&quot;&gt;Variations&lt;/h2&gt;
+
+&lt;p&gt;Zell Liew has &lt;a href=&quot;http://zellwk.com/blog/viewport-based-typography/&quot;&gt;a great blog post&lt;/a&gt; that dives into the same basic principal of setting the font size globally (on the &lt;code class=&quot;highlighter-rouge&quot;&gt;html&lt;/code&gt; element in his case). However in Zell’s variation, he sets the font size once, and then utilizes percentages of that base font size to calculate the responsive font size based on viewport units. Check out this CodePen demo to see how he’s handling the calculations:&lt;/p&gt;
+
+&lt;p data-height=&quot;354&quot; data-theme-id=&quot;dark&quot; data-slug-hash=&quot;VarLaJ&quot; data-default-tab=&quot;css&quot; data-user=&quot;indrekpaas&quot; data-embed-version=&quot;2&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/indrekpaas/pen/VarLaJ/&quot;&gt;Cross-browser fluid type&lt;/a&gt; by Indrek Paas (&lt;a href=&quot;http://codepen.io/indrekpaas&quot;&gt;@indrekpaas&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;//assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;The great thing about both of these methods is that since the global font size is set dynamically you can create vertical rhythm by utilizing &lt;code class=&quot;highlighter-rouge&quot;&gt;em&lt;/code&gt;s or even a &lt;a href=&quot;https://css-tricks.com/almanac/properties/l/line-height/&quot;&gt;unitless line height&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And of course, &lt;a href=&quot;https://www.smashingmagazine.com/2016/05/fluid-typography/&quot;&gt;Smashing Magazine&lt;/a&gt; has a pretty solid variation of this method written up as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;molten-leading&quot;&gt;Molten Leading&lt;/h2&gt;
+
+&lt;p&gt;Let me start by saying, my dad joke sense of humor automatically makes me love this method. Much like the &lt;code class=&quot;highlighter-rouge&quot;&gt;:root&lt;/code&gt; method and it’s variations I spoke about above, this one utilizes some calculations to set the line-height. &lt;a href=&quot;http://twitter.com/nicewebtype&quot;&gt;Tim Brown&lt;/a&gt; has a lovely blog post entitled &lt;a href=&quot;http://nicewebtype.com/notes/2012/02/03/molten-leading-or-fluid-line-height/&quot;&gt;Molten leading (or, fluid line-height)&lt;/a&gt; that started the conversation around this notion. Shortly after Mr. Mat Marquis built &lt;a href=&quot;https://github.com/Wilto/Molten-Leading&quot;&gt;a small jQuery function&lt;/a&gt; that utilized the calculations from Tim’s post to set a fluid line-height.&lt;/p&gt;
+
+&lt;p&gt;Though the post and the plugin are a bit dated, I still feel like the questions asked here are thought provoking ones. And perhaps with the emergence of viewport units, a calculation can be made in conjunction with the calculations made in the &lt;code class=&quot;highlighter-rouge&quot;&gt;:root&lt;/code&gt; method to give us even more granular control over the vertical rhythm of our typography.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-resources&quot;&gt;Other Resources&lt;/h2&gt;
+
+&lt;p&gt;I also want to give a shoutout to this beautiful article from Robin Rendle entitled &lt;a href=&quot;https://robinrendle.com/essays/new-web-typography/&quot;&gt;The New Web Typography&lt;/a&gt;. He goes into great depth about the typographic decisions we make on the web, and the consequences that they yield.&lt;/p&gt;
+
+&lt;h2 id=&quot;wrap-it-up&quot;&gt;Wrap it up&lt;/h2&gt;
+
+&lt;p&gt;From what I can tell with a little bit of math, and some magic from viewport units, we as Front-End (Frontend, Front End) Developers are now able to think critically about the typography on our sites. Instead of just attributing random units of measurements to our headings, we’re able to create some very well thought out and mathematically sound typography. Thanks for reading!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Jun 2016 10:44:00 -0600</pubDate>
+        <link>https://dommagnifi.co/update/2016/06/20/the-state-of-web-typography.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2016/06/20/the-state-of-web-typography.html</guid>
+        
+        
+        <category>update</category>
+        
+      </item>
     
       <item>
         <title>Basic Class Toggle with Vanilla JS</title>
@@ -591,43 +648,6 @@
         <pubDate>Tue, 16 Jun 2015 09:51:00 -0600</pubDate>
         <link>https://dommagnifi.co/update/2015/06/16/the-ellusive-development-process.html</link>
         <guid isPermaLink="true">https://dommagnifi.co/update/2015/06/16/the-ellusive-development-process.html</guid>
-        
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>The Importance of Company-wide Respect for Process</title>
-        <description>&lt;p&gt;In my previous post I discussed how to start setting up processes within your team. If you haven’t read it, check it out &lt;a href=&quot;http://dommagnifi.co/update/2015/05/14/spinning-up-process.html&quot;&gt;here&lt;/a&gt;. This post will focus more on the integration of that process to the whole team, and the importance of company wide adoption.&lt;/p&gt;
-
-&lt;p&gt;##Start at The Top&lt;/p&gt;
-
-&lt;p&gt;The main point here is that business has to be on board with the process. At Zenman when we decide a process needs to some tweaking, or a new one is necessary, we take a few preliminary steps. We  begin by writing an explanation of any problems that the process will help to reduce. We follow that with any extra time that this process will add to the project. And finally we list any pros and cons associated with this new process.&lt;/p&gt;
-
-&lt;p&gt;It is possible that the risk involved with the tweak in process may not be worth it to business. You as a developer or designer need to prepare yourself to be shot down. Take the concerns that business has and rework your plan. Get the high level folks on board and it’s all downhill from there.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://bukk.it/business.jpg&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;##Project Management&lt;/p&gt;
-
-&lt;p&gt;Once you’ve got business all warm and fuzzy about this fantastic new process, your likely next step will be to talk to project management. It’s important that your Project Managers / Account Managers are aware of this process change so that they can plan accordingly. There’s nothing that will piss off a PM or AM more than a change in process that affects the way they interact with the client. Ensuring that they fully understand the need for this process, and exactly what issues it will help to alleviate is real important.&lt;/p&gt;
-
-&lt;p&gt;As long as your PM or AM is comfortable, and understands the process as well, they’ll have no problem adhering to it and ensuring that the client is aware of the change. Or, at the very least, they will ensure that the process is put into place for the next project.&lt;/p&gt;
-
-&lt;p&gt;##Team Participation&lt;/p&gt;
-
-&lt;p&gt;Throughout this whole process it’s important to keep your team in the loop. At Zenman we believe in being super transparent. Any time we think about implementing a change that could affect the whole team, we loop them in. From the very beginning we ask for input from the whole team in regards to this new, or improved, process and address any concerns that come up. This step should most definitely be integrated into the planning stage of your new process.&lt;/p&gt;
-
-&lt;p&gt;This high level of transparency helps to ensure that your team is not blindsided by this change in process. It also works to ensure that your whole team has had a chance to voice their concerns.&lt;/p&gt;
-
-&lt;p&gt;This section is a little bit smaller than the last, but without a doubt it is very important. You can be Captain Process all by yourself as much as you want, but if your the whole team isn’t on board then you’re setting yourself up for failure. Collaboration within your department yields huge benefits, and will without a doubt expedite the process when you present your idea to business.&lt;/p&gt;
-
-&lt;p&gt;This series of posts will be turned into a talk that I’ll be doing at Refresh Denver on August 12th. &lt;a href=&quot;http://www.meetup.com/refreshdenver/events/219844847/&quot;&gt;Check it out and RSVP if you’re interested!&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 01 Jun 2015 09:51:00 -0600</pubDate>
-        <link>https://dommagnifi.co/update/2015/06/01/the-importance-of-company-wide-respect-for-process.html</link>
-        <guid isPermaLink="true">https://dommagnifi.co/update/2015/06/01/the-importance-of-company-wide-respect-for-process.html</guid>
         
         
         <category>update</category>
