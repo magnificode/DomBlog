@@ -6,8 +6,8 @@
 </description>
     <link>https://dommagnifi.co/</link>
     <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Sep 2016 14:17:44 -0600</pubDate>
-    <lastBuildDate>Fri, 23 Sep 2016 14:17:44 -0600</lastBuildDate>
+    <pubDate>Fri, 23 Sep 2016 14:20:32 -0600</pubDate>
+    <lastBuildDate>Fri, 23 Sep 2016 14:20:32 -0600</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -154,8 +154,8 @@
 &lt;p&gt;Yep! That’s a pretty solid start when it comes to the basic ARIA attributes I’ve run across recently. Next time you’re building out a component on your site, give a second to think about how a screen reader would interpret that element, and perhaps these ARIA attributes will help you go forth and make a more accessible web!&lt;/p&gt;
 </description>
         <pubDate>Fri, 23 Sep 2016 10:44:00 -0600</pubDate>
-        <link>https://dommagnifi.co/update/2016/09/23/aria-basics.html</link>
-        <guid isPermaLink="true">https://dommagnifi.co/update/2016/09/23/aria-basics.html</guid>
+        <link>https://dommagnifi.co/update/2016/09/23/introduction-to-aria-attributes.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2016/09/23/introduction-to-aria-attributes.html</guid>
         
         
         <category>update</category>
