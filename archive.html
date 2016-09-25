@@ -9,11 +9,8 @@ layout: default
     {% for post in site.posts %}
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
         <article class="post">
-          <h2>{{ post.title }}</h2>
           <p class="post-meta"><span class="post-posted">{{ post.date | date: "%b %-d, %Y" }}</span></p>
-          <div class="post__excerpt">
-            {{ post.content | truncatewords:35 }}
-          </div>
+          <h2>{{ post.title }}</h2>
         </article>
       </a>
     {% endfor %}
