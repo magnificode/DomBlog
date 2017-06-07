@@ -17,7 +17,7 @@ The short and sweet definition for subgrid is best summarized by the [CSS-Tricks
 
 > **subgrid** - if your grid container is itself a grid item (i.e. nested grids), you can use this property to indicate that you want the sizes of its rows/columns to be taken from its parent rather than specifying its own.
 
-It sounds to me, like there is some pretty interesting potential there with subgrid. The creation of a grid within a grid that inherits the sizes of it's rows or columns could lead to some super unique layouts that all break down very nicely when the viewport is small. Unfortunately, as the CSS Grid Guru Rachel Andrew points out, [Subgrid moved to Level 2 of the CSS Grid specification](https://rachelandrew.co.uk/archives/2017/03/16/subgrid-moved-to-level-2-of-the-css-grid-specification/).
+Unfortunately, as the CSS Grid Guru Rachel Andrew points out, [Subgrid moved to Level 2 of the CSS Grid specification](https://rachelandrew.co.uk/archives/2017/03/16/subgrid-moved-to-level-2-of-the-css-grid-specification/).
 
 For examples sake, check out this CodePen demo below:
 

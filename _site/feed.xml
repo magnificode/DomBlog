@@ -6,8 +6,8 @@
 </description>
     <link>https://dommagnifi.co/</link>
     <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Jun 2017 22:42:36 -0600</pubDate>
-    <lastBuildDate>Tue, 06 Jun 2017 22:42:36 -0600</lastBuildDate>
+    <pubDate>Tue, 06 Jun 2017 22:48:07 -0600</pubDate>
+    <lastBuildDate>Tue, 06 Jun 2017 22:48:07 -0600</lastBuildDate>
     <generator>Jekyll v3.4.1</generator>
     
       <item>
@@ -28,7 +28,7 @@
   &lt;p&gt;&lt;strong&gt;subgrid&lt;/strong&gt; - if your grid container is itself a grid item (i.e. nested grids), you can use this property to indicate that you want the sizes of its rows/columns to be taken from its parent rather than specifying its own.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;It sounds to me, like there is some pretty interesting potential there with subgrid. The creation of a grid within a grid that inherits the sizes of it’s rows or columns could lead to some super unique layouts that all break down very nicely when the viewport is small. Unfortunately, as the CSS Grid Guru Rachel Andrew points out, &lt;a href=&quot;https://rachelandrew.co.uk/archives/2017/03/16/subgrid-moved-to-level-2-of-the-css-grid-specification/&quot;&gt;Subgrid moved to Level 2 of the CSS Grid specification&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Unfortunately, as the CSS Grid Guru Rachel Andrew points out, &lt;a href=&quot;https://rachelandrew.co.uk/archives/2017/03/16/subgrid-moved-to-level-2-of-the-css-grid-specification/&quot;&gt;Subgrid moved to Level 2 of the CSS Grid specification&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;For examples sake, check out this CodePen demo below:&lt;/p&gt;
 
