@@ -6,9 +6,90 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 07 Mar 2017 00:12:09 -0700</pubDate>
-    <lastBuildDate>Tue, 07 Mar 2017 00:12:09 -0700</lastBuildDate>
+    <pubDate>Tue, 06 Jun 2017 22:38:57 -0600</pubDate>
+    <lastBuildDate>Tue, 06 Jun 2017 22:38:57 -0600</lastBuildDate>
     <generator>Jekyll v3.4.1</generator>
+    
+      <item>
+        <title>Understanding Grid Display, Tracks And The New fr Unit.</title>
+        <description>&lt;p&gt;Alright, so I’m going to be writing about the new snazzy CSS Grid property and all it’s components. I’m going to try to do this in bite sized chunks so as to not write a blog post that encompasses all 18 new properties.&lt;/p&gt;
+
+&lt;p&gt;Let’s get rollin.&lt;/p&gt;
+
+&lt;h3 id=&quot;display&quot;&gt;Display&lt;/h3&gt;
+
+&lt;p&gt;There’s three new values associated with the display property, &lt;code class=&quot;highlighter-rouge&quot;&gt;grid&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;inline-grid&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;subgrid&lt;/code&gt;. The first two are reminiscent of what we’ve seen in the past with flexbox. The &lt;code class=&quot;highlighter-rouge&quot;&gt;grid&lt;/code&gt; value generates a block level grid element, and &lt;code class=&quot;highlighter-rouge&quot;&gt;inline-grid&lt;/code&gt; does just what it says, generates an inline-level grid element. Subgrid however, will require a bit of an extended explanation.&lt;/p&gt;
+
+&lt;h4 id=&quot;subgrid&quot;&gt;Subgrid&lt;/h4&gt;
+
+&lt;p&gt;The short and sweet definition for subgrid is best summarized by the &lt;a href=&quot;https://css-tricks.com/snippets/css/complete-guide-grid/&quot;&gt;CSS-Tricks Complete Guide to Grid&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;subgrid&lt;/strong&gt; - if your grid container is itself a grid item (i.e. nested grids), you can use this property to indicate that you want the sizes of its rows/columns to be taken from its parent rather than specifying its own.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It sounds to me, like there is some pretty interesting potential there with subgrid. The creation of a grid within a grid that inherits the sizes of it’s rows or columns could lead to some super unique layouts that all break down very nicely when the viewport is small. Unfortunately, as the CSS Grid Guru Rachel Andrew points out, &lt;a href=&quot;https://rachelandrew.co.uk/archives/2017/03/16/subgrid-moved-to-level-2-of-the-css-grid-specification/&quot;&gt;Subgrid moved to Level 2 of the CSS Grid specification&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For examples sake, check out this CodePen demo below:&lt;/p&gt;
+
+&lt;p data-height=&quot;413&quot; data-theme-id=&quot;21523&quot; data-slug-hash=&quot;bRNGoz&quot; data-default-tab=&quot;css,result&quot; data-user=&quot;magnificode&quot; data-embed-version=&quot;2&quot; data-pen-title=&quot;bRNGoz&quot; data-editable=&quot;true&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;https://codepen.io/magnificode/pen/bRNGoz/&quot;&gt;bRNGoz&lt;/a&gt; by Dominic Magnifico (&lt;a href=&quot;https://codepen.io/magnificode&quot;&gt;@magnificode&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async=&quot;&quot; src=&quot;https://production-assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;What subgrid will effectively do is remove the need for us to define the &lt;code class=&quot;highlighter-rouge&quot;&gt;grid-template-columns&lt;/code&gt; on each individual &lt;code class=&quot;highlighter-rouge&quot;&gt;.grid-item&lt;/code&gt;. It will inherit the value that we provided to the &lt;code class=&quot;highlighter-rouge&quot;&gt;.grid&lt;/code&gt; parent, thus keeping our code nice and slim. Until Grid Level 2 ships however, we’ll have to use the method shown above.&lt;/p&gt;
+
+&lt;p&gt;Let’s tackle the other two properties we see in this example, along with some of the syntax attached.&lt;/p&gt;
+
+&lt;h3 id=&quot;grid-template-columns-and-rows-aka-tracks&quot;&gt;grid-template-columns (and rows). AKA Tracks.&lt;/h3&gt;
+
+&lt;p&gt;This is the bread and butter of CSS Grid. After we’ve told a container to be &lt;code class=&quot;highlighter-rouge&quot;&gt;display: grid;&lt;/code&gt; we need to tell it how we want the grid items within it to behave. By applying &lt;code class=&quot;highlighter-rouge&quot;&gt;grid-template-columns&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;grid-template-rows&lt;/code&gt; to the wrapper we can essentially define a template for how we want its children to behave. Here’s a simple example:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sweet Grid!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sweet Grid!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sweet Grid!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And the associated CSS.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nc&quot;&gt;.grid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;300px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;300px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;300px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Each of the &lt;code class=&quot;highlighter-rouge&quot;&gt;300px&lt;/code&gt; definitions in the CSS above, relates to one column. This format persists for any number of columns or rows (also called tracks in &lt;a href=&quot;https://www.w3.org/TR/css-grid-1/#grid-track-concept&quot;&gt;CSS Grid-Speak&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;ugh-so-much-typing&quot;&gt;Ugh, so much typing&lt;/h3&gt;
+
+&lt;p&gt;I’m sure you’re sitting at your computer thinking “Gee that’s a lot of typing if you have a bunch of tracks.”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://bukk.it/ugh.gif&quot; alt=&quot;ugh&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Boy howdy are you in luck. Within the &lt;code class=&quot;highlighter-rouge&quot;&gt;grid-template-columns&lt;/code&gt; property we have a nifty function we can utilize called &lt;code class=&quot;highlighter-rouge&quot;&gt;repeat()&lt;/code&gt;. As you likely saw in the CodePen example above, our grid wrapper had this declaration &lt;code class=&quot;highlighter-rouge&quot;&gt;grid-template-columns: repeat(3, 1fr);&lt;/code&gt;. I bet you can figure out how to use this function. The first integer in the function represents how many times we’d like to repeat the following track sizing. The second parameter we pass to the function is the size. Which leads us to the next section, on the &lt;code class=&quot;highlighter-rouge&quot;&gt;fr&lt;/code&gt; unit.&lt;/p&gt;
+
+&lt;h3 id=&quot;pretty-frickin-cool-huh&quot;&gt;Pretty &lt;code class=&quot;highlighter-rouge&quot;&gt;fr&lt;/code&gt;ickin’ cool huh?&lt;/h3&gt;
+
+&lt;p&gt;It’s late, this blog post is getting long, and I’m getting overzealous with the puns. Lets wrap this up eh? The last thing we’ll talk about is the new &lt;code class=&quot;highlighter-rouge&quot;&gt;fr&lt;/code&gt; unit. This unit allows us to define flexible lengths and represents a fraction of the free space within the grid container.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;One important thing to note&lt;/em&gt; with the fr unit. Unlike, px, em, or percentages, the fr unit is not defined as a length. Which means it cannot be used in combination with px, em or percentages within something like the &lt;code class=&quot;highlighter-rouge&quot;&gt;calc()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/css-grid-1/#fr-unit&quot;&gt;The spec itself&lt;/a&gt; spells out the calculations that are taking place to define the available free space. But what it boils down to in my head is this; Setting our &lt;code class=&quot;highlighter-rouge&quot;&gt;grid-template-column&lt;/code&gt; track size to &lt;code class=&quot;highlighter-rouge&quot;&gt;1fr&lt;/code&gt; gives us equally proportional grid items based on the width of the container.&lt;/p&gt;
+
+&lt;p&gt;We are able to use decimals in conjunction with the fr unit. In our example, if we change our value to say, &lt;code class=&quot;highlighter-rouge&quot;&gt;.5fr&lt;/code&gt; nothing changes. This is because each of our three items should still remain proportional. Because there are three items to a track, unless we tell them to be less than &lt;code class=&quot;highlighter-rouge&quot;&gt;.33333fr&lt;/code&gt;, they will remain proportional.&lt;/p&gt;
+
+&lt;p&gt;It’s super difficult to talk about CSS grid in a general sense since there is &lt;strong&gt;so much&lt;/strong&gt; in the spec. But hopefully this is bit-sized enough for you to digest. And honestly this blog post is as much for me as it is for you, dear reader. It should be fun to write some more of these posts as I stumble my way through the grid.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/oSYflamt3IEjm/giphy.gif&quot; alt=&quot;the grid&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 May 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/2017/05/30/understanding-grid-display-tracks-and-the-new-fr-unit.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/30/understanding-grid-display-tracks-and-the-new-fr-unit.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>The Case for (or against) the CSS @supports rule</title>
@@ -744,27 +825,6 @@
         <pubDate>Mon, 17 Aug 2015 03:00:00 -0600</pubDate>
         <link>http://localhost:4000/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html</link>
         <guid isPermaLink="true">http://localhost:4000/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html</guid>
-        
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>On Community</title>
-        <description>&lt;p&gt;It never ceases to amaze me how helpful the web development community is. It’s incredible to encounter people who are passionate about their craft.&lt;/p&gt;
-
-&lt;p&gt;There’s been a lot of talk lately about suspending new features on the web. Some folks seem to think that it’s becoming too feature rich, too quickly. While I disagree with this sentiment, it’s this type of active discussion that I love. There have been countless responses both for and against that idea, and they all have good points! That’s what is so fascinating about what we do. We have the ability to disagree with an idea, but what empowers us is our logical mind. As much as we want to yell about how wrong the idea may be, or jump straight to Twitter, we pause and let that logic wash over us.&lt;/p&gt;
-
-&lt;p&gt;This fosters a community of discussion and learning for everyone. We see both sides of the same coin and are then empowered to form our own opinion. It would seem that there are few other fields of work where this ecosystem exists. The stigma of the boring 9 to 5, go to work, head down all day, a slave to the clock. But (most of us) don’t have that. And even if we do, in reality, we can come to any number of places online and feel challenged. No matter how terrible you think your job is, this community provides an outlet to get back on the right path.&lt;/p&gt;
-
-&lt;p&gt;The people (obviously) are what make the community so great. It blows me away how helpful and open to growth we all are. I, much like you I’m sure, have heard “Mind taking a look at this?” or “Think I could bounce a couple of ideas off you?” countless times. I don’t know about you, but every time I am asked any variation of that I get excited. Excited to help solve a new problem, or help to propel a colleague towards success in their project, to be part of a larger whole. Granted we all have our off days, I’m not exempt from that. But by and large the fact that anyone is asking you for help, is a huge compliment, and one that should not be taken lightly.&lt;/p&gt;
-
-&lt;p&gt;The bottom line is I am thrilled to be a part of this community. There are countless opportunities right around the corner, and a horde of amazing people offering their support.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 04 Aug 2015 01:47:00 -0600</pubDate>
-        <link>http://localhost:4000/update/2015/08/04/on-community.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2015/08/04/on-community.html</guid>
         
         
         <category>update</category>
