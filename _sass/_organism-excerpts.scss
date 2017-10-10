@@ -2,52 +2,43 @@
 ::Post Excertps
 \*------------------------------------*/
 .posts{
-	article{
-		border-bottom: 1px solid $color-1;
-		padding: $pad*3 0;
-		margin: 0 $pad*3;
-	}
+  article{
+    padding: $pad 0;
+    margin: 0;
+  }
 }
 .posts__inner {
-	> a{
-		display: block;
-		position: relative;
-		&:before {
-			content: "";
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			height: 1px;
-			width: 0;
-			background: linear-gradient(to right, #ED1C5B , #FFEDBC);
-			transition: left cubic-bezier(0.6, 0.04, 0.98, 0.335) 666ms, width cubic-bezier(0.6, 0.04, 0.98, 0.335) 666ms;
-		}
-		&:hover {
-			&:before {
-				left: 0;
-				width: 100%;
-			}
-		}
-		p{
-			color: $color-1;
-		}
-	}
+  > a{
+    display: block;
+    position: relative;
+    h2 {
+      box-shadow: 0 0 0 rgba(#fff, 0) inset;
+      position: relative;
+      transition: box-shadow 300ms ease;
+    }
+    &:hover {
+      h2 {
+        text-shadow: 0 1px 0 rgba($color-2,.75);
+        box-shadow: 0 -1.15rem 0 darken($color-2, 10%) inset;
+      }
+    }
+    p:not(.post-meta){
+      color: $color-1;
+    }
+  }
 }
 .post{
-	padding: {left:$pad; right:$pad;}
-	margin: {bottom:$pad*2;}
-	p{
-		padding: {bottom: 0;}
-	}
+  padding: {left:$pad; right:$pad;}
+  margin: {bottom:$pad*2;}
+  p{
+    padding: {bottom: 0;}
+  }
 }
 .post-meta{
-	margin: 0;
-	svg{
-		width: 15px;
-		height: 15px;
-		margin: {right: $pad/2;}
-	}
-}
-.rss-subscribe{
-	text-align: center;
+  margin: 0;
+  svg{
+    width: 15px;
+    height: 15px;
+    margin: {right: $pad/2;}
+  }
 }

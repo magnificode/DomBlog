@@ -4,10 +4,10 @@
     <title>Dominic Magnifico</title>
     <description>Dominic Magnifico | Front End Developer
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 09 Oct 2017 21:54:42 -0600</pubDate>
-    <lastBuildDate>Mon, 09 Oct 2017 21:54:42 -0600</lastBuildDate>
+    <link>https://dommagnifi.co/</link>
+    <atom:link href="https://dommagnifi.co/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 10 Oct 2017 00:36:23 -0600</pubDate>
+    <lastBuildDate>Tue, 10 Oct 2017 00:36:23 -0600</lastBuildDate>
     <generator>Jekyll v3.4.1</generator>
     
       <item>
@@ -85,8 +85,8 @@
 &lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/oSYflamt3IEjm/giphy.gif&quot; alt=&quot;the grid&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 06 Jun 2017 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000/2017/06/06/understanding-grid-display-tracks-and-the-new-fr-unit.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/06/06/understanding-grid-display-tracks-and-the-new-fr-unit.html</guid>
+        <link>https://dommagnifi.co/2017/06/06/understanding-grid-display-tracks-and-the-new-fr-unit.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/2017/06/06/understanding-grid-display-tracks-and-the-new-fr-unit.html</guid>
         
         
       </item>
@@ -205,8 +205,8 @@
 &lt;p&gt;The bottom line here I think, is that the idea of the &lt;code class=&quot;highlighter-rouge&quot;&gt;@supports&lt;/code&gt; rule was a fantastic one in the days of yore, when browser support for various CSS properties was a vast, convoluted mess. But today, browser vendors are beginning to support properties at roughly the same time. And even if they don’t, it’s not as if the same logic JavaScript follows, applies here. If a browser doesn’t recognize a CSS property, it skips over it and moves on. There’s no perceived performance benefit to utilizing the &lt;code class=&quot;highlighter-rouge&quot;&gt;@supports&lt;/code&gt; rule as far as I can tell. There are certainly a few good cases to utilize &lt;code class=&quot;highlighter-rouge&quot;&gt;@supports&lt;/code&gt; and the &lt;code class=&quot;highlighter-rouge&quot;&gt;not&lt;/code&gt; operator. Especially for older versions of Edge that don’t support things like CSS variables. However, to me, the &lt;code class=&quot;highlighter-rouge&quot;&gt;@supports&lt;/code&gt; rule seems mostly cosmetic, and provides a clean way to organize CSS properties that your current project’s browser requirements may not allow for you to utilize.&lt;/p&gt;
 </description>
         <pubDate>Mon, 06 Mar 2017 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/2017/03/06/the-case-for-or-against-the-supports-rule.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/03/06/the-case-for-or-against-the-supports-rule.html</guid>
+        <link>https://dommagnifi.co/2017/03/06/the-case-for-or-against-the-supports-rule.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/2017/03/06/the-case-for-or-against-the-supports-rule.html</guid>
         
         
       </item>
@@ -355,8 +355,8 @@
 &lt;p&gt;Yep! That’s a pretty solid start when it comes to the basic ARIA attributes I’ve run across recently. Next time you’re building out a component on your site, give a second to think about how a screen reader would interpret that element, and perhaps these ARIA attributes will help you go forth and make a more accessible web!&lt;/p&gt;
 </description>
         <pubDate>Fri, 23 Sep 2016 10:44:00 -0600</pubDate>
-        <link>http://localhost:4000/update/2016/09/23/introduction-to-aria-attributes.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2016/09/23/introduction-to-aria-attributes.html</guid>
+        <link>https://dommagnifi.co/update/2016/09/23/introduction-to-aria-attributes.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2016/09/23/introduction-to-aria-attributes.html</guid>
         
         
         <category>update</category>
@@ -412,8 +412,8 @@
 &lt;p&gt;From what I can tell with a little bit of math, and some magic from viewport units, we as Front-End (Frontend, Front End) Developers are now able to think critically about the typography on our sites. Instead of just attributing random units of measurements to our headings, we’re able to create some very well thought out and mathematically sound typography. Thanks for reading!&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Jun 2016 10:44:00 -0600</pubDate>
-        <link>http://localhost:4000/update/2016/06/20/the-state-of-web-typography.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2016/06/20/the-state-of-web-typography.html</guid>
+        <link>https://dommagnifi.co/update/2016/06/20/the-state-of-web-typography.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2016/06/20/the-state-of-web-typography.html</guid>
         
         
         <category>update</category>
@@ -493,8 +493,8 @@
 &lt;p&gt;And voilà! You’re now accomplishing a simple class toggle on an element utilizing pure Javascript. Pat yourself on the back for saving that extra HTTP request and removing your dependency on jQuery.&lt;/p&gt;
 </description>
         <pubDate>Mon, 16 May 2016 10:44:00 -0600</pubDate>
-        <link>http://localhost:4000/update/2016/05/16/basic-class-toggle-with-vanilla-js.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2016/05/16/basic-class-toggle-with-vanilla-js.html</guid>
+        <link>https://dommagnifi.co/update/2016/05/16/basic-class-toggle-with-vanilla-js.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2016/05/16/basic-class-toggle-with-vanilla-js.html</guid>
         
         
         <category>update</category>
@@ -579,8 +579,8 @@
 &lt;p&gt;You can check out my versions of both the &lt;a href=&quot;https://github.com/magnificode/magnificode.github.io/blob/master/app.js&quot;&gt;app.js&lt;/a&gt; and the &lt;a href=&quot;https://github.com/magnificode/magnificode.github.io/blob/master/serviceworker.js&quot;&gt;serviceworker.js&lt;/a&gt; files.&lt;/p&gt;
 </description>
         <pubDate>Tue, 02 Feb 2016 09:44:00 -0700</pubDate>
-        <link>http://localhost:4000/update/2016/02/02/what-can-we-do-with-service-workers.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2016/02/02/what-can-we-do-with-service-workers.html</guid>
+        <link>https://dommagnifi.co/update/2016/02/02/what-can-we-do-with-service-workers.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2016/02/02/what-can-we-do-with-service-workers.html</guid>
         
         
         <category>update</category>
@@ -698,8 +698,8 @@
 &lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/yRw8QdcPFRyec/giphy.gif&quot; alt=&quot;STAR WARS!&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 29 Dec 2015 09:44:00 -0700</pubDate>
-        <link>http://localhost:4000/update/2015/12/29/2015.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2015/12/29/2015.html</guid>
+        <link>https://dommagnifi.co/update/2015/12/29/2015.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2015/12/29/2015.html</guid>
         
         
         <category>update</category>
@@ -759,8 +759,8 @@
 &lt;p&gt;Wonderful! Now my site is being served up via https, and in the next post we can begin diving in to some javascript to get the service worker running.&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 09:44:00 -0700</pubDate>
-        <link>http://localhost:4000/update/2015/12/20/service-workin-for-the-weekend.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2015/12/20/service-workin-for-the-weekend.html</guid>
+        <link>https://dommagnifi.co/update/2015/12/20/service-workin-for-the-weekend.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2015/12/20/service-workin-for-the-weekend.html</guid>
         
         
         <category>update</category>
@@ -788,8 +788,8 @@
 &lt;p&gt;Some change is good, as hard as it is to recognize. The change that you make will hopefully cultivate new exciting opportunities for you. And if it doesn’t…at least you know you tried.&lt;/p&gt;
 </description>
         <pubDate>Fri, 25 Sep 2015 10:44:00 -0600</pubDate>
-        <link>http://localhost:4000/update/2015/09/25/being-comfortable-with-being-uncomfortable.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2015/09/25/being-comfortable-with-being-uncomfortable.html</guid>
+        <link>https://dommagnifi.co/update/2015/09/25/being-comfortable-with-being-uncomfortable.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2015/09/25/being-comfortable-with-being-uncomfortable.html</guid>
         
         
         <category>update</category>
@@ -823,8 +823,8 @@
 &lt;p&gt;The moral of this, and the advice I’d pass on to future first time speakers (even if it is in a small setting such as mine), would be to just follow your gut. You know the topic. You’ve been asked to speak based on what you know and that’s awesome. Regardless of how many times you look at your slides, or if you second guess what you’re writing, you know the topic. The slides are the hardest part, don’t overthink your notes, and trust your knowledge. Practice as much as you feel you need, but &lt;em&gt;don’t stress over it&lt;/em&gt;, you know what you want to say, and &lt;strong&gt;you’ll find the right way to say it&lt;/strong&gt;. &lt;a href=&quot;https://dommagnifi.co/update/2015/08/04/on-community.html&quot;&gt;The Design and Development Community&lt;/a&gt; is an amazing one. And most every person you meet will be happy to help you learn.&lt;/p&gt;
 </description>
         <pubDate>Mon, 17 Aug 2015 03:00:00 -0600</pubDate>
-        <link>http://localhost:4000/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html</guid>
+        <link>https://dommagnifi.co/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html</link>
+        <guid isPermaLink="true">https://dommagnifi.co/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html</guid>
         
         
         <category>update</category>
