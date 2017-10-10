@@ -3,10 +3,31 @@
 \*------------------------------------*/
 .posts{
 	article{
-		background: darken($color-2, 5%);
-		padding: $pad*3;
+		border-bottom: 1px solid $color-1;
+		padding: $pad*3 0;
+		margin: 0 $pad*3;
 	}
-	a{
+}
+.posts__inner {
+	> a{
+		display: block;
+		position: relative;
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			height: 1px;
+			width: 0;
+			background: linear-gradient(to right, #ED1C5B , #FFEDBC);
+			transition: left cubic-bezier(0.6, 0.04, 0.98, 0.335) 666ms, width cubic-bezier(0.6, 0.04, 0.98, 0.335) 666ms;
+		}
+		&:hover {
+			&:before {
+				left: 0;
+				width: 100%;
+			}
+		}
 		p{
 			color: $color-1;
 		}
@@ -15,15 +36,12 @@
 .post{
 	padding: {left:$pad; right:$pad;}
 	margin: {bottom:$pad*2;}
-	&:first-child{
-		margin: {top:$pad*2;}
-	}
 	p{
 		padding: {bottom: 0;}
 	}
 }
 .post-meta{
-	margin: {top:$pad;}
+	margin: 0;
 	svg{
 		width: 15px;
 		height: 15px;
