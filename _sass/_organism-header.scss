@@ -2,26 +2,30 @@
 ::Site Header
 \*------------------------------------*/
 .site-header{
-  text-align: center;
+  margin: 0 auto;
+  max-width: 1140px;
   h1{
     color: $color-1;
-    font-family: open_sansextrabold, sans-serif;
+    font-family: $fam-display;
     font-size: 4em;
+    letter-spacing: -4px;
     text-transform: uppercase;
     a{
       color: $color-1;
-      &:hover{
-        color: lighten($color-1, 20%);
-      }
+      display: block;
+      line-height: 0.8;
+      padding-left: 0;
     }
   }
   .header__social{
+    background-color: $color-1;
     display: flex;
-    justify-content: center;
-    padding: {bottom:0.9375rem;}
+    padding: $pad/2;
     a{
-      &:nth-of-type(2){
-        padding: {left:$pad;right:$pad;}
+      line-height: 0;
+      padding: 0 $pad/2;
+      svg {
+        fill: $color-2;
       }
     }
   }
@@ -30,27 +34,31 @@
 ::Header Nav
 \*------------------------------------*/
 .header__nav{
-  padding: {top:$pad;bottom:$pad;}
+  padding: {top:$pad;}
+  @media (min-width: 850px) {
+    align-items: center;
+    display: flex;
+  }
   a{
     position: relative;
     padding: {left:$pad;right:$pad;}
     color: $color-1;
-    &:after{
+    &:after {
+      background-color: $color-5;
       content: "";
       position: absolute;
       bottom: 0;
-      left: 50%;
-      right: 50%;
-      height: 1px;
-      background: lighten($color-1, 70%);
-      transition: all 600ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      height: 0;
+      width: 100%;
+      left: 0;
+      mix-blend-mode: lighten;
+      transition: ease 300ms height;
     }
     &:hover,
     &.active{
-      color: $color-1;
-      &:after{
-        left: $pad/2;
-        right: $pad/2;
+      text-shadow: 0 1px 0 rgba($color-2,.75);
+      &:after {
+        height: 53%;
       }
     }
   }

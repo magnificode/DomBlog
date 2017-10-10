@@ -1,8 +1,8 @@
-code { background: #49483e; color: #f8f8f2; padding: 0 5px; }
-.highlight { background-color: #49483e; color: #f8f8f2; margin: 0; overflow-x: scroll; }
-.highlight pre { padding: .5em; overflow-x: scroll; }
+code { background: #272822; color: #f8f8f2; padding: 0 5px; }
+.highlight { background-color: #272822; color: #f8f8f2; margin: 0; padding: 5px; overflow-x: scroll; }
+.highlight pre { background-color: #272822; }
+.highlight .hll { background-color: #272822; }
 .highlight .c { color: #75715e } /* Comment */
-.highlight .c1 { word-wrap: break-word; } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
 .highlight .k { color: #66d9ef } /* Keyword */
 .highlight .l { color: #ae81ff } /* Literal */

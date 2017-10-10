@@ -1,9 +1,17 @@
 /*------------------------------------*\
     ::Single Posts
 \*------------------------------------*/
+.post__inner {
+  padding-top: $pad*2;
+  @media (min-width: 1000px) {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 32px;
+  }
+}
+
 .post-content,
 .post-header{
-    max-width: 800px;
     margin: 0 auto;
     img{
         display: block;
@@ -11,11 +19,37 @@
     }
 }
 
+.post-header {
+  @media (min-width: 1000px) {
+    padding-right: 32px;
+  }
+
+  h1 {
+    position: relative;
+    &:before {
+      content: '';
+      background-image: radial-gradient($color-1 15%, transparent 15%);
+      background-size: 10px 10px;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      transform: translateX(-100%);
+      width: calc((100vw - 1140px) / 2);
+    }
+  }
+}
+
 .post-content {
+  font-family: $fam-body;
   h2 {
     padding-top: 1em;
   }
   a {
     word-wrap: break-word;
+  }
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }

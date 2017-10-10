@@ -3,7 +3,7 @@
 \*------------------------------------*/
 h1,h2,h3,h4,h5,h6{
 	margin: 0;
-	line-height: 1.25;
+	line-height: .95;
 }
 h1{
 	font-size: 3em;
@@ -49,9 +49,11 @@ blockquote{
 	}
 }
 .post-meta{
-	color: lighten($color-1, 55%);
+	color: $color-5;
 	text-transform: uppercase;
+	font-family: $fam;
 	font-size: 0.875em;
+	font-weight: 700;
 	letter-spacing: 0.056em;
 }
 .aligncenter{
