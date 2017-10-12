@@ -14,11 +14,17 @@
 .resume__address,
 .resume__title{
     float: left;
-    width: 50%;
+    clear: both;
+    @media (min-width: 863px) {
+        clear: none;
+        width: 50%;
+    }
 }
 .resume__address{
     padding: {top:$pad;}
-    text-align: right;
+    @media (min-width: 863px) {
+        text-align: right;
+    }
     p{
         margin: {top: 0;bottom:0;}
     }
@@ -39,18 +45,26 @@
     float: left;
 }
 .resume__skills{
-    width: 30.333333%;
+    @media (min-width: 863px) {
+        width: calc(30.333333% - $pad*2);
+    }
 }
 .resume__subhead{
-    width: 25%;
+    @media (min-width: 863px) {
+        width: 25%;
+    }
     h2{
         margin: 0;
     }
 }
 .resume__description{
-    width: 75%;
+    clear: both;
+    @media (min-width: 863px) {
+        clear: none;
+        width: 75%;
+    }
     ul{
-        padding: {left:$pad;}
+        padding: {left:$pad;right:$pad;}
         margin: {top:0;}
     }
 }

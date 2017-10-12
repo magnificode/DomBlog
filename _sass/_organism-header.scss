@@ -7,9 +7,12 @@
   h1{
     color: $color-1;
     font-family: $fam-display;
-    font-size: 4em;
+    font-size: 3em;
     letter-spacing: -4px;
     text-transform: uppercase;
+    @media (min-width: 330px) {
+      font-size: 3em;
+    }
     a{
       color: $color-1;
       display: block;

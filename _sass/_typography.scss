@@ -3,7 +3,7 @@
 \*------------------------------------*/
 h1,h2,h3,h4,h5,h6{
 	margin: 0;
-	line-height: .95;
+	line-height: 1.2;
 }
 h1{
 	font-size: 3em;
@@ -26,7 +26,8 @@ h6{
 p,ul,ol{
 	font-size: 1em;
 	color: currentcolor;
- 	margin-bottom: $pad;
+	 margin-bottom: $pad;
+	 line-height: 1.5;
 	&:last-child {
 		margin:{bottom:0;}
 	}
@@ -70,6 +71,6 @@ blockquote{
 	text-align: center;
 	background: $color-1;
 	&:hover {
-		color: $color-3;
+		color: $color-5;
 	}
 }

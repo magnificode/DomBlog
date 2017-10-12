@@ -32,8 +32,12 @@ html{
 }
 body{
   color: $color-1;
-    font-family: $fam;
-    line-height: 1.618;
+  font-family: $fam;
+  line-height: 1.618;
+  padding: 0 1em;
+  @media (min-width: 1140px) {
+    padding: 0;
+  }
 }
 [class*="__inner"]{
 	display: block;
