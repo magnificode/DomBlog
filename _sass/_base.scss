@@ -1,5 +1,5 @@
 /*------------------------------------*\
-    ::Globals
+::Globals
 \*------------------------------------*/
 // These values are the minimum and maximum viewport sizes to apply the font scaling
 $min_width: 400;
@@ -17,18 +17,18 @@ $max_font: 16;
   }
 }
 @media (min-width: #{$max_width}px){
-   :root {
-     font-size: #{$max_font}px;
-   }
+  :root {
+    font-size: #{$max_font}px;
+  }
 }
 body,
 html{
-    height: 100%;
-    min-height: 100%;
-    margin: 0;
-    background: $color-2;
-  	-ms-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  background: $color-2;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 body{
   color: $color-1;
@@ -40,19 +40,19 @@ body{
   }
 }
 [class*="__inner"]{
-	display: block;
-	max-width: 1140px;
-	margin: 0 auto;
+  display: block;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 img{
-    max-width: 100%;
+  max-width: 100%;
 }
 svg{
-	width: 20px;
-	height: 20px;
-	fill: $color-1;
-	transition: 400ms;
-	&:hover{
-		fill: $color-1;
-	}
+  width: 20px;
+  height: 20px;
+  fill: $color-1;
+  transition: 400ms;
+  &:hover{
+    fill: $color-1;
+  }
 }
