@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <meta name="description" content="Recently I’ve been trying to get a better grasp on GraphQL. The majority of my exposure to GraphQL has been in the form of React apps. These apps tend to be ...">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+<meta content="Dominic Magnifico" property="og:site_name">
+
+  <meta content="Intro to GraphQL Queries" property="og:title">
+
+
+  <meta content="article" property="og:type">
+
+
+  <meta content="Dominic Magnifico | Front End Developer
+" property="og:description">
+
+
+  <meta content="http://localhost:4000/2019/01/01/intro-to-graphql-queries.html" property="og:url">
+
+
+  <meta content="2019-01-01T00:00:00-07:00" property="article:published_time">
+  <meta content="http://localhost:4000/about/" property="article:author">
+
+
+  <meta content="/images/logo.png" property="og:image">
+
+
+  
+
+
+  
+
+
+  <title>Intro to GraphQL Queries</title>
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/2019/01/01/intro-to-graphql-queries.html">
+  <link rel="alternate" type="application/rss+xml" title="Dominic Magnifico" href="http://localhost:4000/feed.xml" />
+  <link href="https://fonts.googleapis.com/css?family=Lato|Lora:400,700|Rubik:900" rel="stylesheet">
+
+  <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsOb  ect']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-43739046-1', 'dommagnifi.co');
+	  ga('send', 'pageview');
+
+   </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+  <nav class="header__nav">
+    <h1><a href="/">Dominic Magnifico</a></h1>
+    <a  href="/about">About</a><a  href="/work">Work</a><a  href="/resume">R&eacute;sum&eacute;</a>
+  </nav>
+  <div class="header__social">
+    
+    <a href="https://github.com/magnificode">
+      <svg viewBox="0 0 16 16">
+        <path d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+      </svg>
+    </a>
+    
+    
+    <a href="https://twitter.com/magnificode">
+      <svg viewBox="0 0 16 16">
+        <path d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+        c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+      </svg>
+    </a>
+    
+    <a href="https://codepen.io/magnificode">
+      <svg viewBox="0 0 100 100">
+        <path d="M50 .5C22.6.5.3 22.7.3 50S22.6 99.5 50 99.5c27.4 0 49.7-22.2 49.7-49.5S77.4.5 50 .5zm0 90.9C27.1 91.4 8.5 72.8 8.5 50S27.1 8.6 50 8.6 91.5 27.2 91.5 50 72.9 91.4 50 91.4zM80.7 40.3v-.4c0-.1 0-.1-.1-.2 0 0 0-.1-.1-.1 0-.1-.1-.1-.1-.2l-.1-.1c0-.1-.1-.1-.1-.2l-.1-.1-.1-.1-.1-.1-.1-.1-.1-.1-28.2-18.8c-.9-.6-2-.6-2.9 0L20.5 38.5l-.1.1c-.1 0-.1.1-.1.1l-.1.1-.1.1-.1.1c0 .1-.1.1-.1.2l-.1.1c0 .1-.1.1-.1.2 0 0 0 .1-.1.1 0 .1 0 .1-.1.2v20.1c0 .1 0 .1.1.2 0 0 0 .1.1.1 0 .1.1.1.1.2 0 0 0 .1.1.1 0 .1.1.1.1.2l.1.1.1.1.1.1.1.1.1.1 28.1 18.7c.4.3 1 .4 1.5.4s1-.1 1.5-.4l28.1-18.7.1-.1c.1 0 .1-.1.1-.1l.1-.1.1-.1.1-.1c0-.1.1-.1.1-.2l.1-.1c0-.1.1-.1.1-.2 0 0 0-.1.1-.1 0-.1 0-.1.1-.2V40.3zM52.6 26.9l20.7 13.7-9.2 6.2-11.4-7.6V26.9zm-5.2 0v12.3L36 46.8l-9.2-6.2 20.6-13.7zM24.6 45.6l6.6 4.4-6.6 4.4v-8.8zm22.8 27.5L26.7 59.3l9.2-6.2 11.4 7.6v12.4zM50 56.2L40.7 50l9.3-6.2 9.3 6.2-9.3 6.2zm2.6 16.9V60.8L64 53.2l9.2 6.2-20.6 13.7zm22.8-18.7L68.8 50l6.6-4.4v8.8z"></path>
+      </svg>
+    </a>
+    <a href="http://localhost:4000/feed.xml ">
+      <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+        <path d="M576 1344q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm512 123q2 28-17 48-18 21-47 21h-135q-25 0-43-16.5t-20-41.5q-22-229-184.5-391.5t-391.5-184.5q-25-2-41.5-20t-16.5-43v-135q0-29 21-47 17-17 43-17h5q160 13 306 80.5t259 181.5q114 113 181.5 259t80.5 306zm512 2q2 27-18 47-18 20-46 20h-143q-26 0-44.5-17.5t-19.5-42.5q-12-215-101-408.5t-231.5-336-336-231.5-408.5-102q-25-1-42.5-19.5t-17.5-43.5v-143q0-28 20-46 18-18 44-18h3q262 13 501.5 120t425.5 294q187 186 294 425.5t120 501.5z" />
+      </svg>
+    </a>
+  </div>
+</header>
+
+
+    <div class="post">
+<div class="post__inner">
+	  <header class="post-header">
+			<p class="post-meta"><span class="post-posted">January 1, 2019</span></p>
+	    <h1 class="post-title">Intro to GraphQL Queries</h1>
+	  </header>
+
+	  <article class="post-content">
+	    <p>Recently I’ve been trying to get a better grasp on GraphQL. The majority of my exposure to GraphQL has been in the form of React apps. These apps tend to be all set up and nicely packaged on the back end. This way, I could focus on consuming that data on the front end.</p>
+
+<p>To get more exposure to how a GraphQL back end is set up, I’ve been running through the Wes Bos course <a href="https://advancedreact.com/">Fullstack Advanced
+React &amp; GraphQL</a>.</p>
+
+<p>I want to focus on a more narrow topic within this course; the setup of a GraphQL back end, and how to interact with and change that data from the front end.</p>
+
+<p>I won’t be going over the setup of these technologies, as that’s a separate post entirely. Instead I’m going to focus on how to write and use queries within a working app.</p>
+
+<p>As a Frontend engineer, I’ve not had much exposure to the work that goes into setting up the GraphQL back end. Let’s dive in and set up our data structure.</p>
+
+<h2 id="working-with-schema">Working With Schema</h2>
+<hr />
+
+<p>To start lets imagine we want to populate our database with a set of <code class="highlighter-rouge">people</code>. Each person has an <code class="highlighter-rouge">id</code>, a <code class="highlighter-rouge">name</code>, and an <code class="highlighter-rouge">age</code> to start with.</p>
+
+<p>GraphQL is framework agnostic. What we explain below will also translate to any combination of technologies. We’ll use what’s called the “GraphQL schema language” to explain the examples below.</p>
+
+<p>To inform GraphQL of how we want our data structured, we have to build the schema using <strong>object types</strong>. This initial schema is created like so:</p>
+
+<div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nb">ID</span><span class="p">!</span><span class="w">
+  </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!</span><span class="w">
+  </span><span class="n">age</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here we’re telling GraphQL the following: Our database will consist of many objects of type <code class="highlighter-rouge">Person</code>. Each <code class="highlighter-rouge">Person</code> in the database will have an <code class="highlighter-rouge">id</code> field that expects an <code class="highlighter-rouge">ID</code> (<em>note: the ID value here is a value that GraphQL knows is a unique identifier</em>). We’re also informing GraphQL that this field is required via use of the <code class="highlighter-rouge">!</code>.</p>
+
+<p>Moving down we explain that each person will have a <code class="highlighter-rouge">name</code> field that expects a required <code class="highlighter-rouge">String</code>.</p>
+
+<p>Finally, the <code class="highlighter-rouge">age</code> field may have an <code class="highlighter-rouge">Int</code> (integer) value associated with it, but this field is not required.</p>
+
+<p>There are extra identifiers and terms that could be expanded on here, but this gives us the basic sense of how to work with the GraphQL schema language. Much more in depth information about schema can be found in the <a href="https://graphql.org/learn/schema/">GraphQL docs</a>. But for now, let’s move on.</p>
+
+<h2 id="querying-data">Querying Data</h2>
+<hr />
+
+<p>At a low level there are two basic methods for interacting with the GraphQL API. <strong>Queries</strong> and <strong>Mutations</strong>.</p>
+
+<p><strong>Queries</strong> are just that. A way, using the GraphQL API, to query the database. Queries by themselves are simple creatures, and will return a set of fields for you to interact with on the front end. For example, if we wanted to query the database for a specific person, we can do that by writing a simple query, and also pass an argument to the query.</p>
+
+<p>Before we do that, we need to tell GraphQL what to expect from our query.
+Within our schema, in addition to defining multiple <code class="highlighter-rouge">type</code>s of GraphQL services (so far <code class="highlighter-rouge">Person</code> is the only service we’ve defined), we can also define specific Queries, and build out how those queries should be handled. For example, if we are to query a single person, we need to tell GraphQL what to return us.</p>
+
+<div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="w"> </span><span class="n">Query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">person</span><span class="p">:</span><span class="w"> </span><span class="n">Person</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Here, we’re telling GraphQL that when we run a query for a single person, it should return us a JSON object that consists of our Type, <code class="highlighter-rouge">Person</code>. Now, when we load up a GraphQL playground and query for a specific person, we should be returned the expected Type.</p>
+
+<p>Another powerful feature in GraphQL is the ability for add <strong>arguments</strong> to our queries. This allows us to search the database for a specific person, so long as we know an identifying piece of information stored in the DB about the person. Take the following query:</p>
+
+<div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">person</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">name</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>We are asking GraphQL for a person, whose <code class="highlighter-rouge">id</code> is <code class="highlighter-rouge">1</code>. We’re then telling GraphQL that we only want to return that person’s <code class="highlighter-rouge">name</code> and nothing else. This is another part of the draw to GraphQL. No matter how much information exists in the DB, we can be quite explicit in the data that we are returned. This creates some super efficient queries that return us only what we need.</p>
+
+<p>Our query above will return the following:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alan Watts"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>All of the data returned is wrapped in the <code class="highlighter-rouge">data</code> object. This is true for any GraphQL query. What’s neat is we can use arguments to query any one of the fields for our the <code class="highlighter-rouge">Person</code> type that we built out!</p>
+
+<h3 id="querying-all-of-a-type">Querying all of a type</h3>
+
+<p>What we’ve done above is super useful if we know the specific information of the person that we’re querying. As long as we’re okay being returned one singular <code class="highlighter-rouge">Person</code> then we’re in good shape, but what if we want to query the database for all <code class="highlighter-rouge">People</code>?</p>
+
+<p>Similar to how we defined our singular <code class="highlighter-rouge">person</code> query, we will also need to define a <code class="highlighter-rouge">people</code> query. That will be executed like so:</p>
+
+<div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="w"> </span><span class="n">Query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">person</span><span class="p">:</span><span class="w"> </span><span class="n">Person</span><span class="w">
+  </span><span class="n">people</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">Person</span><span class="p">]!</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In addition to our <code class="highlighter-rouge">person</code> query, we’ve added a <code class="highlighter-rouge">people</code> query, that we expect to return an array of multiple <code class="highlighter-rouge">People</code> types! I’ve added an <code class="highlighter-rouge">!</code> to signify to GraphQL that if we are querying for multiple people, it <em>must</em> return the array. It can be an empty array, but the array itself is required.</p>
+
+<p>Sweet! Now we can query all the people in our database by simply writing:</p>
+
+<div class="language-graphql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">query</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">people</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">name</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Which will return:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"people"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alan Watts"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stanisław Szukalski"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This has been a high level look at working with and building Queries in GraphQL, but it should be a good start to get you at least playing around with it. GraphQL is super powerful, and has been very interesting to work with. The major pain point in my eyes though, is getting up and running with GraphQL in the sense that the back end portion of your application needs a connection to the front end. Also, one of the things that GraphQL <em>is not</em> intended to be used for, is altering data before it’s passed to the database. No logic, or modification of data can be done with GraphQL alone.</p>
+
+<p>In the Wes Bos course I mentioned at the beginning of this post, he sets up his application using React, Apollo, GraphQL, and GraphQL Yoga. Apollo is the connection between the front end of the application, and the back end, allows you to run queries on the front end of your application, and be returned data that you can work with. GraphQL Yoga, allows you to do logic on data before it’s passed to GraphQL on the backend. All of these technologies work great together, but require a bit of setup.</p>
+
+<p>For my own sanity (and possibly for yours if it’s useful) I’ve set up a <a href="https://github.com/magnificode/react-apollo-prisma-yoga-boilerplate">pretty bare bones application framework</a> that has these bits of technology, and a few more, set up and ready to rock. It’s the result of the setup steps that Wes Bos goes through in his course, which I highly, highly recommend buying and diving into, because he does a phenomenal job of explaining these technologies and their specific benefits. And of course, it’s always really beneficial to understand how to set up an application from scratch.</p>
+
+	  </article>
+  </div>
+
+</div>
+
+
+    <!-- <script src="http://localhost:4000/app.js"></script> -->
+
+  </body>
+</html>

@@ -6,9 +6,140 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 11 Oct 2017 21:51:27 -0600</pubDate>
-    <lastBuildDate>Wed, 11 Oct 2017 21:51:27 -0600</lastBuildDate>
-    <generator>Jekyll v3.4.1</generator>
+    <pubDate>Tue, 01 Jan 2019 20:13:44 -0700</pubDate>
+    <lastBuildDate>Tue, 01 Jan 2019 20:13:44 -0700</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Intro to GraphQL Queries</title>
+        <description>&lt;p&gt;Recently I’ve been trying to get a better grasp on GraphQL. The majority of my exposure to GraphQL has been in the form of React apps. These apps tend to be all set up and nicely packaged on the back end. This way, I could focus on consuming that data on the front end.&lt;/p&gt;
+
+&lt;p&gt;To get more exposure to how a GraphQL back end is set up, I’ve been running through the Wes Bos course &lt;a href=&quot;https://advancedreact.com/&quot;&gt;Fullstack Advanced
+React &amp;amp; GraphQL&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I want to focus on a more narrow topic within this course; the setup of a GraphQL back end, and how to interact with and change that data from the front end.&lt;/p&gt;
+
+&lt;p&gt;I won’t be going over the setup of these technologies, as that’s a separate post entirely. Instead I’m going to focus on how to write and use queries within a working app.&lt;/p&gt;
+
+&lt;p&gt;As a Frontend engineer, I’ve not had much exposure to the work that goes into setting up the GraphQL back end. Let’s dive in and set up our data structure.&lt;/p&gt;
+
+&lt;h2 id=&quot;working-with-schema&quot;&gt;Working With Schema&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;To start lets imagine we want to populate our database with a set of &lt;code class=&quot;highlighter-rouge&quot;&gt;people&lt;/code&gt;. Each person has an &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt;, a &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;, and an &lt;code class=&quot;highlighter-rouge&quot;&gt;age&lt;/code&gt; to start with.&lt;/p&gt;
+
+&lt;p&gt;GraphQL is framework agnostic. What we explain below will also translate to any combination of technologies. We’ll use what’s called the “GraphQL schema language” to explain the examples below.&lt;/p&gt;
+
+&lt;p&gt;To inform GraphQL of how we want our data structured, we have to build the schema using &lt;strong&gt;object types&lt;/strong&gt;. This initial schema is created like so:&lt;/p&gt;
+
+&lt;div class=&quot;language-graphql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we’re telling GraphQL the following: Our database will consist of many objects of type &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt;. Each &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; in the database will have an &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; field that expects an &lt;code class=&quot;highlighter-rouge&quot;&gt;ID&lt;/code&gt; (&lt;em&gt;note: the ID value here is a value that GraphQL knows is a unique identifier&lt;/em&gt;). We’re also informing GraphQL that this field is required via use of the &lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Moving down we explain that each person will have a &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; field that expects a required &lt;code class=&quot;highlighter-rouge&quot;&gt;String&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, the &lt;code class=&quot;highlighter-rouge&quot;&gt;age&lt;/code&gt; field may have an &lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt; (integer) value associated with it, but this field is not required.&lt;/p&gt;
+
+&lt;p&gt;There are extra identifiers and terms that could be expanded on here, but this gives us the basic sense of how to work with the GraphQL schema language. Much more in depth information about schema can be found in the &lt;a href=&quot;https://graphql.org/learn/schema/&quot;&gt;GraphQL docs&lt;/a&gt;. But for now, let’s move on.&lt;/p&gt;
+
+&lt;h2 id=&quot;querying-data&quot;&gt;Querying Data&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;At a low level there are two basic methods for interacting with the GraphQL API. &lt;strong&gt;Queries&lt;/strong&gt; and &lt;strong&gt;Mutations&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Queries&lt;/strong&gt; are just that. A way, using the GraphQL API, to query the database. Queries by themselves are simple creatures, and will return a set of fields for you to interact with on the front end. For example, if we wanted to query the database for a specific person, we can do that by writing a simple query, and also pass an argument to the query.&lt;/p&gt;
+
+&lt;p&gt;Before we do that, we need to tell GraphQL what to expect from our query.
+Within our schema, in addition to defining multiple &lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;s of GraphQL services (so far &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; is the only service we’ve defined), we can also define specific Queries, and build out how those queries should be handled. For example, if we are to query a single person, we need to tell GraphQL what to return us.&lt;/p&gt;
+
+&lt;div class=&quot;language-graphql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here, we’re telling GraphQL that when we run a query for a single person, it should return us a JSON object that consists of our Type, &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt;. Now, when we load up a GraphQL playground and query for a specific person, we should be returned the expected Type.&lt;/p&gt;
+
+&lt;p&gt;Another powerful feature in GraphQL is the ability for add &lt;strong&gt;arguments&lt;/strong&gt; to our queries. This allows us to search the database for a specific person, so long as we know an identifying piece of information stored in the DB about the person. Take the following query:&lt;/p&gt;
+
+&lt;div class=&quot;language-graphql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We are asking GraphQL for a person, whose &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; is &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;. We’re then telling GraphQL that we only want to return that person’s &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; and nothing else. This is another part of the draw to GraphQL. No matter how much information exists in the DB, we can be quite explicit in the data that we are returned. This creates some super efficient queries that return us only what we need.&lt;/p&gt;
+
+&lt;p&gt;Our query above will return the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;data&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;person&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Alan Watts&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;All of the data returned is wrapped in the &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; object. This is true for any GraphQL query. What’s neat is we can use arguments to query any one of the fields for our the &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; type that we built out!&lt;/p&gt;
+
+&lt;h3 id=&quot;querying-all-of-a-type&quot;&gt;Querying all of a type&lt;/h3&gt;
+
+&lt;p&gt;What we’ve done above is super useful if we know the specific information of the person that we’re querying. As long as we’re okay being returned one singular &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; then we’re in good shape, but what if we want to query the database for all &lt;code class=&quot;highlighter-rouge&quot;&gt;People&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;Similar to how we defined our singular &lt;code class=&quot;highlighter-rouge&quot;&gt;person&lt;/code&gt; query, we will also need to define a &lt;code class=&quot;highlighter-rouge&quot;&gt;people&lt;/code&gt; query. That will be executed like so:&lt;/p&gt;
+
+&lt;div class=&quot;language-graphql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;people&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]!&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In addition to our &lt;code class=&quot;highlighter-rouge&quot;&gt;person&lt;/code&gt; query, we’ve added a &lt;code class=&quot;highlighter-rouge&quot;&gt;people&lt;/code&gt; query, that we expect to return an array of multiple &lt;code class=&quot;highlighter-rouge&quot;&gt;People&lt;/code&gt; types! I’ve added an &lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt; to signify to GraphQL that if we are querying for multiple people, it &lt;em&gt;must&lt;/em&gt; return the array. It can be an empty array, but the array itself is required.&lt;/p&gt;
+
+&lt;p&gt;Sweet! Now we can query all the people in our database by simply writing:&lt;/p&gt;
+
+&lt;div class=&quot;language-graphql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;people&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Which will return:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s2&quot;&gt;&quot;data&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;people&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Alan Watts&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Stanisław Szukalski&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This has been a high level look at working with and building Queries in GraphQL, but it should be a good start to get you at least playing around with it. GraphQL is super powerful, and has been very interesting to work with. The major pain point in my eyes though, is getting up and running with GraphQL in the sense that the back end portion of your application needs a connection to the front end. Also, one of the things that GraphQL &lt;em&gt;is not&lt;/em&gt; intended to be used for, is altering data before it’s passed to the database. No logic, or modification of data can be done with GraphQL alone.&lt;/p&gt;
+
+&lt;p&gt;In the Wes Bos course I mentioned at the beginning of this post, he sets up his application using React, Apollo, GraphQL, and GraphQL Yoga. Apollo is the connection between the front end of the application, and the back end, allows you to run queries on the front end of your application, and be returned data that you can work with. GraphQL Yoga, allows you to do logic on data before it’s passed to GraphQL on the backend. All of these technologies work great together, but require a bit of setup.&lt;/p&gt;
+
+&lt;p&gt;For my own sanity (and possibly for yours if it’s useful) I’ve set up a &lt;a href=&quot;https://github.com/magnificode/react-apollo-prisma-yoga-boilerplate&quot;&gt;pretty bare bones application framework&lt;/a&gt; that has these bits of technology, and a few more, set up and ready to rock. It’s the result of the setup steps that Wes Bos goes through in his course, which I highly, highly recommend buying and diving into, because he does a phenomenal job of explaining these technologies and their specific benefits. And of course, it’s always really beneficial to understand how to set up an application from scratch.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 01 Jan 2019 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/2019/01/01/intro-to-graphql-queries.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/01/01/intro-to-graphql-queries.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Understanding Grid Display, Tracks And The New fr Unit.</title>
@@ -43,22 +174,20 @@
 
 &lt;p&gt;This is the bread and butter of CSS Grid. After we’ve told a container to be &lt;code class=&quot;highlighter-rouge&quot;&gt;display: grid;&lt;/code&gt; we need to tell it how we want the grid items within it to behave. By applying &lt;code class=&quot;highlighter-rouge&quot;&gt;grid-template-columns&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;grid-template-rows&lt;/code&gt; to the wrapper we can essentially define a template for how we want its children to behave. Here’s a simple example:&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sweet Grid!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sweet Grid!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;grid-item&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Sweet Grid!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;And the associated CSS.&lt;/p&gt;
 
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nc&quot;&gt;.grid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nc&quot;&gt;.grid&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;py&quot;&gt;grid-template-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;300px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;300px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;300px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Each of the &lt;code class=&quot;highlighter-rouge&quot;&gt;300px&lt;/code&gt; definitions in the CSS above, relates to one column. This format persists for any number of columns or rows (also called tracks in &lt;a href=&quot;https://www.w3.org/TR/css-grid-1/#grid-track-concept&quot;&gt;CSS Grid-Speak&lt;/a&gt;).&lt;/p&gt;
 
@@ -103,15 +232,15 @@
 
 &lt;p&gt;Alright, so a colleague of yours just sent you an awesome design. Nice grid layout. Time to &lt;strong&gt;flex&lt;/strong&gt; your CSS muscles and use some flexbox. But oh no! The accounts team just informed you that you have to support IE9. Well shoot, let’s play out how this scenario could go utilizing the &lt;code class=&quot;highlighter-rouge&quot;&gt;@supports&lt;/code&gt; rule. Lets use the classic use case for flexbox; You have multiple things (&lt;code class=&quot;highlighter-rouge&quot;&gt;.thing&lt;/code&gt;) with a heading and description inside. The description text length is variable, and you want to make sure all the &lt;code class=&quot;highlighter-rouge&quot;&gt;.thing&lt;/code&gt;s are the same height, regardless of content length. Maybe something like this:&lt;/p&gt;
 
-&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
   &lt;span class=&quot;nc&quot;&gt;.thing&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#efefef&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-    &lt;span class=&quot;c1&quot;&gt;// Fallback for IE9 if browser
-&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// doesn't support flexbox.
-&lt;/span&gt;    &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Fallback for IE9 if browser&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// doesn't support flexbox.&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;.333333%&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
     &lt;span class=&quot;nt&quot;&gt;h2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -123,8 +252,8 @@
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-  &lt;span class=&quot;c1&quot;&gt;// Insert fanciness here
-&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;@supports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;flexbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Insert fanciness here&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;@supports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;flexbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nc&quot;&gt;.thing-wrapper&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
       &lt;span class=&quot;nl&quot;&gt;align-items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stretch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
       &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -136,14 +265,13 @@
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Awesome! That looks like a solid use case for &lt;code class=&quot;highlighter-rouge&quot;&gt;@supports&lt;/code&gt;. We’ve got a percentage width, and a float applied to the &lt;code class=&quot;highlighter-rouge&quot;&gt;.thing&lt;/code&gt; as a fallback for if flexbox is not supported. 👍&lt;/p&gt;
 
 &lt;p&gt;However, to play devils advocate here, what’s to stop us from just doing this:&lt;/p&gt;
 
-&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
   &lt;span class=&quot;nc&quot;&gt;.thing-wrapper&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;align-items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stretch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -156,8 +284,8 @@
     &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-    &lt;span class=&quot;c1&quot;&gt;//IE9 support
-&lt;/span&gt;    &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//IE9 support&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;.333333%&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;60px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
     &lt;span class=&quot;nt&quot;&gt;h2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -169,8 +297,7 @@
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;.thing-wrapper&lt;/code&gt; properties will be ignored, as IE9 doesn’t recognize them, and the float and width properties will be ignored on newer browsers, as the &lt;code class=&quot;highlighter-rouge&quot;&gt;display: flex&lt;/code&gt; property takes over. Now, organizationally, it might be nice to throw those properties that older browsers don’t support into a nice block. But functionally, the benefit seems a bit limited.&lt;/p&gt;
 
@@ -180,15 +307,14 @@
 
 &lt;p&gt;Let’s say we want to try out some awesome fancy CSS variables (not utilizing SCSS as my example above does). If the browser does not support CSS variables, then fire off some CSS to compensate.&lt;/p&gt;
 
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
   &lt;span class=&quot;k&quot;&gt;@supports&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;--color-1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#c0ffee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nc&quot;&gt;.coffee&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
       &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#c0ffee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;A basic example, but it gets the job done. What we’re saying here is if the browser does &lt;em&gt;not&lt;/em&gt; support the use of CSS variables, apply the color directly to the coffee div. This sounds pretty good, but now we have to consider if the browsers this declaration will apply to, even support the &lt;code class=&quot;highlighter-rouge&quot;&gt;@supports&lt;/code&gt; rule. If the browser does not support the &lt;code class=&quot;highlighter-rouge&quot;&gt;@supports&lt;/code&gt; rule to begin with, this chunk of code will get skipped over, and our coffee div will not get the styling we defined within.&lt;/p&gt;
 
@@ -227,9 +353,8 @@
 
 &lt;p&gt;The spec linked above goes into great detail about the vast spectrum of ARIA roles and attributes. These attributes are added to various DOM nodes just as any other attribute is added. A relatively common example is that of the icon. When you’re utilizing some sort of technique that you wouldn’t want a screen reader to attempt to decipher, you would tell that screen reader to essentially skip the node.&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;super-fancy-icon&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-hidden=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;super-fancy-icon&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-hidden=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;All the various ARIA attributes are implemented this way. Some of these attributes require an ID to reference back to, others don’t come across with the &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-&lt;/code&gt; prefix. Lets get into some examples to see that in action.&lt;/p&gt;
 
@@ -238,13 +363,12 @@
 
 &lt;p&gt;The ARIA &lt;code class=&quot;highlighter-rouge&quot;&gt;role&lt;/code&gt; attribute is set on an element in the DOM that normal HTML5 implied semantics are not applied to (the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;nav&amp;gt;&lt;/code&gt; element for example has a ‘nav’ role implied with it). For more complex pieces of functionality, a &lt;code class=&quot;highlighter-rouge&quot;&gt;role&lt;/code&gt; must be applied in order for assistive technologies to be able to correctly interpret, and so as to not confuse that element with similar elements. Here’s an example:&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menubar&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menubar&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menuitem&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;About&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menuitem&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Work&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;menuitem&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Contact&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;There are various roles that an element cat have, which are &lt;a href=&quot;https://www.w3.org/TR/wai-aria/roles#widget_roles&quot;&gt;listed here&lt;/a&gt;. The ones above are explained by the following:&lt;/p&gt;
 
@@ -269,9 +393,8 @@
 
 &lt;p&gt;This one is relatively common. I’m sure you have seen a technique or a methodology that utilizes this ARIA attribute. Especially in cases that require the hiding of visibly rendered content. This commonly pops up when you’re employing some sort of icon system (SVGs can be made &lt;a href=&quot;https://css-tricks.com/accessible-svgs/&quot;&gt;very accessible&lt;/a&gt;), or image replacement and things of that nature.&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;screen-reader-text icon-codepen&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-hidden=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;CodePen&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;screen-reader-text icon-codepen&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-hidden=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;CodePen&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The spec recommends caution when utilizing this attribute because you’re choosing to hide the visibly rendered content from assistive technologies. So be absolutely sure that the content that is output is accessible by those technologies elsewhere on the site.&lt;/p&gt;
 
@@ -280,7 +403,7 @@
 
 &lt;p&gt;With &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-selected&lt;/code&gt;, you’re telling assistive technologies that a component (or multiple components) on the page are selected. A relatively common use case here is with something like tabs or accordions.&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion-header&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-selected=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Selected Accordion Header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion-content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Super fancy tab content!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
@@ -292,8 +415,7 @@
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion-header&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-selected=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Not Selected Accordion Header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion-content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Super fancy tab content!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;In the snippet above, the first accordion item is selected, and likely expanded (check out the next section for an explanation of aria-expanded). As the user navigates through the accordion, the &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-selected&lt;/code&gt; attribute should be toggled.&lt;/p&gt;
 
@@ -302,7 +424,7 @@
 
 &lt;p&gt;Much like selected, this one is pretty self explainitory. &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-expanded&lt;/code&gt; indicates to assistive technologies wether or not an item is expanded or collapsed. We’ll expand on our above example.&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion-header&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-selected=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Selected Accordion Header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion-content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Super fancy tab content!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
@@ -314,8 +436,7 @@
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion-header&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-selected=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Not Selected Accordion Header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;accordion-content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Super fancy tab content!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Similarly, the &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-expanded&lt;/code&gt; attribute should be toggled as the assistive technology navigates through the accordion.&lt;/p&gt;
 
@@ -324,12 +445,11 @@
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;aria-labelledby&lt;/code&gt; and the next item, &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-describedby&lt;/code&gt; are very similar. Both ARIA attributes tell a screen reader how to describe an element on the page. The value passed into this attribute is a space separated list of IDs that link to static text on the page that will be referenced to help describe the element.&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;main&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;main&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;How to get started with accessibility.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;WAI-ARIA is a technical specification that provides a framework to improve the accessibility and interoperability of web content and applications. This docu...&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;In the above example, the &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-labelledby&lt;/code&gt; attribute value points to the &lt;code class=&quot;highlighter-rouge&quot;&gt;#main-content-title&lt;/code&gt; which would be a solid short snippet of static text that describes the content in the related element.&lt;/p&gt;
 
@@ -340,13 +460,12 @@
 
 &lt;p&gt;Much like the &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-labelledby&lt;/code&gt; attribute, &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-describedby&lt;/code&gt; gives the screen reader even further detail about the content associated with a certain element. It works exactly like the former by parsing a space separated list of IDs that describe the element.&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;main&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-title&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-describedby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-excerpt&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;main&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-title&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-describedby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-excerpt&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-title&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;How to get started with accessibility.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main-content-excerpt&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;In this article we'll explore the basics regarding accessibility, and some of the fancy attributes you can start using today.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;WAI-ARIA is a technical specification that provides a framework to improve the accessibility and interoperability of web content and applications. This docu...&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;As you can see, quite similar, but just identified as a longer description.&lt;/p&gt;
 
@@ -509,8 +628,8 @@
 
 &lt;p&gt;Regardless of our end game, we need to register our service worker. We’re essentially going to be working in two javascript files. The first one we’ll call &lt;code class=&quot;highlighter-rouge&quot;&gt;app.js&lt;/code&gt; which is where the initial scripts for your site are housed. That is where this first snippet below will be housed.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'serviceWorker'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;serviceWorker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/your-site/serviceworker.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'serviceWorker'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;serviceWorker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/your-site/serviceworker.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Registration succeeded.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Registration failed with '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -520,11 +639,11 @@
 &lt;p&gt;Lets break this down and establish what is happening here.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Check to see if service worker is supported in the current browser&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'serviceWorker'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'serviceWorker'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// Register our service worker. The register function relates&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// to the javascript file within your site containing the&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// service worker directives.&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;serviceWorker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/your-site/serviceworker.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;serviceWorker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/your-site/serviceworker.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// If the registration worked, success!&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Registration succeeded.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -790,41 +909,6 @@
         <pubDate>Fri, 25 Sep 2015 10:44:00 -0600</pubDate>
         <link>http://localhost:4000/update/2015/09/25/being-comfortable-with-being-uncomfortable.html</link>
         <guid isPermaLink="true">http://localhost:4000/update/2015/09/25/being-comfortable-with-being-uncomfortable.html</guid>
-        
-        
-        <category>update</category>
-        
-      </item>
-    
-      <item>
-        <title>What I Learned From My First Speaking Gig</title>
-        <description>&lt;p&gt;About six months ago one of the organizers of a local meetup group asked if I could give a talk.&lt;/p&gt;
-
-&lt;p&gt;“We just need more development centered talks.”&lt;/p&gt;
-
-&lt;p&gt;This was a hell of an opportunity for me to expand as a developer, and in the process help fellow colleagues learn. Of course, I agreed. I didn’t realize at the time that six months was not a whole lot of time. With a full time job, and other responsibilities, finding time to sit down and work on  my slides was a challenge.&lt;/p&gt;
-
-&lt;p&gt;My talk was about process, and the importance it plays in an agency. The topic was at the front of my mind due to some changes happening at work. Some processes were falling through the cracks, and it was effecting everyone. I wanted to remind myself and everyone around me how important it is to stick to process, and how detrimental it can be to stray from it.&lt;/p&gt;
-
-&lt;p&gt;I was able to get work done here and there. A couple slides one week, complete with speaker notes, another one the next. When it came down to a couple months before the talk I figured I needed to buckle down. Fast forward a couple of sleepless nights, and a weekend of pounding out slides I was finished. The slides weren’t anything complicated, but I had the content there to talk about.&lt;/p&gt;
-
-&lt;p&gt;Now, I’m going to admit that I think I’m a pretty sketchy public speaker. I could definitely use some improvement, but I was hopeful this experience would help me do that. Because of that fear of public speaking, I looked over my slides constantly. I tried to memorize my notes, added some clarification here and there,  peppered in some gifs to keep people interested. About a week before the talk I began practicing with people I know. My girlfriend was kind enough to let me use her as an audience and give me some feedback. A few friends did the same. I thought I felt pretty darn good.&lt;/p&gt;
-
-&lt;p&gt;A couple days before the talk I had a shroud of doubt cast over me. I was looking at my slides for the ten thousandth time, and the flow was off. It didn’t look like what I was talking about followed any coherent path. I thought I was jumping around from topic to topic without really explaining the main point. &lt;em&gt;I freaked out a little&lt;/em&gt;. What would it take to change the slides? Perhaps I should just scrap it all.&lt;/p&gt;
-
-&lt;p&gt;That clearly wasn’t the right choice. I took a minute, closed my laptop and realized I had been looking at the slides for too long. I’m curious if most speakers get to this point, or if this was a product of my own making. Either way I was able to step back and take a fresh look the next day.&lt;/p&gt;
-
-&lt;p&gt;The night of the talk I gave the slides one last look, practiced what I was going to say to a few co-workers and headed off.&lt;/p&gt;
-
-&lt;p&gt;The talk went great.&lt;/p&gt;
-
-&lt;p&gt;I opened up with some classic &lt;a href=&quot;https://www.youtube.com/watch?v=8To-6VIJZRE&quot;&gt;Steve Ballmer&lt;/a&gt;. That got everyone interested pretty quick. The talk proceeded and I felt like I knew what I was saying. Everyone seemed pretty interested. I slipped up here and there, caught myself say “um” a little too much, but kept going. At the end there were lots of questions too, which gave me a large bit of relief. People were interested and engaged. Everything ended up pretty well.&lt;/p&gt;
-
-&lt;p&gt;The moral of this, and the advice I’d pass on to future first time speakers (even if it is in a small setting such as mine), would be to just follow your gut. You know the topic. You’ve been asked to speak based on what you know and that’s awesome. Regardless of how many times you look at your slides, or if you second guess what you’re writing, you know the topic. The slides are the hardest part, don’t overthink your notes, and trust your knowledge. Practice as much as you feel you need, but &lt;em&gt;don’t stress over it&lt;/em&gt;, you know what you want to say, and &lt;strong&gt;you’ll find the right way to say it&lt;/strong&gt;. &lt;a href=&quot;https://dommagnifi.co/update/2015/08/04/on-community.html&quot;&gt;The Design and Development Community&lt;/a&gt; is an amazing one. And most every person you meet will be happy to help you learn.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 17 Aug 2015 03:00:00 -0600</pubDate>
-        <link>http://localhost:4000/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html</link>
-        <guid isPermaLink="true">http://localhost:4000/update/2015/08/17/what-i-learned-from-my-frist-speaking-gig.html</guid>
         
         
         <category>update</category>

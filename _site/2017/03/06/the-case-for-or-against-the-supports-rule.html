@@ -111,15 +111,15 @@
 
 <p>Alright, so a colleague of yours just sent you an awesome design. Nice grid layout. Time to <strong>flex</strong> your CSS muscles and use some flexbox. But oh no! The accounts team just informed you that you have to support IE9. Well shoot, let’s play out how this scenario could go utilizing the <code class="highlighter-rouge">@supports</code> rule. Lets use the classic use case for flexbox; You have multiple things (<code class="highlighter-rouge">.thing</code>) with a heading and description inside. The description text length is variable, and you want to make sure all the <code class="highlighter-rouge">.thing</code>s are the same height, regardless of content length. Maybe something like this:</p>
 
-<div class="language-scss highlighter-rouge"><pre class="highlight"><code>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
   <span class="nc">.thing</span> <span class="p">{</span>
     <span class="nl">border</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">solid</span> <span class="mh">#efefef</span><span class="p">;</span>
     <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
     <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
 
-    <span class="c1">// Fallback for IE9 if browser
-</span>    <span class="c1">// doesn't support flexbox.
-</span>    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+    <span class="c1">// Fallback for IE9 if browser</span>
+    <span class="c1">// doesn't support flexbox.</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
     <span class="nl">width</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">33</span><span class="mi">.333333%</span> <span class="o">-</span> <span class="m">20px</span><span class="p">);</span>
 
     <span class="nt">h2</span> <span class="p">{</span>
@@ -131,8 +131,8 @@
     <span class="p">}</span>
   <span class="p">}</span>
 
-  <span class="c1">// Insert fanciness here
-</span>  <span class="k">@supports</span> <span class="o">(</span><span class="nt">display</span><span class="nd">:</span> <span class="nt">flexbox</span><span class="o">)</span> <span class="p">{</span>
+  <span class="c1">// Insert fanciness here</span>
+  <span class="k">@supports</span> <span class="o">(</span><span class="nt">display</span><span class="nd">:</span> <span class="nt">flexbox</span><span class="o">)</span> <span class="p">{</span>
     <span class="nc">.thing-wrapper</span> <span class="p">{</span>
       <span class="nl">align-items</span><span class="p">:</span> <span class="n">stretch</span><span class="p">;</span>
       <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
@@ -144,14 +144,13 @@
     <span class="p">}</span>
   <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Awesome! That looks like a solid use case for <code class="highlighter-rouge">@supports</code>. We’ve got a percentage width, and a float applied to the <code class="highlighter-rouge">.thing</code> as a fallback for if flexbox is not supported. 👍</p>
 
 <p>However, to play devils advocate here, what’s to stop us from just doing this:</p>
 
-<div class="language-scss highlighter-rouge"><pre class="highlight"><code>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
   <span class="nc">.thing-wrapper</span> <span class="p">{</span>
     <span class="nl">align-items</span><span class="p">:</span> <span class="n">stretch</span><span class="p">;</span>
     <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
@@ -164,8 +163,8 @@
     <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
     <span class="nl">padding</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
 
-    <span class="c1">//IE9 support
-</span>    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+    <span class="c1">//IE9 support</span>
+    <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
     <span class="nl">width</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">33</span><span class="mi">.333333%</span> <span class="o">-</span> <span class="m">60px</span><span class="p">);</span>
 
     <span class="nt">h2</span> <span class="p">{</span>
@@ -177,8 +176,7 @@
     <span class="p">}</span>
   <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">.thing-wrapper</code> properties will be ignored, as IE9 doesn’t recognize them, and the float and width properties will be ignored on newer browsers, as the <code class="highlighter-rouge">display: flex</code> property takes over. Now, organizationally, it might be nice to throw those properties that older browsers don’t support into a nice block. But functionally, the benefit seems a bit limited.</p>
 
@@ -188,15 +186,14 @@
 
 <p>Let’s say we want to try out some awesome fancy CSS variables (not utilizing SCSS as my example above does). If the browser does not support CSS variables, then fire off some CSS to compensate.</p>
 
-<div class="language-css highlighter-rouge"><pre class="highlight"><code>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
   <span class="k">@supports</span> <span class="n">not</span> <span class="p">(</span><span class="n">--color-1</span><span class="p">:</span> <span class="m">#c0ffee</span><span class="p">)</span> <span class="p">{</span>
     <span class="nc">.coffee</span> <span class="p">{</span>
       <span class="nl">color</span><span class="p">:</span> <span class="m">#c0ffee</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>A basic example, but it gets the job done. What we’re saying here is if the browser does <em>not</em> support the use of CSS variables, apply the color directly to the coffee div. This sounds pretty good, but now we have to consider if the browsers this declaration will apply to, even support the <code class="highlighter-rouge">@supports</code> rule. If the browser does not support the <code class="highlighter-rouge">@supports</code> rule to begin with, this chunk of code will get skipped over, and our coffee div will not get the styling we defined within.</p>
 
