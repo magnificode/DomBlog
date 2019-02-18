@@ -4,19 +4,24 @@ import Header from '../components/Header';
 class Wrapper extends Component {
   constructor(props) {
     super(props);
-    const localTheme = window.localStorage.getItem('theme') === 'dark' ? true : false;
+    let whichTheme = true;
+    if (typeof window !== `undefined`) {
+      const localTheme = window.localStorage.getItem('theme') === 'dark' ? true : false;
+      whichTheme = window.localStorage.getItem('theme') === null ? true : localTheme;
+    }
     this.state = {
-      isDark: window.localStorage.getItem('theme') === null ? true : localTheme,
+      isDark: whichTheme,
     }
     this.changeTheme = this.changeTheme.bind(this);
-    console.log(window.localStorage.getItem('theme'));
   }
 
   changeTheme() {
     this.setState(() =>
       ({ isDark: !this.state.isDark }),
       () => {
-        window.localStorage.setItem('theme', this.state.isDark === true ? 'dark' : 'light');
+        if (typeof window !== `undefined`) {
+          window.localStorage.setItem('theme', this.state.isDark === true ? 'dark' : 'light');
+        }
       }
     );
   }
