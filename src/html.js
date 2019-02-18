@@ -1,9 +1,9 @@
-import React from "react"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
 
 import "tachyons";
 
-export default class HTML extends React.Component {
+export default class HTML extends Component {
   render() {
     return (
       <html {...this.props.htmlAttributes}>
@@ -16,7 +16,7 @@ export default class HTML extends React.Component {
           />
           {this.props.headComponents}
         </head>
-        <body {...this.props.bodyAttributes} className="sans-serif">
+        <body {...this.props.bodyAttributes} className={`sans-serif`}>
           {this.props.preBodyComponents}
           <div
             key={`body`}

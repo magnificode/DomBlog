@@ -1,18 +1,17 @@
 import React from "react"
-import Header from "../components/Header";
+import Wrapper from '../templates/wrapper';
 import Logo from "../components/Logo";
 
 export default () => (
-  <>
-    <Header />
+  <Wrapper>
     <article className="cf pv6 ph4 pa5-l bt mw9 center">
-      <header className="pv3 f2-ns db lh-copy black-70 serif fw1 mv0 measure center">
-          <h1 className="fw6 f1 fl w-100 black-70 mt0 mb3 sans-serif">Hi! I&lsquo;m Dom, a Front End Developer from Denver.</h1>
-          <p className="bakersville f5 f4-m f3-l">My passion lies in <strong>efficient</strong>, well <strong>organized</strong>, <strong>innovative</strong> code and beautiful <strong>design</strong>. I also enjoy Motion Graphics and Illustration. I've spent <strong>4+ years</strong> building custom WordPress sites, driven by informed design and development. Thus enabling me to create a friendly experience for the user</p>
+      <header className="pv3 f2-ns db lh-copy serif fw1 mv0 measure center">
+        <h1 className="fw6 f1 fl w-100 mt0 mb3 sans-serif">Hi! I&lsquo;m Dom, a Front End Developer from Denver.</h1>
+        <p className="bakersville f5 f4-m f3-l">My passion lies in <strong>efficient</strong>, well <strong>organized</strong>, <strong>innovative</strong> code and beautiful <strong>design</strong>. I also enjoy Motion Graphics and Illustration. I've spent <strong>4+ years</strong> building custom WordPress sites, driven by informed design and development. Thus enabling me to create a friendly experience for the user</p>
       </header>
-      <div className="flex-l justify-center-l pv3 f2-ns db lh-copy black-70 serif fw1 mv0 measure center">
+      <div className="flex-l justify-center-l pv3 f2-ns db lh-copy serif fw1 mv0 measure center">
         <section className="f4-ns lh-copy serif fw1 mv0 measure center w-100 w-50-l flex flex-column items-center">
-          <svg x="0px" y="0px" width="160" viewBox="0 0 100 100">
+          <svg x="0px" y="0px" width="160" viewBox="0 0 100 100" fill="var(--fontColor)">
             <path d="M50.192,37.404c0,0-1.707,0.537-3.293,0c0.635-0.076,1.27-0.267,1.27-0.267c0.212-0.115,0.376,0.182,0.376,0.182  s0.165-0.297,0.376-0.182C48.922,37.137,49.557,37.328,50.192,37.404z M87.385,69.299c-0.329,0.133-0.703-0.026-0.836-0.354  l-11.787-29.12c-0.543,0.26-1.085,0.519-1.627,0.779l3.229,7.99c-11.728,6.42-20.725-1-20.725-1s-0.802-0.085-0.802,1.844  c0,0,3.849,30.835,10,41.282h-6.435l0,0.382c-0.145,1.408-1.26,2.467-2.569,2.464c-1.362-0.002-2.61-1.095-2.701-2.479l0-0.367  h-9.173l-0.001,0.367c-0.091,1.384-1.339,2.477-2.701,2.479c-1.309,0.002-2.423-1.057-2.568-2.464l0-0.382h-6.435  c6.151-10.446,10-41.282,10-41.282c0-1.93-0.802-1.844-0.802-1.844s-8.996,7.42-20.725,1l3.229-7.99  c-0.508-0.244-1.016-0.487-1.525-0.73l-0.127,0.409l0.383,0.117l-0.403,1.317l-2.342-0.716l0.403-1.317l0.349,0.107l0.319-1.031  c-0.441-0.651-0.533-1.433-0.19-2.151c0.243-0.508,0.661-0.855,1.174-1.028l0.643-2.078l-2.089-0.639l0.224-0.732l1.31,0.4  l7.449-23.498l3.138-5.468l-0.457,6.288l-6.961,23.647l1.304,0.399l-0.224,0.732l-2.083-0.637l-0.509,1.645  c0.121,0.042,0.241,0.081,0.363,0.139c0.419,0.197,0.836,0.397,1.254,0.595l0.393-1.184c1.08,1.358,4.772,3.49,6.848,4.626  c1.279,0.612,2.558,1.223,3.838,1.833c1.082,0.516,1.985,0.057,1.985,0.057c3.275-1.155,4.641-1.002,4.641-1.002h1.967  c-0.098-1.095-0.38-2.544-0.603-3.58c-0.65-0.864-1.049-1.926-1.049-3.09c0-0.203,0.037-0.395,0.06-0.592  c-6.631-0.14-11.316-0.44-11.316-0.44s4.125-0.55,6.188-2.063c0,0,4.262-2.612,5.775-3.85c0,0,2.2-5.362,4.95-7.013  c0,0,6.325-4.262,6.875-5.775c0,0,0.55,2.063-1.1,4.125c0,0-2.612,1.788-2.475,3.3c0,0,1.21,4.855,1.1,5.912  c0,0,2.613,1.1,4.813,3.025c0,0,2.887,1.65,7.15,2.338c-3.864,0.289-7.885,0.432-11.741,0.485c0.019,0.182,0.055,0.36,0.055,0.547  c0,1.165-0.4,2.227-1.05,3.091c-0.223,1.036-0.505,2.484-0.603,3.579h1.968c0,0,1.366-0.154,4.641,1.002  c0,0,0.903,0.459,1.985-0.057c1.28-0.61,2.559-1.222,3.838-1.833c2.076-1.136,5.768-3.269,6.848-4.626l0.393,1.184  c0.418-0.197,0.836-0.398,1.254-0.595c0.04-0.019,0.079-0.028,0.119-0.046l-6.69-16.527c-0.738-0.129-1.516-0.853-1.94-1.9  c-0.556-1.375-0.291-2.779,0.593-3.137c0.884-0.358,2.052,0.466,2.609,1.841c0.424,1.047,0.368,2.108-0.072,2.714l6.775,16.738  c0.838,0.012,1.539,0.418,1.886,1.147c0.397,0.831,0.206,1.746-0.432,2.446L87.74,68.463C87.873,68.792,87.714,69.166,87.385,69.299  z M66.19,15.195c-0.074-0.182-0.281-0.27-0.463-0.196c-0.182,0.074-0.27,0.281-0.196,0.463c0.074,0.182,0.281,0.27,0.463,0.196  C66.175,15.585,66.263,15.377,66.19,15.195z M52.049,37.81c0.092-0.459,0.184-0.883,0.261-1.227  c-0.561,0.488-1.088,0.608-1.471,0.608c-0.554,0-0.924-0.245-0.94-0.256c-0.452-0.447-1.18-0.469-1.32-0.469h-0.066  c-0.142,0-0.87,0.022-1.289,0.441c-0.049,0.039-0.419,0.284-0.971,0.284c-0.385,0-0.911-0.121-1.472-0.609  c0.077,0.343,0.168,0.767,0.26,1.226c0.093,0.466,0.187,0.968,0.266,1.463c0.001,0.005,0.002,0.01,0.002,0.015  c0.078,0.487,0.142,0.965,0.179,1.396c0.03,0.338,0.046,0.653,0.036,0.908c-0.003,0.047-0.212,4.712,0.102,6.109  c0.611,2.648,2.297,2.853,2.8,2.853c0.057,0,0.092-0.003,0.098-0.003c0.052,0,0.086,0.003,0.143,0.003  c0.501,0,2.187-0.205,2.798-2.854c0.314-1.396,0.105-6.061,0.102-6.107c-0.011-0.256,0.006-0.572,0.036-0.91  c0.038-0.43,0.101-0.907,0.179-1.393c0.001-0.006,0.002-0.012,0.003-0.018C51.863,38.777,51.956,38.276,52.049,37.81z" />
           </svg>
           <h2 className="sans-serif">Core Skills</h2>
@@ -41,5 +40,5 @@ export default () => (
         </section>
       </div>
     </article>
-  </>
-  )
+  </Wrapper>
+)

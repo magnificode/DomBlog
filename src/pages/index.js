@@ -1,18 +1,59 @@
-import React from "react"
-import Header from '../components/Header';
+import React from "react";
+import Link from "gatsby-link";
+import { graphql } from "gatsby";
 
-export default () => (
-  <>
-    <Header />
-    <section className="cf pv6 ph4 pa5-l bt mw9 center">
-      <article class="pb4 pt0 bt bb b--black-10 ph3 ph0-l">
-        <div class="db">
-          <div class="w-100">
-            <h1 class="f3 f1-l m0 lh-title">Tech Giant Invests Huge Money to Build a Computer Out of Science Fiction</h1>
-          </div>
-        </div>
-        <time class="f5 db gray">Nov. 21, 2016</time>
-      </article>
-    </section>
-  </>
-)
+import Wrapper from '../templates/wrapper';
+
+export const query = graphql`
+  query IndexQuery {
+    allMarkdownRemark(sort: {fields: [fileAbsolutePath], order: DESC}) {
+      totalCount
+      edges {
+        node {
+          id
+          fileAbsolutePath
+          frontmatter {
+            title
+            date(formatString: "DD MMMM, YYYY")
+          }
+          fields {
+            slug
+            title
+            date
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`;
+
+export default ({ data }) => {
+  return (
+    <Wrapper>
+      <section className="cf pv6 ph4 pa6-l bt mw9 center avenir">
+        {data.allMarkdownRemark.edges.map(({ node }, idx) => (
+          <article key={idx}>
+            <Link to={node.fields.slug} className="post-title">
+              <div className="flex flex-column flex-row-ns">
+                <div className="w-100 pa3-l pl3-ns">
+                  <h2 className="f2 f2-m lh-title mv0">
+                    <span className="lh-copy pa3 tracked-tight">
+                      {node.frontmatter.title}
+                    </span>
+                  </h2>
+                  <p className="f5 lh-copy mv0">
+                    <span className="lh-copy pa3 tracked-tight">
+                      {node.frontmatter.date}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </Link>
+          </article>
+        ))}
+      </section>
+    </Wrapper>
+  )
+}
+
