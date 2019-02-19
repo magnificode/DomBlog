@@ -3,6 +3,8 @@ layout: post
 title:  Basic Class Toggle with Vanilla JS
 date:   2016-05-16 16:44:00
 categories: update
+redirect_from:
+  - /2016/05/16/basic-class-toggle-with-vanilla-js.html
 ---
 
 One of my [goals for this year](/update/2015/12/29/2015.html) was to start to grasp vanilla JS a little bit more. While I was in school, Javascript and jQuery pretty much went hand in hand. Little was taught about vanilla JS, beyond the basics of course, in favor of the glory that was jQuery. It's understandable, that syntactic sugar is pretty irresistible.
