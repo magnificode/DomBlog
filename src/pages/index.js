@@ -1,6 +1,7 @@
-import React from "react";
-import Link from "gatsby-link";
-import { graphql } from "gatsby";
+import React from 'react';
+import Link from 'gatsby-link';
+import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 
 import Wrapper from '../templates/wrapper';
 
@@ -31,6 +32,9 @@ export const query = graphql`
 export default ({ data }) => {
   return (
     <Wrapper>
+      <Helmet>
+        <title>dommagnifi.co</title>
+      </Helmet>
       <section className="cf pv6 ph4 pa6-l bt mw9 center avenir">
         {data.allMarkdownRemark.edges.map(({ node }, idx) => (
           <article key={idx}>

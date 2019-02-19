@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-
+import favicon from '../static/favicon.png';
 import "tachyons";
 
 export default class HTML extends Component {
@@ -14,6 +14,7 @@ export default class HTML extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+          <link rel="shortcut icon" type="image/png" href={favicon} />
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes} className={`sans-serif`}>

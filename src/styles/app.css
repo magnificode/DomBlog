@@ -79,6 +79,9 @@ hr {
 .post a:focus {
   text-decoration: underline;
 }
+.post .date {
+  color: var(--fontColorAlt);
+}
 
 .post blockquote {
   background-color: var(--parentBg);
