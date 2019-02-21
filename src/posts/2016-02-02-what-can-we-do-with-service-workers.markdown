@@ -19,7 +19,7 @@ if ('serviceWorker' in navigator) {
     console.log('Registration failed with ' + error);
   });
 }
-{% endhighlight %}
+```
 
 Lets break this down and establish what is happening here.
 
@@ -37,7 +37,7 @@ if ('serviceWorker' in navigator) {
     console.log('Registration failed with ' + error);
   });
 }
-{% endhighlight %}
+```
 
 The code above is not the service worker itself, rather it is registering our service worker within a scope. That being said, once a page within the scope is loaded, the service worker will run. This happens individually on each page load so long as it is within scope.
 
@@ -61,7 +61,7 @@ this.addEventListener('install', function(event) {
     })
   );
 });
-{% endhighlight %}
+```
 
 Since we are within the the registered service worker the scope allows us to utilize `this`. The first line of this snippet adds an install event listener. We then chain the `waitUntil` method which delays the proceeding code from running until the ES6 promise has been fulfilled. Then, utilizing the `caches.open` method, we open a new cache titled offline. This is where our cached files will be stored. This returns a promise for the cache, and once that is fulfilled we utilize the `addAll` function which adds the specified files to the cache.
 
@@ -82,7 +82,7 @@ this.addEventListener('fetch', function(event) {
     return response.clone();
   }));
 });
-{% endhighlight %}
+```
 
 We do this by utilizing the fetch event listener which tells the browser to respond with the cache. The first `.catch` function detects if the promise rejects, and returns the default server response. We then utilize the `.then` method to open our offline cache and put the response onto the page.
 

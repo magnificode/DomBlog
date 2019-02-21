@@ -31,9 +31,9 @@ I am utilizing GitHub pages and Jekyll for my blog. What we're going to need to 
 
 In my case, the only thing in my CNAME file is the following:
 
-{% highlight html %}
+```html
 https://dommagnifi.co
-{% endhighlight %}
+```
 
 Now, I'm not a super savvy hosting person, so forgive me if my instructions on the next few steps are a bit fuzzy. Do feel free to shoot me an email (hello [at] dommagnifi.co) with suggestions for improvements and I'll be happy to consider them.
 

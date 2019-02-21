@@ -11,11 +11,11 @@ I don't know about you, but I love to look at sites like [Medium](https://medium
 
 Lets start with the method I'm currently using myself. [Mike Riethmuller](https://twitter.com/MikeRiethmuller) wrote a post titled [Precise control over responsive typography](http://madebymike.com.au/writing/precise-control-responsive-typography/). This method sets out to give developers control of their typography while utilizing `vw` unit. By themselves this unit of measurement don't really offer us a whole lot of control. If we were to just do something like this:
 
-{% highlight scss %}
+```css
 h1 {
   font-size: 5vw;
 }
-{% endhighlight %}
+```
 
 We'd get massive headings on larger browsers, and tiny ones on smaller browsers. The next step here would be to add media queries for various breakpoints and adjust the font size. Furthermore, the scaling of the font would not be smooth, instead at that breakpoint the text would jump from one size to the next. Not ideal.
 
