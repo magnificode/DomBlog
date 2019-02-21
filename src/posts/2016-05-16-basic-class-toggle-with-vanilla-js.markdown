@@ -15,11 +15,11 @@ Let's take a look at how we would generally do this with jQuery. Beware though, 
 
 Alright, so the basic jQuery class toggling function would look something like this:
 
-{% highlight javascript %}
+```javascript
 $('.toggle-me').click( function() {
   $(this).toggleClass('active');
 });
-{% endhighlight %}
+```
 
 Pretty straight forward. We'll take this apart piece by piece. The first thing we need to do with vanilla JS is to actually target the element. Now as I'm sure you know there is always the option of utilizing `getElementByID`. But in this case, we're trying to target a class. In reality, we probably want to avoid using an ID if we can since the specificity could cause issues down the road.
 
@@ -33,9 +33,9 @@ This is perfect for our case, we currently only have one element on the page wit
 
 So, lets set our classname to a variable to make it easy to reference.
 
-{% highlight javascript %}
+```javascript
 var el = document.querySelector('.toggle-me');
-{% endhighlight %}
+```
 
 Perfect, now we need some sort of way to detect when that element is clicked. If you were lucky enough to see the days when folks used the inline `onclick` function, then you'll have probably guessed where we're headed.
 
@@ -43,13 +43,13 @@ Perfect, now we need some sort of way to detect when that element is clicked. If
 
 The `onclick` property allows us to utilize a function expression, or a named function defined elsewhere right within it. For this example I'll utilize a function expression just to keep things brief.
 
-{% highlight javascript %}
+```javascript
 var el = document.querySelector('.toggle-me');
 
 el.onclick = function() {
   console.log('clicked!');
 }
-{% endhighlight %}
+```
 
 Sweet! If you check your console you should see our 'clicked!' logging.
 
@@ -59,13 +59,13 @@ The last bit of code that we'll need will do the actual toggling of the class. I
 
 The `classList` property by itself is pretty self explanatory. It outputs a collection of the class attributes of the passed element. If we were to run that on our `.toggle-me` class:
 
-{% highlight javascript %}
+```javascript
 var el = document.querySelector('.toggle-me');
 
 el.onclick = function() {
   console.log(el.classList);
 }
-{% endhighlight %}
+```
 
 You'll notice that the output in the console provides us with a DOMTokenList object. Expanding that object will show that the first value in the object, is "toggle-me".
 
@@ -75,12 +75,12 @@ With this object we can now use the `toggle()` method associated with the `class
 
 Unfortunately, with vanilla JS the `$(this)` property doesn't exist. However, since we are caching the the element we are manipulating, all we need to do is attach the `classList` property to our element, and then chain our `toggle()` method, passing on our active class like so:
 
-{% highlight javascript %}
+```javascript
 var el = document.querySelector('.toggle-me');
 
 el.onclick = function() {
   el.classList.toggle('active');
 }
-{% endhighlight %}
+```
 
 And voilà! You're now accomplishing a simple class toggle on an element utilizing pure Javascript. Pat yourself on the back for saving that extra HTTP request and removing your dependency on jQuery.
