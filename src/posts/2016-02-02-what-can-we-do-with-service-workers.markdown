@@ -11,7 +11,7 @@ Before you read on, be sure to check out [my first blog post](/update/2015/12/20
 
 Regardless of our end game, we need to register our service worker. We're essentially going to be working in two javascript files. The first one we'll call `app.js` which is where the initial scripts for your site are housed. That is where this first snippet below will be housed.
 
-{% highlight javascript %}
+```javascript
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/your-site/serviceworker.js').then(function(reg) {
     console.log('Registration succeeded.');
@@ -23,7 +23,7 @@ if ('serviceWorker' in navigator) {
 
 Lets break this down and establish what is happening here.
 
-{% highlight javascript %}
+```javascript
 //Check to see if service worker is supported in the current browser
 if ('serviceWorker' in navigator) {
   // Register our service worker. The register function relates
@@ -45,7 +45,7 @@ The code above is not the service worker itself, rather it is registering our se
 
 Now we get to the juicy stuff. Now that we have registered a service worker, let's look at how we can utilize the cache to grab the files you'd like to utilize for offline mode on your site. In our second file, which I'm calling `serviceworker.js` place this next snippet.
 
-{% highlight javascript %}
+```javascript
 this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('offline').then(function(cache) {
@@ -69,7 +69,7 @@ I've added myself the homepage of my site, along with the latest post.
 
 Lastly we're going to need to tell the browser that when it detects that it's offline, to access the cache that we created with the service worker and utilize the files found there.
 
-{% highlight javascript %}
+```javascript
 this.addEventListener('fetch', function(event) {
   var response;
   event.respondWith(caches.match(event.request).catch(function() {
