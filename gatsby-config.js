@@ -5,6 +5,9 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-feed`,
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
