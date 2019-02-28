@@ -1,4 +1,8 @@
-# React Context API
+---
+layout: post
+title: React Context API
+date:   2019-02-27 16:44:00
+---
 
 https://reactjs.org/docs/context.html
 
