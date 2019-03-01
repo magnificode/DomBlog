@@ -8,6 +8,15 @@ export default class HTML extends Component {
     return (
       <html {...this.props.htmlAttributes}>
         <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43739046-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-43739046-1');
+        </script>
+
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
