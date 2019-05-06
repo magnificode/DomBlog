@@ -7,6 +7,8 @@ redirect_from:
   - /update/2016/05/16/basic-class-toggle-with-vanilla-js.html
 ---
 
+**✨UPDATE :: [New version of this post using ES6 can be found here.](/2019-05-06-basic-class-toggle-with-vanilla-js-es6/)✨**
+
 One of my [goals for this year](/update/2015/12/29/2015.html) was to start to grasp vanilla JS a little bit more. While I was in school, Javascript and jQuery pretty much went hand in hand. Little was taught about vanilla JS, beyond the basics of course, in favor of the glory that was jQuery. It's understandable, that syntactic sugar is pretty irresistible.
 
 I'm going to walk through a pretty common desire when writing Javascript, the class toggle.
