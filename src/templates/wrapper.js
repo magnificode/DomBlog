@@ -1,40 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from '../components/Header';
+import { ThemeProvider, ThemeContext } from '../ThemeContext';
 
-class Wrapper extends Component {
-  constructor(props) {
-    super(props);
-    let whichTheme = true;
-    if (typeof window !== `undefined`) {
-      const localTheme = window.localStorage.getItem('theme') === 'dark' ? true : false;
-      whichTheme = window.localStorage.getItem('theme') === null ? true : localTheme;
-    }
-    this.state = {
-      isDark: whichTheme,
-    }
-    this.changeTheme = this.changeTheme.bind(this);
-  }
+const Wrapper = ( { children } ) => {
 
-  changeTheme() {
-    this.setState(() =>
-      ({ isDark: !this.state.isDark }),
-      () => {
-        if (typeof window !== `undefined`) {
-          window.localStorage.setItem('theme', this.state.isDark === true ? 'dark' : 'light');
-        }
-      }
-    );
-  }
-
-  render() {
-    const { isDark } = this.state;
-    return (
-      <div className={`wrapper ${isDark === true ? '-dark' : '-light'}`}>
-        <Header changeTheme={this.changeTheme} isDark={this.state.isDark}/>
-        {this.props.children}
-      </div>
-    )
-  }
+  return (
+    <ThemeProvider>
+      <ThemeContext.Consumer>
+        {(context) => (
+          <div className={`wrapper ${context.dark ? '-dark' : '-light'}`}>
+            <Header />
+            {children}
+          </div>
+        )}
+      </ThemeContext.Consumer>
+    </ThemeProvider>
+  );
 }
+
 
 export default Wrapper;
