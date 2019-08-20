@@ -75,6 +75,7 @@ hr {
 .post a {
   color: var(--link);
 }
+
 .post a:hover,
 .post a:focus {
   text-decoration: underline;
@@ -98,4 +99,13 @@ hr {
 
 .post-title:hover {
   text-decoration: underline;
+}
+
+.post-title svg {
+  margin-left: 1rem;
+}
+
+.post-title .lh-copy {
+  align-items: center;
+  display: flex;
 }
