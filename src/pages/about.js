@@ -6,7 +6,7 @@ import Logo from '../components/Logo';
 export default () => (
   <Wrapper>
     <SEO title="About" />
-    <article className="cf pv6 ph4 pa5-l bt mw9 center">
+    <article className="cf pv6 ph4 pa5-l bt mw9 center min-vh-100">
       <header className="pv3 f2-ns db lh-copy serif fw1 mv0 measure center">
         <h1 className="fw6 f1 fl w-100 mt0 mb3 sans-serif">Hi! I&lsquo;m Dom, a Front End Developer from Denver.</h1>
         <p className="bakersville f5 f4-m f3-l">My passion lies in <strong>efficient</strong>, well <strong>organized</strong>, <strong>innovative</strong> code and beautiful <strong>design</strong>. I also enjoy Motion Graphics and Illustration. I've spent <strong>4+ years</strong> building custom WordPress sites, driven by informed design and development. Thus enabling me to create a friendly experience for the user</p>
