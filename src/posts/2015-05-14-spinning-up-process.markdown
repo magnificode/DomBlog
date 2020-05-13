@@ -10,7 +10,7 @@ One thing that I want to preface here, and I'll refrence this point a bunch, is 
 
 ##Setting the Right Processes in Place
 
-When first developing our process at Zenman we had to establish exactly what it was we were trying to accomplish. Where are we headed? What exactly is that prize we should be keeping our eyes on. What it came down to was simply the fact that we wanted a process that provided designers, developers, and business with all of the information that is needed for the project right off the bat. Leave no stone unturned. 
+When first developing our process at Zenman we had to establish exactly what it was we were trying to accomplish. Where are we headed? What exactly is that prize we should be keeping our eyes on. What it came down to was simply the fact that we wanted a process that provided designers, developers, and business with all of the information that is needed for the project right off the bat. Leave no stone unturned.
 
 The first step in attaining this goal was to hold a discovery meeting, which for Zenman, is our first deep dive into what the client is all about. This meeting incorporates every member of the team for this specific project. Everyone from Project Manager and Sales Exec, to Developer and Designer, all the way up to the CEO sits in on this meeting.
 
@@ -22,7 +22,7 @@ Just to give you a little insight into our discovery process, from a development
 
 One of the best things about the process that we implemented at Zenman is that it is effective for projects of all sizes. From Fortune 500 companies down to startups, our process works. There is no more tempting time to skip out on process then on a small project. This is where you kind of have to reign in the project managers and sales folks. At this point, a PM or AM will try to tempt you with promises of gold and mir to break process and get the task done in record time.
 
-![nope nope nope](http://bukk.it/noooooooooo.gif "noooooooooo")
+![nope nope nope](https://bukk.it/noooooooooo.gif "noooooooooo")
 
 DON'T DO IT! Sticking to the process may incur a little bit of extra time up front, but for the love of God it has the potential to save your ass in the long run.
 

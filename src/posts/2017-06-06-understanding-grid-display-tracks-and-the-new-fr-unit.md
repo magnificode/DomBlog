@@ -56,7 +56,7 @@ Each of the `300px` definitions in the CSS above, relates to one column. This fo
 
 I'm sure you're sitting at your computer thinking "Gee that's a lot of typing if you have a bunch of tracks."
 
-![ugh](http://bukk.it/ugh.gif)
+![ugh](https://bukk.it/ugh.gif)
 
 Boy howdy are you in luck. Within the `grid-template-columns` property we have a nifty function we can utilize called `repeat()`. As you likely saw in the CodePen example above, our grid wrapper had this declaration `grid-template-columns: repeat(3, 1fr);`. I bet you can figure out how to use this function. The first integer in the function represents how many times we'd like to repeat the following track sizing. The second parameter we pass to the function is the size. Which leads us to the next section, on the `fr` unit.
 

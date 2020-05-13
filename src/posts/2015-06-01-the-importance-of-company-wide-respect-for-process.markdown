@@ -12,7 +12,7 @@ The main point here is that business has to be on board with the process. At Zen
 
 It is possible that the risk involved with the tweak in process may not be worth it to business. You as a developer or designer need to prepare yourself to be shot down. Take the concerns that business has and rework your plan. Get the high level folks on board and it's all downhill from there.
 
-![alt text](http://bukk.it/business.jpg)
+![alt text](https://bukk.it/business.jpg)
 
 ##Project Management
 

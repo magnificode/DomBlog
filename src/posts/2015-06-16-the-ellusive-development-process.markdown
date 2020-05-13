@@ -116,6 +116,6 @@ Here’s a list of items we ensure happen on every stage and launch that we do.
 
 And that, ladies and gentlemen, is where I'm going to end the worlds longest development process blog post. If you stuck with me this far, congratulations here's a gif to reward you.
 
-![alt text](http://bukk.it/annodomini.gif)
+![alt text](https://bukk.it/annodomini.gif)
 
 This series of posts will be turned into a talk that I'll be doing at Refresh Denver on August 12th. [Check it out and RSVP if you're interested!](http://www.meetup.com/refreshdenver/events/219844847/)
