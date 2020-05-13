@@ -1,7 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `dommagnifi.co`,
+    title: `Magnificode`,
+    titleTemplate: "%s | Magnificode",
     description: `Thoughts from Dominic Magnifico`,
+    image: "/favicon.png",
+    twitterUsername: "@magnificode",
     siteUrl: `https://dommagnifi.co`
   },
   plugins: [
@@ -40,6 +43,9 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-plugin-social-cards`,
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
