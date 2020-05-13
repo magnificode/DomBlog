@@ -1,16 +1,19 @@
 import React from "react";
 import { graphql } from 'gatsby'
-import { Helmet } from "react-helmet"
 
 import Wrapper from "./wrapper";
+import SEO from "../components/SEO";
 
 export default ({ data }) => {
   const post = data.markdownRemark;
   return (
     <Wrapper>
-      <Helmet>
-        <title>{post.fields.title}</title>
-      </Helmet>
+      <SEO
+        title={post.fields.title}
+        description={post.fields.description}
+        article
+        image={`${post.fields.slug}social_img.jpg`}
+      />
       <article className="pv5 post">
         <header className="bg-parent sans-serif">
           <div className="mw9 center pa4 pt5-ns ph7-l">
@@ -37,6 +40,8 @@ export const query = graphql`
       fields {
         title
         date
+        description
+        slug
       }
     }
   }

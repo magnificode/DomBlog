@@ -8,10 +8,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const slug = createFilePath({ node, getNode, basePath: `posts` });
     let title = node.frontmatter.title;
     let date = node.frontmatter.date;
+    let description = node.frontmatter.description;
     if (title === "" || date === null) {
       let nameArr = slug.replace(/\//g, "").split("-");
       date = nameArr.splice(0, 3).join("-");
       title = nameArr.join(" ").replace(".md", "");
+    }
+    if (description === null) {
+      description = "A very good blog post by Dominic Magnifico"
     }
     createNodeField({
       node,
@@ -33,6 +37,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         node,
         name: "url",
         value: "https://dommagnifi.co" + slug
+      });
+      createNodeField({
+        node,
+        name: "description",
+        value: description
       });
     }
   }

@@ -1,12 +1,9 @@
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import Wrapper from '../templates/wrapper';
 
 export default () => (
   <Wrapper>
-    <Helmet>
-      <title>Dom's Resume</title>
-    </Helmet>
     <section className="cf pv6 ph4 pa5-l bt mw9 center georgia mw9-l f5 f3-ns lh-copy measure">
       <div className="resume__inner">
         <div className="resume__section resume__section--head">
