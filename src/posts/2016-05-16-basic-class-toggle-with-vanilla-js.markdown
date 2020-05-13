@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  Basic Class Toggle with Vanilla JS
+description: >
+  Create a basic class toggle function with Vanilla JavaScript.
 date:   2016-05-16 16:44:00
 categories: update
 redirect_from:

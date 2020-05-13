@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  Basic ES6 Vanilla JS Class Toggle
+description: >
+  Create a basic class toggle function with ES6 Vanilla JavaScript.
 date:   2019-05-06 16:44:00
 categories: update
 ---
