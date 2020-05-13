@@ -9,7 +9,7 @@ const Header = ({ children  }) => {
   const {dark, themeToggle} = useTheme();
 
   return (
-    <nav className="primary-nav bg-parent db dt-l fixed w-100 border-box pa3 ph5-l">
+    <nav className="primary-nav bg-parent db dt-l fixed w-100 border-box pa3 ph5-l avenir">
       <Link className="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l" to="/" title="Home">
         <Logo width="30" />
       </Link>

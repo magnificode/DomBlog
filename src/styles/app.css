@@ -109,3 +109,11 @@ hr {
   align-items: center;
   display: flex;
 }
+
+@media ( min-width: 64em ) {
+  .job-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4rem;
+  }
+}

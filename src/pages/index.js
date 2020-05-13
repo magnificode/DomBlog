@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { Helmet } from 'react-helmet';
+import SEO from '../components/SEO';
 import { graphql } from 'gatsby';
 
 import { ThemeContext } from '../ThemeContext';
@@ -37,6 +37,7 @@ export default ({ data }) => {
 
   return (
     <Wrapper>
+      <SEO titleTemplate="%s" />
       <section className="cf pv6 ph4 pa6-l bt mw9 center avenir">
         {data.allMarkdownRemark.edges.map(({ node }, idx) => (
           <ThemeContext.Consumer key={idx}>

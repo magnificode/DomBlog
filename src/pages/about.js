@@ -1,10 +1,11 @@
 import React from 'react'
-import { Helmet } from 'react-helmet';
+import SEO from '../components/SEO';
 import Wrapper from '../templates/wrapper';
 import Logo from '../components/Logo';
 
 export default () => (
   <Wrapper>
+    <SEO title="About" />
     <article className="cf pv6 ph4 pa5-l bt mw9 center">
       <header className="pv3 f2-ns db lh-copy serif fw1 mv0 measure center">
         <h1 className="fw6 f1 fl w-100 mt0 mb3 sans-serif">Hi! I&lsquo;m Dom, a Front End Developer from Denver.</h1>
