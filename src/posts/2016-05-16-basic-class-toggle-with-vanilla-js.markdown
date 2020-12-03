@@ -29,9 +29,9 @@ Pretty straight forward. We'll take this apart piece by piece. The first thing w
 
 ## Enter querySelector
 
-MDN [states that](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) querySelector:
+[MDN states](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) that querySelector:
 
->Returns the first element within the document hat matches the specified group of selectors.
+>Returns the first element within the document that matches the specified group of selectors.
 
 This is perfect for our case, we currently only have one element on the page with a class name of `.toggle-me`. If you have multiple elements on the page with the same class name, you'll need to look into [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll), which I'll dive into in another blog post.
 
