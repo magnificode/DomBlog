@@ -5,7 +5,7 @@ import Header from '../components/Header';
 const Wrapper = ( { children } ) => {
 
   return (
-    <div className={`wrapper`}>
+    <div className={`wrapper -light`}>
       <Header />
       {children}
     </div>
