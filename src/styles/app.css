@@ -80,6 +80,7 @@ hr {
 .post a:focus {
   text-decoration: underline;
 }
+
 .post .date {
   color: var(--fontColorAlt);
 }
