@@ -9,8 +9,8 @@
 .-light {
   --background: #e5e7e8;
   --parentBg: #D5D7D8;
-  --fontColor: #2D1832;
-  --link: #711423;
+  --fontColor: #303633;
+  --link: #444A73;
   --fontColorAlt: var(--link);
 }
 
@@ -108,6 +108,11 @@ hr {
 .post-title .lh-copy {
   align-items: center;
   display: flex;
+}
+
+.post a {
+  color: var(--fontColorAlt);
+  text-decoration: underline;
 }
 
 @media ( min-width: 64em ) {
