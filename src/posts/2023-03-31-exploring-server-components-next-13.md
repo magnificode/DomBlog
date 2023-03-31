@@ -3,7 +3,7 @@ layout: post
 title: Server Components in Next 13
 description: >
   Exploration of the new server component behavior in next 13 with basic example.
-date: 2023-03-31 16:44:00
+date: 2023-03-31 12:44:00
 categories: update
 ---
 
