@@ -7,11 +7,9 @@ date: 2023-04-05 11:00:00
 categories: update
 ---
 
-![Dommy Savage pointing to the post title]({{ "/images/handling-controlled-and-uncontrolled-inputs.jpg" | prepend: site.baseurl }})
+![Dommy savage pointing to the post title](/static/images/handling-controlled-and-uncontrolled-inputs.jpg)
 
-# How to Handle Controlled and Uncontrolled Inputs in React
-
-It may just be me, but every time I build a form in React I inevitably run into this lovely warning:
+Every time I build a form in React I inevitably run into this lovely warning:
 
 > Warning: A component is changing an uncontrolled input of type text to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa). Decide between using a controlled or uncontrolled input element for the lifetime of the component.
 
