@@ -75,4 +75,4 @@ In general, use controlled inputs when you need to validate or manipulate the in
 
 Uncontrolled inputs are useful when you don't need to do any immediate validation or manipulation on the input value, or when you have a large form with many inputs where it may not be the best idea to create a state variable for each one.
 
-Hopfully this helps to illuminate the differences between controlled and uncontrolled inputs in React. May we never see another console warning again 🤘.
+Hopefully this helps to illuminate the differences between controlled and uncontrolled inputs in React. May we never see another console warning again 🤘.
