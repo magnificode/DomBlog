@@ -7,7 +7,7 @@ date: 2023-03-29 12:44:00
 categories: update
 ---
 
-![Dommy Savage pointing to the post title]({{ "/images/Server-components.jpg" | prepend: site.baseurl }})
+![Dommy savage pointing to the post title](/images/Server-components.jpg)
 
 I just got back from the labs at [House of Giants](https://houseofgiants.com) where I was able to take a look at some of the cool new features in Next 13. One of these promising new features is server components. This new capability promises to change the way we build NextJS applications for the better. In this post, we'll take a closer look at server components, explore their benefits, and discuss best practices for using them in real-world scenarios.
 

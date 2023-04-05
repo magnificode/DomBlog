@@ -7,7 +7,7 @@ date: 2023-04-05 11:00:00
 categories: update
 ---
 
-![Dommy savage pointing to the post title](/static/images/handling-controlled-and-uncontrolled-inputs.jpg)
+![Dommy savage pointing to the post title](/images/handling-controlled-and-uncontrolled-inputs.jpg)
 
 Every time I build a form in React I inevitably run into this lovely warning:
 
