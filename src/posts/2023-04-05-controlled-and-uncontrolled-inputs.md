@@ -7,6 +7,8 @@ date: 2023-04-05 11:00:00
 categories: update
 ---
 
+![Dommy Savage pointing to the post title]({{ "/images/handling-controlled-and-uncontrolled-inputs.jpg" | prepend: site.baseurl }})
+
 # How to Handle Controlled and Uncontrolled Inputs in React
 
 It may just be me, but every time I build a form in React I inevitably run into this lovely warning:
