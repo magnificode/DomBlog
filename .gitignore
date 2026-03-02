@@ -6,3 +6,5 @@ bun.lock
 .env
 .env.local
 .DS_Store
+.bun-install
+.bun-tmp

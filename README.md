@@ -34,7 +34,11 @@ Blog content lives in `content/posts/` and is sourced from legacy markdown in `o
 ## Deployment
 
 Deploy on Vercel with:
+
 - Build command: `bun run build`
 - Install command: `bun install`
+- Environment variables:
+  - `NEXT_PUBLIC_POSTHOG_KEY`
+  - `NEXT_PUBLIC_POSTHOG_HOST` (default: `https://us.i.posthog.com`)
 
 Set custom domain in Vercel to `dommagnifi.co`.

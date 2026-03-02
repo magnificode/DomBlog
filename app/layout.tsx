@@ -4,6 +4,7 @@ import { Instrument_Serif, JetBrains_Mono, Space_Grotesk } from 'next/font/googl
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { NoiseLayer } from '@/components/ui/noise-layer';
 import { ScanlineLayer } from '@/components/ui/scanline-layer';
+import { PostHogProvider } from '@/components/analytics/posthog-provider';
 import './globals.css';
 
 const mono = JetBrains_Mono({
@@ -56,63 +57,68 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 	return (
 		<html lang="en" data-theme="dark" className={`${mono.variable} ${serif.variable} ${spaceGrotesk.variable}`}>
 			<body className="flex min-h-screen flex-col antialiased">
-				<script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
-				<NoiseLayer className="fixed inset-0 z-[-1]" />
-				<ScanlineLayer className="fixed inset-0 z-[-1]" />
-				<div className="ambient-glow pointer-events-none fixed inset-0 z-[-2]" aria-hidden="true" />
+				<PostHogProvider>
+					<script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+					<NoiseLayer className="fixed inset-0 z-[-1]" />
+					<ScanlineLayer className="fixed inset-0 z-[-1]" />
+					<div className="ambient-glow pointer-events-none fixed inset-0 z-[-2]" aria-hidden="true" />
 
-				<header className="sticky top-0 z-40 border-b border-border/50 bg-background/85 backdrop-blur-md">
-					<div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3 sm:px-8">
-						<div className="flex items-center gap-6">
-							<Link href="/" className="focus-ring rounded-sm text-[13px] tracking-tight">
-								<span className="text-accent" aria-hidden="true">
-									&gt;
+					<header className="border-border/50 bg-background/85 sticky top-0 z-40 border-b backdrop-blur-md">
+						<div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3 sm:px-8">
+							<div className="flex items-center gap-6">
+								<Link href="/" className="focus-ring rounded-sm text-[13px] tracking-tight">
+									<span className="text-accent" aria-hidden="true">
+										&gt;
+									</span>{' '}
+									<span className="text-dim hover:text-foreground transition-colors">magnificode</span>
+								</Link>
+								<nav
+									aria-label="Primary"
+									className="text-dim flex items-center gap-3 text-[11px] sm:gap-4 sm:text-[12px]"
+								>
+									<Link href="/" className="hover:text-foreground transition-colors">
+										blog
+									</Link>
+									<Link href="/archive" className="hover:text-foreground transition-colors">
+										archive
+									</Link>
+									<Link href="/about" className="hover:text-foreground transition-colors">
+										about
+									</Link>
+									<Link href="/projects" className="hover:text-foreground transition-colors">
+										projects
+									</Link>
+									<Link href="/contact" className="hover:text-foreground transition-colors">
+										contact
+									</Link>
+								</nav>
+							</div>
+							<ThemeToggle />
+						</div>
+					</header>
+
+					<div className="flex-1">{children}</div>
+
+					<footer className="border-border/30 border-t py-6">
+						<div className="mx-auto flex max-w-3xl items-end justify-between gap-4 px-5 sm:px-8">
+							<p className="text-dim text-[11px]">
+								<span className="text-accent/60" aria-hidden="true">
+									&copy;
 								</span>{' '}
-								<span className="text-dim transition-colors hover:text-foreground">magnificode</span>
-							</Link>
-							<nav aria-label="Primary" className="flex items-center gap-3 text-[11px] text-dim sm:gap-4 sm:text-[12px]">
-								<Link href="/" className="transition-colors hover:text-foreground">
-									blog
+								{new Date().getFullYear()} Dominic Magnifico
+							</p>
+							<div className="text-dim flex items-center gap-3 text-[11px]">
+								<Link href="/rss.xml" className="hover:text-foreground transition-colors">
+									rss
 								</Link>
-								<Link href="/archive" className="transition-colors hover:text-foreground">
-									archive
+								<span aria-hidden="true">&middot;</span>
+								<Link href="/contact" className="hover:text-foreground transition-colors">
+									get in touch
 								</Link>
-								<Link href="/about" className="transition-colors hover:text-foreground">
-									about
-								</Link>
-								<Link href="/projects" className="transition-colors hover:text-foreground">
-									projects
-								</Link>
-								<Link href="/contact" className="transition-colors hover:text-foreground">
-									contact
-								</Link>
-							</nav>
+							</div>
 						</div>
-						<ThemeToggle />
-					</div>
-				</header>
-
-				<div className="flex-1">{children}</div>
-
-				<footer className="border-t border-border/30 py-6">
-					<div className="mx-auto flex max-w-3xl items-end justify-between gap-4 px-5 sm:px-8">
-						<p className="text-[11px] text-dim">
-							<span className="text-accent/60" aria-hidden="true">
-								&copy;
-							</span>{' '}
-							{new Date().getFullYear()} Dominic Magnifico
-						</p>
-						<div className="flex items-center gap-3 text-[11px] text-dim">
-							<Link href="/rss.xml" className="transition-colors hover:text-foreground">
-								rss
-							</Link>
-							<span aria-hidden="true">&middot;</span>
-							<Link href="/contact" className="transition-colors hover:text-foreground">
-								get in touch
-							</Link>
-						</div>
-					</div>
-				</footer>
+					</footer>
+				</PostHogProvider>
 			</body>
 		</html>
 	);

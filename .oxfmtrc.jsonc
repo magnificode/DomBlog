@@ -1,13 +1,23 @@
 {
-  "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "printWidth": 120,
-  "singleQuote": true,
-  "useTabs": true,
-  "trailingComma": "es5",
-  "bracketSpacing": true,
-  "arrowParens": "always",
-  "experimentalTailwindcss": {
-    "functions": ["cn", "clsx"]
-  },
-  "ignorePatterns": ["node_modules/**", ".next/**", "out/**", "build/**", "dist/**", ".velite/**", "bun.lock"]
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"printWidth": 120,
+	"singleQuote": true,
+	"useTabs": true,
+	"trailingComma": "es5",
+	"bracketSpacing": true,
+	"arrowParens": "always",
+	"experimentalTailwindcss": {
+		"functions": ["cn", "clsx"],
+	},
+	"ignorePatterns": [
+		"node_modules/**",
+		".next/**",
+		"out/**",
+		"build/**",
+		"dist/**",
+		".velite/**",
+		".bun-install/**",
+		".bun-tmp/**",
+		"bun.lock",
+	],
 }
