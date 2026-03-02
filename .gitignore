@@ -1,0 +1,8 @@
+.next
+.velite
+node_modules
+bun.lock
+*.tsbuildinfo
+.env
+.env.local
+.DS_Store

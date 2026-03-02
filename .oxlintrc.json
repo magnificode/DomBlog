@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "nextjs", "typescript", "jsx-a11y", "import"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"react/jsx-key": "error",
+		"react/no-unescaped-entities": "warn",
+		"nextjs/no-async-client-component": "error",
+		"nextjs/no-img-element": "error",
+		"jsx-a11y/alt-text": "error",
+		"import/no-cycle": "error",
+		"import/no-unassigned-import": "off"
+	},
+  "ignorePatterns": [".next/**", "out/**", "build/**", ".velite/**", "node_modules/**"]
+}
