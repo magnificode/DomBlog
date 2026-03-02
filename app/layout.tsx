@@ -35,6 +35,9 @@ export const metadata: Metadata = {
 		default: 'Magnificode',
 		template: '%s | Magnificode',
 	},
+	icons: {
+		icon: '/favicon.png',
+	},
 	description: 'Thoughts from Dominic Magnifico',
 	openGraph: {
 		title: 'Magnificode',

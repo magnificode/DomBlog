@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { Suspense } from 'react';
 import posthogClient from 'posthog-js';
 import { PostHogProvider as PostHogProviderClient } from 'posthog-js/react';
 import { PostHogPageview } from '@/components/analytics/posthog-pageview';
@@ -28,7 +29,9 @@ export function PostHogProvider({ children }: Readonly<{ children: React.ReactNo
 
 	return (
 		<PostHogProviderClient client={posthogClient}>
-			<PostHogPageview />
+			<Suspense fallback={null}>
+				<PostHogPageview />
+			</Suspense>
 			{children}
 		</PostHogProviderClient>
 	);
