@@ -23,7 +23,29 @@ function truncateText(value: string, maxLength: number) {
 		return value;
 	}
 
-	return `${value.slice(0, maxLength - 1).trim()}...`;
+	return `${value.slice(0, maxLength - 1).trim()}\u2026`;
+}
+
+async function loadGoogleFont(family: string, options?: { weight?: number; italic?: boolean }) {
+	const weight = options?.weight ?? 400;
+	const italic = options?.italic ?? false;
+	const axis = italic ? `ital,wght@1,${weight}` : `wght@${weight}`;
+
+	const css = await fetch(
+		`https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:${axis}`,
+		{
+			headers: {
+				// Request TTF format (required by Satori)
+				'User-Agent':
+					'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1',
+			},
+		},
+	).then((res) => res.text());
+
+	const fontUrl = css.match(/src: url\((.+?)\)/)?.[1];
+	if (!fontUrl) throw new Error(`Could not resolve font URL for ${family}`);
+
+	return fetch(fontUrl).then((res) => res.arrayBuffer());
 }
 
 export default async function OGImage({ params }: OGImageProps) {
@@ -34,9 +56,18 @@ export default async function OGImage({ params }: OGImageProps) {
 		notFound();
 	}
 
+	const [serifFont, monoFont] = await Promise.all([
+		loadGoogleFont('Instrument Serif', { weight: 400, italic: true }),
+		loadGoogleFont('JetBrains Mono', { weight: 400 }),
+	]);
+
 	const publishedDate = toCompactDate(post.date);
 	const primaryTag = post.tags[0] ?? 'blog';
-	const excerpt = post.excerpt ? truncateText(post.excerpt, 180) : 'Thoughts from Dominic Magnifico';
+	const excerpt = post.excerpt ? truncateText(post.excerpt, 140) : '';
+
+	// Adaptive title sizing based on character count
+	const titleLength = post.title.length;
+	const titleSize = titleLength > 55 ? 58 : titleLength > 35 ? 68 : 78;
 
 	return new ImageResponse(
 		(
@@ -45,115 +76,141 @@ export default async function OGImage({ params }: OGImageProps) {
 					height: '100%',
 					width: '100%',
 					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'space-between',
+					backgroundColor: '#0c0e0d',
+					padding: '56px 64px',
+					fontFamily: 'JetBrains Mono, monospace',
 					position: 'relative',
-					background:
-						'radial-gradient(1200px 600px at -10% -20%, #1c3f2f 0%, transparent 60%), radial-gradient(1000px 500px at 110% 110%, #132d24 0%, transparent 65%), #0a0f0d',
-					color: '#eef7f1',
-					fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
 					overflow: 'hidden',
-					padding: '56px',
 				}}
 			>
+				{/* Ambient glow — top left, behind title */}
 				<div
 					style={{
 						position: 'absolute',
-						inset: '0',
-						opacity: 0.2,
-						backgroundImage:
-							'repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 4px)',
+						top: '-180px',
+						left: '-80px',
+						width: '700px',
+						height: '700px',
+						background:
+							'radial-gradient(circle, rgba(56, 217, 127, 0.05) 0%, transparent 65%)',
 					}}
 				/>
 
+				{/* Ambient glow — bottom right, for balance */}
+				<div
+					style={{
+						position: 'absolute',
+						bottom: '-300px',
+						right: '-200px',
+						width: '600px',
+						height: '600px',
+						background:
+							'radial-gradient(circle, rgba(56, 217, 127, 0.03) 0%, transparent 65%)',
+					}}
+				/>
+
+				{/* ── Top: brand bar ── */}
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'space-between',
+						fontSize: 17,
+						color: 'rgba(242, 240, 236, 0.38)',
+						letterSpacing: 1,
+						textTransform: 'uppercase',
+					}}
+				>
+					<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+						<span style={{ color: '#38d97f', fontSize: 19 }}>{'>'}</span>
+						<span>magnificode</span>
+					</div>
+					<span>dommagnifi.co</span>
+				</div>
+
+				{/* ── Center: title + accent + excerpt ── */}
 				<div
 					style={{
 						display: 'flex',
 						flexDirection: 'column',
-						justifyContent: 'space-between',
-						width: '100%',
-						height: '100%',
-						border: '1px solid rgba(56, 217, 127, 0.35)',
-						padding: '44px',
-						background: 'linear-gradient(180deg, rgba(14,22,18,0.85) 0%, rgba(8,14,11,0.7) 100%)',
-						position: 'relative',
 					}}
 				>
 					<div
 						style={{
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'space-between',
-							fontSize: 24,
-							letterSpacing: 0.5,
-							color: 'rgba(209, 235, 220, 0.92)',
-							textTransform: 'uppercase',
+							fontFamily: 'Instrument Serif',
+							fontStyle: 'italic',
+							fontSize: titleSize,
+							lineHeight: 1.08,
+							letterSpacing: -2,
+							color: '#f2f0ec',
+							maxWidth: '92%',
 						}}
 					>
-						<div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-							<span style={{ color: '#38d97f' }}>{'>'}</span>
-							<span>magnificode</span>
-						</div>
-						<div style={{ opacity: 0.8 }}>dommagnifi.co</div>
+						{post.title}
 					</div>
 
-					<div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '92%' }}>
-						<div
-							style={{
-								display: 'inline-flex',
-								alignItems: 'center',
-								gap: '10px',
-								fontSize: 22,
-								color: '#9fc3af',
-								textTransform: 'uppercase',
-							}}
-						>
-							<span>{primaryTag}</span>
-							<span style={{ color: '#38d97f' }}>•</span>
-							<span>{publishedDate}</span>
-						</div>
+					{/* Accent bar */}
+					<div
+						style={{
+							width: '64px',
+							height: '2px',
+							backgroundColor: '#38d97f',
+							marginTop: '32px',
+						}}
+					/>
 
+					{excerpt ? (
 						<div
 							style={{
-								fontSize: 72,
-								lineHeight: 1.04,
-								fontWeight: 700,
-								letterSpacing: -1.2,
-								maxWidth: '100%',
-								color: '#f0f8f3',
-							}}
-						>
-							{post.title}
-						</div>
-
-						<div
-							style={{
-								fontSize: 28,
-								lineHeight: 1.35,
-								maxWidth: '90%',
-								color: 'rgba(198, 222, 209, 0.85)',
+								fontSize: 19,
+								lineHeight: 1.55,
+								color: 'rgba(242, 240, 236, 0.48)',
+								maxWidth: '72%',
+								marginTop: '24px',
 							}}
 						>
 							{excerpt}
 						</div>
-					</div>
+					) : null}
+				</div>
 
-					<div
-						style={{
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'space-between',
-							fontSize: 22,
-							color: '#9fc3af',
-						}}
-					>
-						<div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-							<span style={{ color: '#38d97f' }}>/</span>
-							<span>{post.metadata.readingTime} min read</span>
-						</div>
-						<div style={{ textTransform: 'uppercase', letterSpacing: 0.5 }}>Thoughts from Dominic Magnifico</div>
-					</div>
+				{/* ── Bottom: metadata ── */}
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						gap: '16px',
+						fontSize: 15,
+						color: 'rgba(242, 240, 236, 0.32)',
+						textTransform: 'uppercase',
+						letterSpacing: 1,
+					}}
+				>
+					<span style={{ color: 'rgba(56, 217, 127, 0.7)' }}>#{primaryTag}</span>
+					<span style={{ opacity: 0.4 }}>&middot;</span>
+					<span>{publishedDate}</span>
+					<span style={{ opacity: 0.4 }}>&middot;</span>
+					<span>{post.metadata.readingTime} min read</span>
 				</div>
 			</div>
 		),
-		size,
+		{
+			...size,
+			fonts: [
+				{
+					name: 'Instrument Serif',
+					data: serifFont,
+					style: 'italic',
+					weight: 400,
+				},
+				{
+					name: 'JetBrains Mono',
+					data: monoFont,
+					weight: 400,
+				},
+			],
+		},
 	);
 }
