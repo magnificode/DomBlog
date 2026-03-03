@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useState } from 'react';
 import { Suspense } from 'react';
 import posthogClient from 'posthog-js';
 import { PostHogProvider as PostHogProviderClient } from 'posthog-js/react';
@@ -12,8 +13,13 @@ const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? 'https://us.i.posth
 let initialized = false;
 
 export function PostHogProvider({ children }: Readonly<{ children: React.ReactNode }>) {
+	const [isReady, setIsReady] = useState(initialized);
+
 	useEffect(() => {
-		if (initialized) return;
+		if (initialized) {
+			setIsReady(true);
+			return;
+		}
 		if (!POSTHOG_KEY) return;
 
 		posthogClient.init(POSTHOG_KEY, {
@@ -22,6 +28,7 @@ export function PostHogProvider({ children }: Readonly<{ children: React.ReactNo
 			capture_pageleave: true,
 			loaded: (instance) => {
 				instance.register({ posthog_project_id: '329425' });
+				setIsReady(true);
 			},
 		});
 
@@ -31,7 +38,7 @@ export function PostHogProvider({ children }: Readonly<{ children: React.ReactNo
 	return (
 		<PostHogProviderClient client={posthogClient}>
 			<Suspense fallback={null}>
-				<PostHogPageview />
+				{POSTHOG_KEY && isReady ? <PostHogPageview /> : null}
 			</Suspense>
 			{children}
 		</PostHogProviderClient>

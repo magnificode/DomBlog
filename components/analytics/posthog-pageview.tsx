@@ -10,9 +10,9 @@ export function PostHogPageview(): null {
 
 	useEffect(() => {
 		if (!pathname) return;
-
 		const query = searchParams?.toString();
-		const url = query ? `${pathname}?${query}` : pathname;
+		const fallbackUrl = query ? `${pathname}?${query}` : pathname;
+		const url = typeof window !== 'undefined' ? window.location.href : fallbackUrl;
 
 		posthogClient.capture('$pageview', { $current_url: url });
 	}, [pathname, searchParams]);
