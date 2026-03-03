@@ -387,6 +387,56 @@ a {
 	pointer-events: none;
 }
 
+/* ── Lab demos ───────────────────────────────── */
+.lab-demo-wrapper {
+	border: 1px solid var(--line);
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+.lab-demo-stage {
+	padding: 1.5rem;
+	background: var(--bg-elev);
+}
+
+.lab-demo-actions {
+	display: flex;
+	gap: 0.25rem;
+	border-top: 1px solid var(--line-soft);
+	background: color-mix(in oklch, var(--bg) 95%, black);
+}
+
+.lab-demo-btn {
+	padding: 0.55rem 1rem;
+	font-size: 12px;
+	font-family: var(--font-mono), ui-monospace, monospace;
+	color: var(--muted);
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: color 0.15s ease;
+}
+
+.lab-demo-btn:hover {
+	color: var(--fg);
+}
+
+.lab-demo-code pre {
+	margin: 0;
+	border-radius: 0;
+	border: none;
+	border-top: 1px solid var(--line-soft);
+	padding: 1.1rem 1.25rem;
+	background: color-mix(in oklch, var(--bg) 92%, black);
+	font-size: 13px;
+	line-height: 1.7;
+	overflow-x: auto;
+}
+
+.lab-demo-code code {
+	color: var(--accent);
+}
+
 /* ── Reduced motion ───────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
 	.fade-in,

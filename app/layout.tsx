@@ -85,6 +85,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 									<Link href="/archive" className="hover:text-foreground transition-colors">
 										archive
 									</Link>
+									<Link href="/lab" className="hover:text-foreground transition-colors">
+										lab
+									</Link>
 									<Link href="/about" className="hover:text-foreground transition-colors">
 										about
 									</Link>

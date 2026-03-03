@@ -1,6 +1,35 @@
 import rehypeShiki from '@shikijs/rehype';
 import { defineCollection, defineConfig, s } from 'velite';
 
+const labs = defineCollection({
+	name: 'Lab',
+	pattern: 'labs/**/*.mdx',
+	schema: s
+		.object({
+			title: s.string().max(220),
+			date: s.string(),
+			description: s.string(),
+			tags: s.array(s.string()).default([]),
+			code: s.string().optional(),
+			codeLanguage: s.string().default('css'),
+			rawSlug: s.path(),
+			metadata: s.metadata(),
+			content: s.markdown(),
+		})
+		.transform((data) => {
+			const slug = data.rawSlug.replace(/^labs\//, '').replace(/\.mdx$/i, '');
+			const permalink = `/lab/${slug}/`;
+			const parsedDate = new Date(data.date.replace(' ', 'T'));
+			const normalizedDate = Number.isNaN(parsedDate.getTime()) ? data.date : parsedDate.toISOString();
+			return {
+				...data,
+				date: normalizedDate,
+				slug,
+				permalink,
+			};
+		}),
+});
+
 const posts = defineCollection({
 	name: 'Post',
 	pattern: 'posts/**/*.md',
@@ -54,7 +83,7 @@ export default defineConfig({
 		name: '[name]-[hash:6].[ext]',
 		clean: true,
 	},
-	collections: { posts },
+	collections: { posts, labs },
 	markdown: {
 		rehypePlugins: [[rehypeShiki as never, { theme: 'material-theme-palenight', addLanguageClass: true }]],
 	},
