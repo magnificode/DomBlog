@@ -89,6 +89,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 		return { title: 'Post Not Found' };
 	}
 
+	const ogImage = `https://dommagnifi.co/${post.slug}/opengraph-image`;
+
 	return {
 		title: post.title,
 		description: post.excerpt || 'Thoughts from Dominic Magnifico',
@@ -101,6 +103,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 			url: `https://dommagnifi.co${post.permalink}`,
 			type: 'article',
 			publishedTime: post.date,
+			images: [
+				{
+					url: ogImage,
+					width: 1200,
+					height: 630,
+					alt: `${post.title} — Magnificode`,
+				},
+			],
+		},
+		twitter: {
+			card: 'summary_large_image',
+			creator: '@magnificode',
+			title: post.title,
+			description: post.excerpt || 'Thoughts from Dominic Magnifico',
+			images: [ogImage],
 		},
 	};
 }
@@ -135,18 +152,20 @@ export default async function PostPage({ params }: PageProps) {
 	};
 
 	return (
-		<main className="mx-auto max-w-3xl px-5 pt-10 pb-20 sm:px-8">
+		<main className="mx-auto max-w-3xl px-5 pt-10 pb-24 sm:px-8">
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-			<header className="fade-in-up mb-12">
+			<nav className="fade-in-up">
 				<Link
 					href="/"
 					className="focus-ring inline-flex items-center gap-1.5 rounded-sm text-[12px] text-dim transition-colors hover:text-accent"
 				>
 					<span aria-hidden="true">&larr;</span> back
 				</Link>
+			</nav>
 
-				<div className="mt-8 flex items-center gap-3 text-[12px] text-dim">
+			<header className="fade-in-up stagger-1 mt-10 mb-14">
+				<div className="flex items-center gap-3 text-[12px] text-dim">
 					<time dateTime={post.date}>{toCompactDate(post.date)}</time>
 					<span className="text-accent/40" aria-hidden="true">
 						&middot;
@@ -162,15 +181,14 @@ export default async function PostPage({ params }: PageProps) {
 					) : null}
 				</div>
 
-				<h1 className="display-serif mt-4 text-[clamp(2rem,5vw,3.5rem)]">{post.title}</h1>
+				<h1 className="display-serif mt-5 text-[clamp(2rem,5vw,3.5rem)]">{post.title}</h1>
 
-				<div className="terminal-divider mt-8" />
 				{post.tags.length > 0 ? (
-					<ul className="mt-5 flex flex-wrap gap-2">
+					<ul className="mt-6 flex flex-wrap gap-2">
 						{post.tags.map((tag) => (
 							<li key={tag}>
 								<Link
-									className="focus-ring rounded-sm border border-border/50 px-2 py-1 text-[10px] uppercase tracking-wide text-dim transition-colors hover:text-foreground"
+									className="focus-ring rounded-sm border border-border/50 px-2 py-1 text-[11px] uppercase tracking-wide text-dim transition-colors hover:text-foreground"
 									href={`/tags/${slugifyTag(tag)}`}
 								>
 									#{tag}
@@ -179,69 +197,91 @@ export default async function PostPage({ params }: PageProps) {
 						))}
 					</ul>
 				) : null}
+
+				<div className="terminal-divider mt-8" />
 			</header>
 
 			<article className="fade-in-up stagger-2">
-				<div className="prose prose-zinc max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+				<div className="prose prose-zinc" dangerouslySetInnerHTML={{ __html: post.content }} />
 			</article>
 
-			<section className="fade-in-up stagger-3 mt-16 border-t border-border/40 pt-8">
-				<div className="mb-8 rounded-sm border border-border/40 bg-card/25 p-4 text-[13px] leading-relaxed text-dim">
-					Want to collaborate on product engineering, frontend systems, or performance work?{' '}
-					<Link href="/contact" className="text-accent">
-						Reach out here.
-					</Link>
-				</div>
+			<footer className="fade-in-up stagger-3 mt-20">
+				<div className="terminal-divider mb-10" />
 
-				<h2 className="text-sm tracking-tight text-foreground">Webmentions ({webmentions.length})</h2>
-				<p className="mt-2 text-[12px] leading-relaxed text-dim">
-					Replies, likes, reposts, and mentions from across the web.
-				</p>
+				<div className="mt-10">
+					<h2 className="text-sm tracking-tight text-foreground">
+						Webmentions ({webmentions.length})
+					</h2>
+					<p className="mt-2 text-[12px] leading-relaxed text-dim">
+						Replies, likes, reposts, and mentions from across the web.
+					</p>
 
-				{webmentions.length > 0 ? (
-					<ul className="mt-6 space-y-4">
-						{webmentions.map((mention, index) => {
-							const content = mention.content?.text || mention.content?.value || '';
-							const preview = content.length > 220 ? `${content.slice(0, 220).trim()}...` : content;
-							const authorName = mention.author?.name || 'Unknown';
-							const mentionUrl = mention.author?.url || mention.url;
-							const dateLabel = mention.published ? toWebmentionDateLabel(mention.published) : null;
-							const key = mention['wm-id'] ?? `${mention.url ?? 'mention'}-${mention.published ?? index}`;
+					{webmentions.length > 0 ? (
+						<ul className="mt-6 space-y-4">
+							{webmentions.map((mention, index) => {
+								const content =
+									mention.content?.text || mention.content?.value || '';
+								const preview =
+									content.length > 220
+										? `${content.slice(0, 220).trim()}...`
+										: content;
+								const authorName = mention.author?.name || 'Unknown';
+								const mentionUrl = mention.author?.url || mention.url;
+								const dateLabel = mention.published
+									? toWebmentionDateLabel(mention.published)
+									: null;
+								const key =
+									mention['wm-id'] ??
+									`${mention.url ?? 'mention'}-${mention.published ?? index}`;
 
-							return (
-								<li key={key} className="rounded-sm border border-border/40 bg-card/25 p-4">
-									<div className="flex items-center gap-2 text-[11px] text-dim">
-										<span className="text-accent">{toWebmentionLabel(mention['wm-property'])}</span>
-										{dateLabel ? (
-											<>
-												<span aria-hidden="true">&middot;</span>
-												<time dateTime={mention.published}>{dateLabel}</time>
-											</>
+								return (
+									<li
+										key={key}
+										className="rounded-sm border border-border/40 bg-card/25 p-4"
+									>
+										<div className="flex items-center gap-2 text-[11px] text-dim">
+											<span className="text-accent">
+												{toWebmentionLabel(mention['wm-property'])}
+											</span>
+											{dateLabel ? (
+												<>
+													<span aria-hidden="true">&middot;</span>
+													<time dateTime={mention.published}>
+														{dateLabel}
+													</time>
+												</>
+											) : null}
+										</div>
+										<p className="mt-2 text-[13px] text-foreground">
+											{mentionUrl ? (
+												<a
+													href={mentionUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="focus-ring rounded-sm font-semibold text-accent hover:underline"
+												>
+													{authorName}
+												</a>
+											) : (
+												<span className="font-semibold text-foreground">
+													{authorName}
+												</span>
+											)}
+										</p>
+										{preview ? (
+											<p className="mt-2 text-[13px] leading-relaxed text-dim">
+												{preview}
+											</p>
 										) : null}
-									</div>
-									<p className="mt-2 text-[13px] text-foreground">
-										{mentionUrl ? (
-											<a
-												href={mentionUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="focus-ring rounded-sm font-semibold text-accent hover:underline"
-											>
-												{authorName}
-											</a>
-										) : (
-											<span className="font-semibold text-foreground">{authorName}</span>
-										)}
-									</p>
-									{preview ? <p className="mt-2 text-[13px] leading-relaxed text-dim">{preview}</p> : null}
-								</li>
-							);
-						})}
-					</ul>
-				) : (
-					<p className="mt-4 text-[13px] text-dim">No webmentions yet.</p>
-				)}
-			</section>
+									</li>
+								);
+							})}
+						</ul>
+					) : (
+						<p className="mt-4 text-[13px] text-dim">No webmentions yet.</p>
+					)}
+				</div>
+			</footer>
 		</main>
 	);
 }
