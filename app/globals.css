@@ -421,11 +421,46 @@ a {
 	color: var(--fg);
 }
 
+.lab-demo-code-section + .lab-demo-code-section {
+	border-top: 1px solid var(--line-soft);
+}
+
+.lab-demo-code-section-title {
+	margin: 0;
+	padding: 0.7rem 1.25rem;
+	font-size: 12px;
+	font-family: var(--font-mono), ui-monospace, monospace;
+	color: var(--fg);
+	background: color-mix(in oklch, var(--bg) 94%, black);
+	border-top: 1px solid var(--line-soft);
+}
+
+.lab-demo-code-section:first-child .lab-demo-code-section-title {
+	border-top: none;
+}
+
+.lab-demo-code-block + .lab-demo-code-block {
+	border-top: 1px solid var(--line-soft);
+}
+
+.lab-demo-code-label {
+	padding: 0.5rem 1.25rem;
+	font-size: 11px;
+	font-family: var(--font-mono), ui-monospace, monospace;
+	color: var(--muted);
+	border-top: 1px solid var(--line-soft);
+	background: color-mix(in oklch, var(--bg) 96%, black);
+	letter-spacing: 0.04em;
+}
+
+.lab-demo-code-block:first-child .lab-demo-code-label {
+	border-top: none;
+}
+
 .lab-demo-code pre {
 	margin: 0;
 	border-radius: 0;
 	border: none;
-	border-top: 1px solid var(--line-soft);
 	padding: 1.1rem 1.25rem;
 	background: color-mix(in oklch, var(--bg) 92%, black);
 	font-size: 13px;
@@ -434,7 +469,7 @@ a {
 }
 
 .lab-demo-code code {
-	color: var(--accent);
+	color: inherit;
 }
 
 /* ── Reduced motion ───────────────────────────── */

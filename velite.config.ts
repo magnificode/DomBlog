@@ -12,6 +12,17 @@ const labs = defineCollection({
 			tags: s.array(s.string()).default([]),
 			code: s.string().optional(),
 			codeLanguage: s.string().default('css'),
+			demos: s
+				.array(
+					s.object({
+						id: s.string(),
+						title: s.string().optional(),
+						description: s.string().optional(),
+						code: s.string().optional(),
+						codeLanguage: s.string().optional(),
+					}),
+				)
+				.optional(),
 			rawSlug: s.path(),
 			metadata: s.metadata(),
 			content: s.markdown(),

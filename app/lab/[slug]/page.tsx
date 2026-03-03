@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { allLabs, getLabBySlug } from '@/lib/labs';
+import { getHighlightedLabCodeSections } from '@/lib/lab-code';
 import { toCompactDate } from '@/lib/utils';
 import { LabDemo } from '@/components/labs/lab-demo';
 import { labDemos } from '@/components/labs/registry';
@@ -66,6 +67,18 @@ export default async function LabPage({ params }: PageProps) {
 	}
 
 	const DemoComponent = labDemos[lab.slug];
+	const demos = lab.demos?.length
+		? lab.demos
+		: DemoComponent
+			? [{ id: lab.slug, code: lab.code, codeLanguage: lab.codeLanguage }]
+			: [];
+	const renderedDemos = await Promise.all(
+		demos.map(async (demo) => ({
+			...demo,
+			component: labDemos[demo.id],
+			codeSections: await getHighlightedLabCodeSections(demo.code, demo.codeLanguage),
+		})),
+	);
 
 	return (
 		<main className="mx-auto max-w-3xl px-5 pt-10 pb-24 sm:px-8">
@@ -100,12 +113,32 @@ export default async function LabPage({ params }: PageProps) {
 				dangerouslySetInnerHTML={{ __html: lab.content }}
 			/>
 
-			{/* Live demo */}
-			{DemoComponent ? (
+			{/* Live demo(s) */}
+			{renderedDemos.length > 0 ? (
 				<div className="fade-in-up stagger-3">
-					<LabDemo code={lab.code} codeLanguage={lab.codeLanguage} slug={lab.slug}>
-						<DemoComponent />
-					</LabDemo>
+					<div className="space-y-8">
+						{renderedDemos.map((demo, index) => {
+							const Demo = demo.component;
+							if (!Demo) return null;
+							return (
+								<section key={`${demo.id}-${index}`} className="space-y-3">
+									{demo.title || demo.description ? (
+										<header>
+											{demo.title ? (
+												<h2 className="text-[13px] font-medium tracking-[0.03em] text-foreground">{demo.title}</h2>
+											) : null}
+											{demo.description ? (
+												<p className="text-dim mt-1 text-[12px] leading-relaxed">{demo.description}</p>
+											) : null}
+										</header>
+									) : null}
+									<LabDemo codeSections={demo.codeSections} slug={lab.slug}>
+										<Demo />
+									</LabDemo>
+								</section>
+							);
+						})}
+					</div>
 				</div>
 			) : null}
 		</main>

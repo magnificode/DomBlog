@@ -3,7 +3,39 @@ title: "scroll-margin-top: Stop Hiding Content Behind Sticky Headers"
 date: 2026-03-02
 description: "CSS's scroll-margin-top property prevents content from hiding behind sticky headers when using anchor links."
 tags: ["css"]
-code: "[id] {\n  scroll-margin-top: 80px;\n}"
+code: |
+  ```html
+  <div class="container">
+    <div class="header"> ... sticky nav links ... </div>
+
+    <h4 id="installation" class="heading">Installation</h4>
+    <h4 id="configuration" class="heading">Configuration</h4>
+  </div>
+  ```
+
+  ```css
+  .container {
+    height: 360px;
+    overflow-y: auto;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    height: 44px;
+  }
+
+  .heading {
+    scroll-margin-top: 48px; /* header height + spacing */
+  }
+  ```
+
+  ```js
+  const HEADER_HEIGHT = 44;
+
+  // Mirrors the demo toggle behavior.
+  heading.style.scrollMarginTop = enabled ? `${HEADER_HEIGHT + 4}px` : '0px';
+  ```
 codeLanguage: css
 ---
 

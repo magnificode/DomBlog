@@ -1,0 +1,70 @@
+---
+title: "attr() + content"
+date: 2026-03-03
+description: "Pull data attributes into rendered text with zero JavaScript using CSS attr() and the content property on pseudo-elements."
+tags: ["css", "html"]
+demos:
+  - id: data-attr-content-tooltip
+    title: "Part 1: Simple tooltip"
+    description: "Tooltip text is read from each button's data-tooltip attribute."
+    code: |
+      ```html
+      <button class="tooltip tooltipAction" data-tooltip="Edit this item">Edit</button>
+      <button class="tooltip tooltipAction" data-tooltip="Share with your team">Share</button>
+      <button class="tooltip tooltipAction" data-tooltip="Delete permanently">Delete</button>
+      ```
+
+      ```css
+      .tooltip::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: calc(100% + 8px);
+        opacity: 0;
+        transform: translate(-50%, 6px);
+      }
+
+      .tooltip:hover::after {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      ```
+
+    codeLanguage: html
+  - id: data-attr-content-status-board
+    title: "Part 2: Dynamic status board"
+    description: "Card badges read data-status and data-priority values through attr()."
+    code: |
+      ```html
+      <button class="card" data-status="in-progress" data-priority="high">
+        <h4>Ship color tokens</h4>
+      </button>
+      ```
+
+      ```css
+      .card::before {
+        content: attr(data-status);
+        text-transform: uppercase;
+      }
+
+      .card::after {
+        content: "Priority: " attr(data-priority);
+      }
+
+      .card[data-status='done']::before { color: #bbf7d0; }
+      .card[data-priority='high']::after { color: #fda4af; }
+      ```
+
+    codeLanguage: html
+---
+
+You can treat `data-*` attributes as a tiny UI API between HTML and CSS.
+
+Set the value once on the element, then let pseudo-elements read it with `attr()`:
+
+- Tooltip copy from `data-tooltip`
+- Status badge from `data-status`
+- Priority label from `data-priority`
+
+The important shift is architectural, not visual: the attribute is the source of truth, CSS is the renderer.
+
+> **Gotcha:** today `attr()` is broadly usable for generated content on `::before` and `::after`. CSS Values & Units Level 5 expands it for other properties, but support is still incomplete across browsers.
