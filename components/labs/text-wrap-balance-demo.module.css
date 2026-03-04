@@ -1,0 +1,109 @@
+.root {
+	display: grid;
+	gap: 1rem;
+}
+
+.panel {
+	border: 1px solid var(--line);
+	border-radius: 0.45rem;
+	background: color-mix(in oklch, var(--bg) 97%, black);
+	padding: 1rem;
+}
+
+.panelHead {
+	display: grid;
+	gap: 0.35rem;
+	margin-bottom: 0.85rem;
+}
+
+.title {
+	margin: 0;
+	font-size: 13px;
+	color: var(--fg);
+}
+
+.text {
+	margin: 0;
+	color: var(--muted);
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.text code {
+	color: var(--fg);
+}
+
+.comparison {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.75rem;
+}
+
+.column {
+	border: 1px solid var(--line);
+	border-radius: 0.35rem;
+	padding: 0.75rem;
+	background: var(--bg);
+}
+
+.columnActive {
+	border-color: color-mix(in oklch, var(--accent) 58%, var(--line));
+}
+
+.label {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--muted);
+	margin: 0 0 0.5rem;
+}
+
+.labelActive {
+	color: var(--accent);
+}
+
+.demoHeading {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--fg);
+	margin: 0;
+}
+
+.balanced {
+	text-wrap: balance;
+}
+
+.demoParagraph {
+	font-size: 13px;
+	line-height: 1.7;
+	color: var(--fg);
+	margin: 0;
+}
+
+.pretty {
+	text-wrap: pretty;
+}
+
+.orphanHighlight {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 10px;
+	color: var(--muted);
+	margin: 0.5rem 0 0;
+	padding: 0.3rem 0.5rem;
+	border-radius: 0.25rem;
+	background: color-mix(in oklch, var(--bg) 90%, black);
+	border: 1px solid color-mix(in oklch, var(--line) 50%, transparent);
+}
+
+.orphanHighlight code {
+	font-family: inherit;
+	color: var(--fg);
+}
+
+@media (max-width: 620px) {
+	.comparison {
+		grid-template-columns: 1fr;
+	}
+}

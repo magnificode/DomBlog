@@ -1,0 +1,38 @@
+---
+title: "text-wrap: balance & pretty"
+date: 2026-03-04
+description: "Two CSS one-liners that fix ugly text wrapping. balance evens out headings, pretty kills paragraph orphans. No JS required."
+tags: ["css"]
+demos:
+  - id: text-wrap-balance-balance
+    title: "Part 1: text-wrap: balance"
+    description: "Distributes text evenly across lines — no more orphan words dangling off headings."
+    code: |
+      ```css
+      .heading {
+        text-wrap: balance;
+      }
+      ```
+    codeLanguage: css
+  - id: text-wrap-balance-pretty
+    title: "Part 2: text-wrap: pretty"
+    description: "Prevents a single lonely word on the last line of paragraphs."
+    code: |
+      ```css
+      .paragraph {
+        text-wrap: pretty;
+      }
+      ```
+    codeLanguage: css
+---
+
+Stop using `<br>` tags to force your headings to break where you want them. Look at these instead.
+
+`text-wrap: balance` makes lines roughly the same length. Awesome for headings, captions, blockquotes. Browsers cap it though... 6 lines in Chromium, 10 in Firefox. Keep it on short stuff.
+
+`text-wrap: pretty` is for paragraphs. Prevents that orphan word dangling at the end of a text block. No Firefox support yet... Chrome 117+, Safari 26+. Degrades silently.
+
+Both are progressive enhancements. No support just means normal wrapping.
+
+`balance`: Chrome 130+, Firefox 121+, Safari 17.5+.
+`pretty`: Chrome 117+, Safari 26+. No Firefox.
