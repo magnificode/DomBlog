@@ -40,5 +40,6 @@ Deploy on Vercel with:
 - Environment variables:
   - `NEXT_PUBLIC_POSTHOG_KEY`
   - `NEXT_PUBLIC_POSTHOG_HOST` (default: `https://us.i.posthog.com`)
+  - `WEBMENTION_IO_TOKEN` (optional, recommended for accurate domain-wide mention lookups)
 
 Set custom domain in Vercel to `dommagnifi.co`.
