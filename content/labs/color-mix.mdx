@@ -1,0 +1,60 @@
+---
+title: 'color-mix(): one brand color, every state'
+date: 2026-03-06
+description: 'Generate hover states, disabled states, and tinted variants from one brand custom property with pure CSS color-mix().'
+tags: ['css']
+code: |
+  :::section Basic mix
+  ```css
+  .swatch-10 {
+    background: color-mix(in oklch, var(--brand) 90%, white);
+  }
+
+  .swatch-30 {
+    background: color-mix(in oklch, var(--brand) 70%, white);
+  }
+
+  .swatch-50 {
+    background: color-mix(in oklch, var(--brand) 50%, white);
+  }
+  ```
+
+  :::section Button hover, active, disabled
+  ```css
+  :root {
+    --brand: #38d97f;
+  }
+
+  .button {
+    background: var(--brand);
+  }
+
+  .button:hover:not(:disabled) {
+    background: color-mix(in oklch, var(--brand) 82%, white);
+  }
+
+  .button:active:not(:disabled) {
+    background: color-mix(in oklch, var(--brand) 74%, black);
+  }
+
+  .button:disabled {
+    background: color-mix(in oklch, var(--brand) 42%, var(--bg));
+  }
+  ```
+
+  :::section Dark mode tinting
+  ```css
+  [data-mode='light'] .tint {
+    background: color-mix(in oklch, var(--brand) 76%, white);
+  }
+
+  [data-mode='dark'] .tint {
+    background: color-mix(in oklch, var(--brand) 76%, black);
+  }
+  ```
+codeLanguage: css
+---
+
+Every design system has that one brand color that needs ten variants. Hover states, disabled buttons, tinted backgrounds, dark mode. We used to need Sass and lighten() for this. Now it's native CSS.
+
+color-mix() takes two colors and a ratio, and the browser does the rest. The demos below all derive from a single value you can change yourself.
