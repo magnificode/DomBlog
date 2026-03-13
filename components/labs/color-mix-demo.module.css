@@ -1,0 +1,285 @@
+.root {
+	--brand: #38d97f;
+	display: grid;
+	gap: 1rem;
+}
+
+.toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	justify-content: space-between;
+	gap: 0.75rem;
+	padding: 0.75rem;
+	border: 1px solid var(--line);
+	border-radius: 0.45rem;
+	background: color-mix(in oklch, var(--bg) 96%, black);
+}
+
+.toolbarCopy {
+	margin: 0;
+	font-size: 11px;
+	color: var(--muted);
+	font-family: var(--font-mono, ui-monospace, monospace);
+}
+
+.colorField {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.colorField span {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 10px;
+	color: var(--muted);
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.colorField input {
+	appearance: none;
+	width: 2.15rem;
+	height: 2.15rem;
+	border: 1px solid var(--line);
+	border-radius: 0.4rem;
+	background: transparent;
+	cursor: pointer;
+	padding: 0.15rem;
+}
+
+.colorField input::-webkit-color-swatch {
+	border: none;
+	border-radius: 0.25rem;
+}
+
+.colorField input::-moz-color-swatch {
+	border: none;
+	border-radius: 0.25rem;
+}
+
+.colorField code {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 11px;
+	color: var(--fg);
+}
+
+.panel {
+	border: 1px solid var(--line);
+	border-radius: 0.45rem;
+	background: color-mix(in oklch, var(--bg) 97%, black);
+	padding: 1rem;
+}
+
+.panelHead {
+	display: grid;
+	gap: 0.35rem;
+	margin-bottom: 0.85rem;
+}
+
+.title {
+	margin: 0;
+	font-size: 13px;
+	color: var(--fg);
+}
+
+.text {
+	margin: 0;
+	color: var(--muted);
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.text code {
+	color: var(--fg);
+}
+
+.swatchGrid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.65rem;
+}
+
+.swatchCard {
+	border: 1px solid var(--line);
+	border-radius: 0.35rem;
+	padding: 0.6rem;
+	background: var(--bg);
+}
+
+.swatch {
+	height: 70px;
+	border-radius: 0.28rem;
+	border: 1px solid color-mix(in oklch, var(--line) 65%, transparent);
+	background: var(--brand);
+}
+
+.swatch[data-mix='10'] {
+	background: color-mix(in oklch, var(--brand) 90%, white);
+}
+
+.swatch[data-mix='30'] {
+	background: color-mix(in oklch, var(--brand) 70%, white);
+}
+
+.swatch[data-mix='50'] {
+	background: color-mix(in oklch, var(--brand) 50%, white);
+}
+
+.swatchLabel {
+	margin: 0.55rem 0 0;
+	font-size: 11px;
+	color: var(--fg);
+	font-family: var(--font-mono, ui-monospace, monospace);
+}
+
+.inlineCode {
+	margin: 0.3rem 0 0;
+	font-size: 10px;
+	line-height: 1.4;
+}
+
+.inlineCode code {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	color: var(--muted);
+}
+
+.buttonRow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+}
+
+.brandButton {
+	border: 1px solid color-mix(in oklch, var(--brand) 45%, transparent);
+	border-radius: 0.35rem;
+	padding: 0.5rem 0.8rem;
+	background: var(--brand);
+	color: color-mix(in oklch, white 93%, var(--brand));
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background 140ms ease,
+		transform 120ms ease;
+}
+
+.brandButton:hover:not(:disabled) {
+	background: color-mix(in oklch, var(--brand) 82%, white);
+}
+
+.brandButton:active:not(:disabled) {
+	background: color-mix(in oklch, var(--brand) 74%, black);
+	transform: translateY(1px);
+}
+
+.brandButton:disabled {
+	cursor: not-allowed;
+	background: color-mix(in oklch, var(--brand) 42%, var(--bg));
+	border-color: color-mix(in oklch, var(--brand) 32%, var(--line));
+	color: color-mix(in oklch, var(--fg) 58%, var(--muted));
+}
+
+.note {
+	margin: 0.6rem 0 0;
+	font-size: 11px;
+	color: var(--muted);
+}
+
+.segment {
+	display: inline-flex;
+	border: 1px solid var(--line);
+	border-radius: 0.28rem;
+	overflow: hidden;
+	margin-bottom: 0.65rem;
+}
+
+.segmentBtn {
+	border: none;
+	border-right: 1px solid var(--line);
+	background: color-mix(in oklch, var(--bg) 88%, black);
+	color: var(--muted);
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 10px;
+	padding: 0.35rem 0.75rem;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	transition:
+		background 120ms ease,
+		color 120ms ease;
+}
+
+.segmentBtn:last-child {
+	border-right: none;
+}
+
+.segmentBtn:hover {
+	color: var(--fg);
+}
+
+.segmentBtnActive {
+	color: var(--fg);
+	background: color-mix(in oklch, var(--accent) 15%, var(--bg));
+}
+
+.surface {
+	border: 1px solid var(--line);
+	border-radius: 0.35rem;
+	padding: 0.8rem;
+}
+
+.surface[data-mode='light'] {
+	background: #f7f8fa;
+	color: #121317;
+}
+
+.surface[data-mode='dark'] {
+	background: #121317;
+	color: #e8ebef;
+}
+
+.surfaceSwatches {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.65rem;
+}
+
+.surfaceSwatch {
+	display: grid;
+	gap: 0.35rem;
+}
+
+.surfaceSwatch p {
+	margin: 0;
+	font-size: 10px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	font-family: var(--font-mono, ui-monospace, monospace);
+}
+
+.baseChip,
+.tintChip {
+	height: 54px;
+	border-radius: 0.28rem;
+	border: 1px solid color-mix(in oklch, black 22%, transparent);
+}
+
+.baseChip {
+	background: var(--brand);
+}
+
+.surface[data-mode='light'] .tintChip {
+	background: color-mix(in oklch, var(--brand) 76%, white);
+}
+
+.surface[data-mode='dark'] .tintChip {
+	background: color-mix(in oklch, var(--brand) 76%, black);
+}
+
+@media (max-width: 620px) {
+	.swatchGrid,
+	.surfaceSwatches {
+		grid-template-columns: 1fr;
+	}
+}

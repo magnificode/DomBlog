@@ -26,6 +26,7 @@ interface WebmentionItem {
 	published?: string;
 	'wm-id'?: number;
 	'wm-property'?: string;
+	'wm-target'?: string;
 	url?: string;
 }
 
@@ -34,6 +35,8 @@ interface WebmentionResponse {
 }
 
 const WEBMENTION_API = 'https://webmention.io/api/mentions.jf2';
+const WEBMENTION_DOMAIN = 'dommagnifi.co';
+const WEBMENTION_IO_TOKEN = process.env.WEBMENTION_IO_TOKEN;
 
 function toWebmentionLabel(wmProperty?: string) {
 	if (wmProperty === 'like-of') return 'like';
@@ -53,7 +56,15 @@ function toWebmentionDateLabel(value: string) {
 
 async function getWebmentions(target: string): Promise<WebmentionItem[]> {
 	try {
-		const endpoint = `${WEBMENTION_API}?target=${encodeURIComponent(target)}&per-page=100`;
+		const targetUrl = new URL(target);
+		const normalizedPath = targetUrl.pathname.replace(/\/+$/, '') || '/';
+		const targetVariants = new Set<string>([
+			target,
+			target.endsWith('/') ? target.slice(0, -1) : `${target}/`,
+		]);
+		const endpoint = WEBMENTION_IO_TOKEN
+			? `${WEBMENTION_API}?domain=${encodeURIComponent(WEBMENTION_DOMAIN)}&token=${encodeURIComponent(WEBMENTION_IO_TOKEN)}&per-page=1000`
+			: `${WEBMENTION_API}?target=${encodeURIComponent(target)}&per-page=100`;
 		const response = await fetch(endpoint, {
 			next: { revalidate: 3600 },
 		});
@@ -64,8 +75,24 @@ async function getWebmentions(target: string): Promise<WebmentionItem[]> {
 
 		const data = (await response.json()) as WebmentionResponse;
 		const mentions = Array.isArray(data.children) ? data.children : [];
+		const filteredMentions = WEBMENTION_IO_TOKEN
+			? mentions.filter((mention) => {
+					const mentionTarget = mention['wm-target'];
+					if (!mentionTarget) return false;
+					if (targetVariants.has(mentionTarget)) return true;
+					try {
+						const mentionUrl = new URL(mentionTarget);
+						return (
+							mentionUrl.hostname === targetUrl.hostname &&
+							(mentionUrl.pathname.replace(/\/+$/, '') || '/') === normalizedPath
+						);
+					} catch {
+						return false;
+					}
+				})
+			: mentions;
 
-		return mentions
+		return filteredMentions
 			.filter((mention) => mention.author?.name || mention.url)
 			.sort((a, b) => {
 				const aDate = a.published ? new Date(a.published).getTime() : 0;
