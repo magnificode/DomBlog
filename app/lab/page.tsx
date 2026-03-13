@@ -18,9 +18,7 @@ export default function LabIndexPage() {
 		<main className="mx-auto max-w-3xl px-5 pt-14 pb-20 sm:px-8">
 			<section className="fade-in-up mb-16">
 				<h1 className="ascii-title text-[clamp(2.5rem,10vw,4.5rem)]">Lab</h1>
-				<p className="text-dim mt-3 max-w-lg text-[13px] leading-relaxed">
-					Bite-sized demos. One concept, one proof-of-concept, zero fluff.
-				</p>
+				<p className="text-dim mt-3 max-w-lg text-[13px] leading-relaxed">Bite sized demos.</p>
 				<div className="terminal-divider mt-10 max-w-[200px]" />
 			</section>
 
@@ -34,7 +32,7 @@ export default function LabIndexPage() {
 						<div className="text-dim flex items-center gap-3 text-[11px]">
 							<time dateTime={lab.date}>{toCompactDate(lab.date)}</time>
 						</div>
-						<h2 className="group-hover:text-accent mt-2 text-[15px] font-medium leading-snug tracking-tight transition-colors">
+						<h2 className="group-hover:text-accent mt-2 text-[15px] leading-snug font-medium tracking-tight transition-colors">
 							{lab.title}
 						</h2>
 						<p className="text-dim mt-2 line-clamp-2 text-[12px] leading-relaxed">{lab.description}</p>
