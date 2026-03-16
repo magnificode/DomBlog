@@ -1,0 +1,53 @@
+---
+title: "One less import"
+date: 2026-03-13
+description: "Temporal is Stage 4. JavaScript finally has a real date API, which means your date library can start looking like dead weight."
+tags: ["javascript"]
+code: |
+  :::section The Date footgun
+  ```js
+  const today = new Date();
+
+  const addDay = (d) => {
+    d.setDate(d.getDate() + 1);
+    return d;
+  };
+
+  console.log(
+    `Tomorrow: ${addDay(today).toLocaleDateString()}, Today: ${today.toLocaleDateString()}`,
+  );
+
+  // Today is now tomorrow. Oops.
+  ```
+
+  :::section The Temporal version
+  ```js
+  const today = Temporal.Now.plainDateISO();
+  const tomorrow = today.add({ days: 1 });
+
+  console.log(`Tomorrow: ${tomorrow}, Today: ${today}`);
+
+  // today is still today. tomorrow is tomorrow. Done.
+  ```
+
+  :::section The cleanup
+  ```bash
+  npm uninstall moment
+  npm uninstall date-fns
+  npm uninstall luxon
+  npm uninstall dayjs
+  ```
+codeLanguage: javascript
+---
+
+Every JavaScript codebase has a date library in it somewhere. `moment`, `date-fns`, `luxon`, `dayjs`. Usually because `Date` sucks, and we needed a pile of workarounds for a 30-year-old mistake.
+
+[Temporal reached Stage 4 on March 13, 2026](https://www.igalia.com/2026/03/13/Temporal-Reaches-Stage-4.html). That means it is part of ECMAScript now. Not "soon." Not "almost." Done.
+
+The problem with `Date` was never just formatting. It was the whole model. Mutable objects. Weird parsing. Local time vs UTC surprises. The bug above is the classic one: pass a `Date` into a helper, mutate it, and now "today" quietly became tomorrow.
+
+Temporal fixes the shape of the problem. Values are immutable. A `PlainDate` is just a date. Add a day, get a new value back, move on. [This write-up from Piccalilli](https://piccalil.li/blog/date-is-out-and-temporal-is-in/) covers the deeper API design if you want the full tour.
+
+The real punchline is bundle cleanup. Go look at your dependency graph and ask how much of it exists just to survive `Date`. Temporal turns that whole category into platform code. One less import. Probably your heaviest one.
+
+Support is real enough to act on. Firefox ships it. Chromium-based browsers are there. If your browser matrix still has gaps, ship [`@js-temporal/polyfill`](https://www.npmjs.com/package/@js-temporal/polyfill) now and delete that too when you can.
