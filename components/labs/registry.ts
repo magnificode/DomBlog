@@ -15,7 +15,7 @@ export const labDemos: Record<string, ComponentType> = {
 	'data-attr-content-tooltip': DataAttrTooltipDemo,
 	'data-attr-content-status-board': DataAttrStatusBoardDemo,
 	'scroll-margin-top': ScrollMarginTopDemo,
-	'temporal-stage-4': TemporalStage4Demo,
+	temporal: TemporalStage4Demo,
 	'text-wrap-balance': TextWrapBalanceDemo,
 	'text-wrap-balance-balance': TextWrapBalanceBalanceDemo,
 	'text-wrap-balance-pretty': TextWrapBalancePrettyDemo,
