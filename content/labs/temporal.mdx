@@ -42,9 +42,9 @@ codeLanguage: javascript
 
 Every JavaScript codebase has a date library in it somewhere. `moment`, `date-fns`, `luxon`, `dayjs`. Usually because `Date` sucks, and we needed a pile of workarounds for a 30-year-old mistake.
 
-[Temporal reached Stage 4 on March 13, 2026](https://www.igalia.com/2026/03/13/Temporal-Reaches-Stage-4.html). That means it is part of ECMAScript now. Not "soon." Not "almost." Done.
+[Temporal reached Stage 4 on March 13, 2026](https://www.igalia.com/2026/03/13/Temporal-Reaches-Stage-4.html). That means it is part of ECMAScript now. 🎉 
 
-The problem with `Date` was never just formatting. It was the whole model. Mutable objects. Weird parsing. Local time vs UTC surprises. The bug above is the classic one: pass a `Date` into a helper, mutate it, and now "today" quietly became tomorrow.
+The problem with `Date` was never just formatting. It was the whole model. Mutable objects. Weird parsing. Local time vs UTC surprises. The bug in this example is the classic one: pass a `Date` into a helper, mutate it, and now "today" quietly became tomorrow.
 
 Temporal fixes the shape of the problem. Values are immutable. A `PlainDate` is just a date. Add a day, get a new value back, move on. [This write-up from Piccalilli](https://piccalil.li/blog/date-is-out-and-temporal-is-in/) covers the deeper API design if you want the full tour.
 
