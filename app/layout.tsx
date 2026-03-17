@@ -54,11 +54,16 @@ export const metadata: Metadata = {
 	},
 };
 
-const themeBootScript = `(function(){try{var key='dm-theme';var stored=localStorage.getItem(key);var theme=(stored==='light'||stored==='dark')?stored:'dark';document.documentElement.setAttribute('data-theme',theme);}catch(_e){document.documentElement.setAttribute('data-theme','dark');}})();`;
+const themeBootScript = `(function(){try{var key='dm-theme';var stored=localStorage.getItem(key);var theme;if(stored==='light'||stored==='dark'){theme=stored;}else{theme=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',theme);}catch(_e){document.documentElement.setAttribute('data-theme','dark');}})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<html lang="en" data-theme="dark" className={`${mono.variable} ${serif.variable} ${spaceGrotesk.variable}`}>
+		<html
+			lang="en"
+			data-theme="dark"
+			suppressHydrationWarning
+			className={`${mono.variable} ${serif.variable} ${spaceGrotesk.variable}`}
+		>
 			<body className="flex min-h-screen flex-col antialiased">
 				<PostHogProvider>
 					<script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
