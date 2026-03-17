@@ -25,6 +25,21 @@ function truncateText(value: string, maxLength: number) {
 	return `${value.slice(0, maxLength - 1).trim()}\u2026`;
 }
 
+function extractCodePreview(code?: string) {
+	if (!code?.trim()) {
+		return '';
+	}
+
+	const normalized = code.replace(/\\n/g, '\n').trim();
+	const fencedBlock = normalized.match(/```[a-zA-Z0-9_-]*\n([\s\S]*?)```/);
+
+	if (fencedBlock) {
+		return fencedBlock[1].trim();
+	}
+
+	return normalized.replace(/^:::section\s+.+$/gm, '').trim();
+}
+
 async function loadGoogleFont(family: string, options?: { weight?: number; italic?: boolean }) {
 	const weight = options?.weight ?? 400;
 	const italic = options?.italic ?? false;
@@ -62,7 +77,7 @@ export default async function OGImage({ params }: OGImageProps) {
 	const publishedDate = toCompactDate(lab.date);
 	const primaryTag = lab.tags[0] ?? 'lab';
 	const description = truncateText(lab.description, 120);
-	const codePreview = lab.code ? truncateText(lab.code.replace(/\\n/g, '\n'), 80) : '';
+	const codePreview = truncateText(extractCodePreview(lab.code), 80);
 
 	const titleLength = lab.title.length;
 	const titleSize = titleLength > 55 ? 52 : titleLength > 35 ? 62 : 72;
