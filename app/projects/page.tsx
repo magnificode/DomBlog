@@ -50,7 +50,6 @@ export default function ProjectsPage() {
 					>
 						<div className="flex items-start justify-between gap-4">
 							<div>
-								<p className="text-dim text-[12px] tracking-wide uppercase">{project.type}</p>
 								<h2 className="text-foreground group-hover:text-accent mt-1 text-base font-medium tracking-tight transition-colors">
 									{project.name}
 								</h2>
