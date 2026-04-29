@@ -1,0 +1,74 @@
+---
+title: '@starting-style: entry transitions without setTimeout'
+date: 2026-04-27
+description: 'CSS @starting-style gives newly inserted elements a real transition starting point, so dialogs, popovers, and toast UI can animate in without JS timing hacks.'
+tags: ['css']
+code: |
+  :::section DOM insertion
+  ```css
+  .notice {
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity 280ms ease,
+      translate 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @starting-style {
+    .notice {
+      opacity: 0;
+      translate: 0 12px;
+    }
+  }
+  ```
+
+  :::section Dialog and popover entry
+  ```css
+  dialog[open],
+  [popover]:popover-open {
+    opacity: 1;
+    scale: 1;
+    transition:
+      opacity 220ms ease,
+      scale 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      display 220ms allow-discrete;
+  }
+
+  @starting-style {
+    dialog[open],
+    [popover]:popover-open {
+      opacity: 0;
+      scale: 0.96;
+    }
+  }
+  ```
+
+  :::section Nested form
+  ```css
+  .toast {
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity 240ms ease,
+      translate 240ms ease;
+
+    @starting-style {
+      opacity: 0;
+      translate: 0 0.75rem;
+    }
+  }
+  ```
+codeLanguage: css
+---
+
+Transitions need a before and an after. New DOM nodes do not have a before. They get inserted, styled, and painted at the final state, which is why your "fade in" toast often just appears.
+
+`@starting-style` fills in that missing first frame. It gives the browser a starting value for elements that are newly rendered, coming out of `display: none`, or entering the top layer as a `<dialog>` or popover.
+
+That means less JavaScript glue. No "add the class on the next animation frame." No `setTimeout(..., 0)`. No forced layout read just to make CSS notice that something happened.
+
+[MDN marks `@starting-style` as Baseline 2024](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40starting-style), newly available across latest browser engines since August 2024. The practical version is simple: unsupported browsers still show the element; they just skip the entry transition.
+
+For dialogs, popovers, and anything transitioning from `display: none`, pair it with [`allow-discrete`](https://web.dev/blog/baseline-entry-animations) on the `display` transition so the browser keeps the element visible while the entry transition runs.
+
+The rule can be standalone or nested. Keep it after the final-state rule when you use the standalone form, because it has the same specificity as the selector it contains.
