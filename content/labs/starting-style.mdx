@@ -67,7 +67,7 @@ Transitions need a before and an after. New DOM nodes do not have a before. They
 
 That means less JavaScript glue. No "add the class on the next animation frame." No `setTimeout(..., 0)`. No forced layout read just to make CSS notice that something happened.
 
-[MDN marks `@starting-style` as Baseline 2024](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40starting-style), newly available across latest browser engines since August 2024. The practical version is simple: unsupported browsers still show the element; they just skip the entry transition.
+[MDN marks `@starting-style` as Baseline 2024](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40starting-style), shipped across every major engine since August 2024. The practical version is simple: unsupported browsers still show the element; they just skip the entry transition.
 
 For dialogs, popovers, and anything transitioning from `display: none`, pair it with [`allow-discrete`](https://web.dev/blog/baseline-entry-animations) on the `display` transition so the browser keeps the element visible while the entry transition runs.
 
