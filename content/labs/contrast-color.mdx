@@ -1,0 +1,62 @@
+---
+title: 'contrast-color(): readable text from one color'
+date: '2026-06-16T12:00:00-06:00'
+description: 'CSS contrast-color() lets the browser pick black or white text from a dynamic background color, which is perfect for badges, buttons, chips, and user-picked themes.'
+tags: ['css']
+code: |
+  :::section One dynamic surface
+  ```css
+  .badge {
+    --badge-bg: #7c3aed;
+
+    background: var(--badge-bg);
+    color: white;
+    color: contrast-color(var(--badge-bg));
+  }
+  ```
+
+  :::section User-picked theme color
+  ```css
+  .theme-preview {
+    --surface: var(--picked-color);
+
+    background: var(--surface);
+    color: #111;
+    color: contrast-color(var(--surface));
+  }
+  ```
+
+  :::section Status tokens
+  ```css
+  .status {
+    --tone: #ffd166;
+
+    background: var(--tone);
+    color: #111;
+    color: contrast-color(var(--tone));
+  }
+  ```
+codeLanguage: css
+---
+
+It's both annoying and awesome when you find a CSS attribute that just solves a problem you've spend collective hours trying to solve yourself. `contrast-color()` is one of those attributes.
+
+Theme pickers, status badges, generated avatars, user labels... the background color can come from anywhere, and can change dynamically. The foreground usually turns into a second token you have to remember to keep in sync.
+
+`contrast-color()` makes that pairing much simpler. Give it one color and it resolves to either `black` or `white`, whichever has stronger contrast against that solid background.
+
+[MDN has `contrast-color()` as Baseline 2026](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/contrast-color). The [Web Platform Features Explorer lists it as Baseline since April 10, 2026](https://web-platform-dx.github.io/web-features-explorer/features/contrast-color/), after Chrome 147 completed support across the core browser set, so it's widly available.
+
+The important caveat: this is not a palette generator. The current CSS Color Level 5 version returns only black or white. It is great for small UI surfaces where the background is a solid dynamic color. It is not a replacement for checking real brand palettes, gradients, images, disabled states, or those awkward mid-tone colors that technically pass a formula but still feel shitty to read.
+
+Use a fallback first, then let supporting browsers take over:
+
+```css
+.chip {
+	background: var(--chip-color);
+	color: white;
+	color: contrast-color(var(--chip-color));
+}
+```
+
+Unsupported browsers keep the fallback. Supported browsers stop making you maintain pairs like `--project-green-bg` and `--project-green-fg` for every little chip.

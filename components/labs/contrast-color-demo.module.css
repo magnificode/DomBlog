@@ -1,0 +1,247 @@
+.root {
+	--sample: #7c3aed;
+	display: grid;
+	gap: 1rem;
+}
+
+.toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	justify-content: space-between;
+	gap: 0.75rem;
+	padding: 0.75rem;
+	border: 1px solid var(--line);
+	border-radius: 0.45rem;
+	background: color-mix(in oklch, var(--bg) 96%, black);
+}
+
+.toolbarCopy {
+	margin: 0;
+	font-size: 11px;
+	color: var(--muted);
+	font-family: var(--font-mono, ui-monospace, monospace);
+}
+
+.colorField {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.colorField span {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 10px;
+	color: var(--muted);
+	letter-spacing: 0;
+	text-transform: uppercase;
+}
+
+.colorField input {
+	appearance: none;
+	width: 2.15rem;
+	height: 2.15rem;
+	border: 1px solid var(--line);
+	border-radius: 0.4rem;
+	background: transparent;
+	cursor: pointer;
+	padding: 0.15rem;
+}
+
+.colorField input::-webkit-color-swatch {
+	border: none;
+	border-radius: 0.25rem;
+}
+
+.colorField input::-moz-color-swatch {
+	border: none;
+	border-radius: 0.25rem;
+}
+
+.colorField code {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 11px;
+	color: var(--fg);
+}
+
+.preview {
+	min-height: 220px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1.25rem;
+	padding: 1.2rem;
+	border: 1px solid color-mix(in oklch, var(--sample) 45%, var(--line));
+	border-radius: 0.45rem;
+	background: var(--sample);
+	color: var(--sample-fg, white);
+	color: contrast-color(var(--sample));
+	transition:
+		background 160ms ease,
+		color 160ms ease,
+		border-color 160ms ease;
+}
+
+.preview h3 {
+	max-width: 22ch;
+	margin: 0.15rem 0 0;
+	font-size: 24px;
+	line-height: 1.12;
+	color: inherit;
+}
+
+.preview p {
+	max-width: 46ch;
+	margin: 0.7rem 0 0;
+	font-size: 12px;
+	line-height: 1.6;
+	color: inherit;
+}
+
+.kicker {
+	margin: 0;
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 10px;
+	letter-spacing: 0;
+	text-transform: uppercase;
+}
+
+.previewChip {
+	width: fit-content;
+	max-width: 100%;
+	border: 1px solid color-mix(in oklch, currentColor 30%, transparent);
+	border-radius: 0.35rem;
+	background: color-mix(in oklch, currentColor 12%, transparent);
+	color: inherit;
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 11px;
+	line-height: 1.4;
+	padding: 0.42rem 0.55rem;
+	overflow-wrap: anywhere;
+}
+
+.panel {
+	border: 1px solid var(--line);
+	border-radius: 0.45rem;
+	background: color-mix(in oklch, var(--bg) 97%, black);
+	padding: 1rem;
+}
+
+.panelHead {
+	display: grid;
+	gap: 0.35rem;
+	margin-bottom: 0.85rem;
+}
+
+.title {
+	margin: 0;
+	font-size: 13px;
+	color: var(--fg);
+}
+
+.text {
+	margin: 0;
+	color: var(--muted);
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.text code {
+	color: var(--fg);
+}
+
+.presetGrid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.65rem;
+}
+
+.presetButton {
+	--preset: #7c3aed;
+	--preset-fg: #fff;
+	min-height: 82px;
+	display: grid;
+	align-content: space-between;
+	gap: 0.65rem;
+	border: 1px solid color-mix(in oklch, var(--preset) 55%, var(--line));
+	border-radius: 0.35rem;
+	background: var(--preset);
+	color: var(--preset-fg);
+	color: contrast-color(var(--preset));
+	cursor: pointer;
+	padding: 0.65rem;
+	text-align: left;
+	transition:
+		transform 120ms ease,
+		border-color 120ms ease;
+}
+
+.presetButton:hover,
+.presetButton[aria-pressed='true'] {
+	border-color: currentColor;
+}
+
+.presetButton:hover {
+	transform: translateY(-1px);
+}
+
+.presetButton span {
+	font-size: 12px;
+	font-weight: 700;
+	color: inherit;
+}
+
+.presetButton code {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 10px;
+	color: inherit;
+	opacity: 0.76;
+}
+
+.tokenGrid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0.65rem;
+}
+
+.tokenCard {
+	--tone: #22c55e;
+	--tone-fg: #111;
+	min-height: 76px;
+	display: grid;
+	align-content: space-between;
+	gap: 0.5rem;
+	border: 1px solid color-mix(in oklch, var(--tone) 50%, var(--line));
+	border-radius: 0.35rem;
+	background: var(--tone);
+	color: var(--tone-fg);
+	color: contrast-color(var(--tone));
+	padding: 0.65rem;
+}
+
+.tokenCard strong {
+	font-size: 12px;
+	color: inherit;
+}
+
+.tokenCard span {
+	font-family: var(--font-mono, ui-monospace, monospace);
+	font-size: 10px;
+	color: inherit;
+	opacity: 0.74;
+	text-transform: uppercase;
+}
+
+@media (max-width: 620px) {
+	.presetGrid,
+	.tokenGrid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 420px) {
+	.presetGrid,
+	.tokenGrid {
+		grid-template-columns: 1fr;
+	}
+}
