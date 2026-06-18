@@ -1,5 +1,6 @@
 import type { ComponentType } from 'react';
 import { ContrastColorDemo } from './contrast-color-demo';
+import { ContainerStyleQueriesDemo } from './container-style-queries-demo';
 import { ColorMixDemo } from './color-mix-demo';
 import { DataAttrContentDemo } from './data-attr-content-demo';
 import { DataAttrStatusBoardDemo } from './data-attr-status-board-demo';
@@ -13,6 +14,7 @@ import { TextWrapBalancePrettyDemo } from './text-wrap-balance-pretty-demo';
 
 export const labDemos: Record<string, ComponentType> = {
 	'contrast-color': ContrastColorDemo,
+	'container-style-queries': ContainerStyleQueriesDemo,
 	'color-mix': ColorMixDemo,
 	'data-attr-content': DataAttrContentDemo,
 	'data-attr-content-tooltip': DataAttrTooltipDemo,

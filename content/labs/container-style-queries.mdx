@@ -1,0 +1,77 @@
+---
+title: '@container style(): components that read parent tokens'
+date: '2026-06-18T10:00:00-06:00'
+description: 'CSS container style queries let child components react to custom properties on their parent, so theme, tone, and density can come from context instead of extra modifier classes.'
+tags: ['css']
+code: |
+  :::section Parent token
+  ```css
+  .surface {
+    --card-tone: calm;
+  }
+
+  @container style(--card-tone: urgent) {
+    .card {
+      border-color: crimson;
+      background: color-mix(in oklch, crimson 12%, Canvas);
+    }
+  }
+  ```
+
+  :::section Density without prop drilling
+  ```css
+  .sidebar {
+    --card-density: compact;
+  }
+
+  @container style(--card-density: compact) {
+    .card {
+      gap: 0.45rem;
+      padding: 0.65rem;
+    }
+  }
+  ```
+
+  :::section Named context
+  ```css
+  .dashboard-region {
+    container-name: dashboard;
+    --region-tone: warning;
+  }
+
+  @container dashboard style(--region-tone: warning) {
+    .metric {
+      color: darkorange;
+    }
+  }
+  ```
+codeLanguage: css
+---
+
+I'll admit it. I haven't used container queries as much as I though I was going to when I first learned of the spec. It's something that really should be relied on more.
+
+The responsive implications of contianer queries are the obvious ones, but `@container style()` is the quieter part that makes components feel more like components. A child can look at a custom property on its parent context and take on a theme or style from there.
+
+That means the thing using the component can say `--card-tone: urgent` or `--card-density: compact`, and the component can adapt without needing `.card--urgent`, `.card--compact`, or another prop that only exists to become a class name.
+
+[Container style queries are Baseline Newly Available since May 19, 2026](https://web-platform-dx.github.io/web-features-explorer/features/container-style-queries/). [web.dev notes that Firefox 151 completed cross-browser support for custom-property style queries recently as well](https://web.dev/blog/web-platform-05-2026#container_style_queries_for_custom_properties_become_baseline). MDN has the practical caveat: [today, `style()` queries are limited to custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_size_and_style_queries#container_style_queries). You cannot query `background-color: red` yet.
+
+I like too that you don't always need `contianer-type`. Size queries need containment. Style queries do not. All elements can act as style query containers, so something like this is enough:
+
+```css
+.theme-slot {
+	--theme: dark;
+}
+
+@container style(--theme: dark) {
+	.card {
+		color-scheme: dark;
+	}
+}
+```
+
+(I'm going to do another post about color-scheme too, because that's one I just learned about too).
+
+The gotcha is direction. A container query styles descendants. It does not let an element query itself and restyle itself. Put the token on a wrapper, region, slot, list item, or layout shell, then let the component inside respond.
+
+Keep default styles first and treat the query as an enhancement. Unsupported browsers keep the normal card. Supporting browsers get the contextual version without another pile of modifier classes.
