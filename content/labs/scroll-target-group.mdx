@@ -1,0 +1,102 @@
+---
+title: "scroll-target-group: highlight the section you're reading"
+date: 2026-08-15
+description: "scroll-target-group and :target-current let CSS highlight the link for the section you're reading without scroll listeners or active-class bookkeeping."
+tags: ['css', 'html']
+code: |
+  :::section Semantic links
+  ```html
+  <nav class="toc" aria-label="Article sections">
+    <ol>
+      <li><a href="#install">Install</a></li>
+      <li><a href="#tokens">Tokens</a></li>
+      <li><a href="#motion">Motion</a></li>
+    </ol>
+  </nav>
+
+  <article class="article" aria-label="Documentation article">
+    <section id="install">
+      <h2>Install</h2>
+      <p>Normal anchor targets still do the navigation.</p>
+    </section>
+    <section id="tokens">
+      <h2>Tokens</h2>
+      <p>The current table-of-contents link is calculated by the browser.</p>
+    </section>
+    <section id="motion">
+      <h2>Motion</h2>
+      <p>No scroll listener has to keep an active class in sync.</p>
+    </section>
+  </article>
+  ```
+
+  :::section Core CSS
+  ```css
+  .article {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
+  .toc {
+    scroll-target-group: auto;
+  }
+
+  .toc a:target-current {
+    color: var(--accent);
+    background: color-mix(in oklch, var(--accent) 16%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .article {
+      scroll-behavior: auto;
+    }
+  }
+  ```
+codeLanguage: html
+---
+
+The problem is simple and kind of annoying: you have a table of contents next to a long article, and as the reader scrolls, the link for the section they're actually looking at should be the one that lights up.
+
+That usually turns into JavaScript. You watch headings with scroll events or `IntersectionObserver`, figure out which one is "current," then keep an active class on the matching link.
+
+That's not a huge amount of code. It's just annoying as hell to get right once short sections, tall sections, sticky headers, nested scroll containers, and "why did the active link flicker right there?" show up.
+
+The weird CSS version is `scroll-target-group`, paired with `:target-current`.
+
+`scroll-target-group: auto` goes on the wrapper that contains your anchor links. It tells the browser those links belong to one group and to keep track of which linked target is current. The anchors don't become anything weird. They're still normal links pointing at real fragment IDs.
+
+`:target-current` is how you style the link the browser picked. You need both parts: the property creates the group, and the pseudo-class gives CSS something to grab onto.
+
+```html
+<nav class="toc" aria-label="Article sections">
+	<ol>
+		<li><a href="#overview">Overview</a></li>
+		<li><a href="#setup">Setup</a></li>
+		<li><a href="#deploy">Deploy</a></li>
+	</ol>
+</nav>
+
+<article class="article">
+	<section id="overview"><h2>Overview</h2></section>
+	<section id="setup"><h2>Setup</h2></section>
+	<section id="deploy"><h2>Deploy</h2></section>
+</article>
+```
+
+```css
+.toc {
+	scroll-target-group: auto;
+}
+
+.toc a:target-current {
+	color: var(--accent);
+}
+```
+
+This is the thing everyone calls "scrollspy." I kind of hate that name because it makes the problem sound more frameworky than it is. It's just a nav that knows where the reader is.
+
+The demo below is a progressive enhancement. In a supporting browser, the current link turns green and gets a little dot. If your browser doesn't support it, the table of contents still works as a pile of regular links. You just don't get the automatic current-section highlight.
+
+Browser support is still the catch. As I write this, it's mostly a Chromium thing; Firefox and Safari don't support it yet, and [MDN still marks it experimental](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-target-group). The property is being worked through in [CSS Overflow Level 5](https://drafts.csswg.org/css-overflow-5/#propdef-scroll-target-group). [Can I Use](https://caniuse.com/wf-scroll-target-group) has the current support table, and [Una Kravets has a good demo](https://una.im/scroll-target-group/) if you want to go deeper.
+
+So no, I wouldn't use this as the only way to communicate where someone is on a page yet. The links and headings are the feature. The automatic highlight is just a really nice bit of CSS on top, and in supporting browsers it deletes a chunk of fussy JavaScript.
