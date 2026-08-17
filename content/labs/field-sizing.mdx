@@ -1,0 +1,90 @@
+---
+title: 'field-sizing: content — auto-growing textareas without the scrollHeight dance'
+date: 2026-08-17
+description: 'CSS field-sizing lets text inputs and textareas grow with their content, with ordinary controls as the fallback and min/max sizes keeping the layout under control.'
+tags: ['css', 'html', 'forms']
+code: |
+  :::section Smallest useful CSS
+  ```css
+  textarea {
+    min-block-size: 3lh;
+    max-block-size: 12lh;
+    field-sizing: content;
+  }
+  ```
+
+  :::section Horizontally growing input
+  ```css
+  input[type='text'] {
+    inline-size: min(100%, 20rem);
+    max-inline-size: 100%;
+  }
+
+  @supports (field-sizing: content) {
+    input[type='text'] {
+      inline-size: auto;
+      min-inline-size: min(10rem, 100%);
+      field-sizing: content;
+    }
+  }
+  ```
+
+  :::section Honest support message
+  ```css
+  .supported {
+    display: none;
+  }
+
+  @supports (field-sizing: content) {
+    .supported {
+      display: block;
+    }
+
+    .unsupported {
+      display: none;
+    }
+  }
+  ```
+codeLanguage: css
+---
+
+Autosizing a textarea used to mean keeping a tiny layout script around for something that felt like it should've been CSS. Growing the box when someone types and shrinking it when they delete text is a simple request that gets fussy fast.
+
+The usual script listened for input, reset the element's height, read `scrollHeight`, then wrote a new height back. A sturdier version also had to deal with borders, values set from JavaScript, and a max height. Hidden mirror elements and libraries avoided some of that measuring loop, then added another element or dependency to keep in sync.
+
+`field-sizing: content` hands that measurement to the browser. It applies to form controls that accept content, including text inputs and textareas. A textarea can shrink and grow with its text until the CSS around it sets a boundary.
+
+The smallest useful version is fallback-first CSS:
+
+```css
+textarea {
+	min-block-size: 3lh;
+	max-block-size: 12lh;
+	field-sizing: content;
+}
+```
+
+The minimum stops an empty field from collapsing into a tiny target. The maximum stops a long note from taking over the page. Once the textarea reaches `max-block-size`, its content scrolls inside the control.
+
+Text inputs use the same property along the inline axis. Give one a practical minimum and cap it at its container so a long value can't shove the rest of the layout away:
+
+```css
+input[type='text'] {
+	inline-size: min(100%, 20rem);
+	max-inline-size: 100%;
+}
+
+@supports (field-sizing: content) {
+	input[type='text'] {
+		inline-size: auto;
+		min-inline-size: min(10rem, 100%);
+		field-sizing: content;
+	}
+}
+```
+
+Keep the ordinary field styles before the enhancement: a normal width for inputs, a sensible `rows` value or block size for textareas, and `resize: vertical` where manual resizing is useful. Unsupported browsers ignore the declaration and retain those normal fixed-size controls. The form still works.
+
+As I write this, [MDN marks `field-sizing` as Baseline 2026 Newly Available](https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing). It reached the latest browser versions in June 2026, so older devices still need the ordinary fixed-size fallback. An `@supports (field-sizing: content)` check is enough when the interface needs to explain which behavior is active.
+
+The demo keeps both paths visible. In a supporting browser, the content-sized textarea follows its text until the cap and the subject input grows horizontally. Elsewhere, they're ordinary semantic controls you can still type into and resize.
