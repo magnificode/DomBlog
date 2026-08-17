@@ -72,38 +72,36 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 					<div className="ambient-glow pointer-events-none fixed inset-0 z-[-2]" aria-hidden="true" />
 
 					<header className="border-border/50 bg-background/85 sticky top-0 z-40 border-b backdrop-blur-md">
-						<div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3 sm:px-8">
-							<div className="flex items-center gap-6">
-								<Link href="/" className="focus-ring rounded-sm text-[13px] tracking-tight">
-									<span className="text-accent" aria-hidden="true">
-										&gt;
-									</span>{' '}
-									<span className="text-dim hover:text-foreground transition-colors">magnificode</span>
+						<div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-y-2 px-5 py-3 sm:flex-nowrap sm:px-8">
+							<Link href="/" className="focus-ring rounded-sm text-[13px] tracking-tight">
+								<span className="text-accent" aria-hidden="true">
+									&gt;
+								</span>{' '}
+								<span className="text-dim hover:text-foreground transition-colors">magnificode</span>
+							</Link>
+							<nav
+								aria-label="Primary"
+								className="text-dim order-last flex w-full flex-wrap items-center gap-x-3 gap-y-1 text-[11px] sm:order-none sm:mr-auto sm:ml-6 sm:w-auto sm:gap-4 sm:text-[12px]"
+							>
+								<Link href="/" className="hover:text-foreground transition-colors">
+									blog
 								</Link>
-								<nav
-									aria-label="Primary"
-									className="text-dim flex items-center gap-3 text-[11px] sm:gap-4 sm:text-[12px]"
-								>
-									<Link href="/" className="hover:text-foreground transition-colors">
-										blog
-									</Link>
-									<Link href="/archive" className="hover:text-foreground transition-colors">
-										archive
-									</Link>
-									<Link href="/lab" className="hover:text-foreground transition-colors">
-										lab
-									</Link>
-									<Link href="/about" className="hover:text-foreground transition-colors">
-										about
-									</Link>
-									<Link href="/projects" className="hover:text-foreground transition-colors">
-										projects
-									</Link>
-									<Link href="/contact" className="hover:text-foreground transition-colors">
-										contact
-									</Link>
-								</nav>
-							</div>
+								<Link href="/archive" className="hover:text-foreground transition-colors">
+									archive
+								</Link>
+								<Link href="/lab" className="hover:text-foreground transition-colors">
+									lab
+								</Link>
+								<Link href="/about" className="hover:text-foreground transition-colors">
+									about
+								</Link>
+								<Link href="/projects" className="hover:text-foreground transition-colors">
+									projects
+								</Link>
+								<Link href="/contact" className="hover:text-foreground transition-colors">
+									contact
+								</Link>
+							</nav>
 							<ThemeToggle />
 						</div>
 					</header>
@@ -111,14 +109,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 					<div className="flex-1">{children}</div>
 
 					<footer className="border-border/30 border-t py-6">
-						<div className="mx-auto flex max-w-3xl items-end justify-between gap-4 px-5 sm:px-8">
+						<div className="mx-auto flex max-w-3xl flex-col gap-2 px-5 sm:flex-row sm:items-end sm:justify-between sm:gap-4 sm:px-8">
 							<p className="text-dim text-[11px]">
 								<span className="text-accent/60" aria-hidden="true">
 									&copy;
 								</span>{' '}
 								{new Date().getFullYear()} Dominic Magnifico
 							</p>
-							<div className="text-dim flex items-center gap-3 text-[11px]">
+							<div className="text-dim flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px]">
 								<Link href="/rss.xml" className="hover:text-foreground transition-colors">
 									rss
 								</Link>
