@@ -7,6 +7,7 @@ import { DataAttrStatusBoardDemo } from './data-attr-status-board-demo';
 import { DataAttrTooltipDemo } from './data-attr-tooltip-demo';
 import { FieldSizingDemo } from './field-sizing-demo';
 import { ScrollMarginTopDemo } from './scroll-margin-top-demo';
+import { SiblingIndexDemo } from './sibling-index-demo';
 import { ScrollTargetGroupDemo } from './scroll-target-group-demo';
 import { StartingStyleDemo } from './starting-style-demo';
 import { TemporalStage4Demo } from './temporal-stage-4-demo';
@@ -24,6 +25,7 @@ export const labDemos: Record<string, ComponentType> = {
 	'field-sizing': FieldSizingDemo,
 	'scroll-margin-top': ScrollMarginTopDemo,
 	'scroll-target-group': ScrollTargetGroupDemo,
+	'sibling-index': SiblingIndexDemo,
 	'starting-style': StartingStyleDemo,
 	temporal: TemporalStage4Demo,
 	'text-wrap-balance': TextWrapBalanceDemo,
