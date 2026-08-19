@@ -74,7 +74,7 @@ A stagger becomes one declaration:
 
 Subtracting 1 keeps the first item at zero delay. The same offset matters for color wheels: hues wrap at `360deg`, so `360deg / sibling-count() * sibling-index()` lands the last item on the same hue as the first. Distribute with `(sibling-index() - 1)` instead and the spread stays even.
 
-The part that made me sit up is that these are live values. Insert or remove a sibling and every other element's computed style updates — and because ordinary transitions animate computed-value changes, the whole group glides to its new state. Delete a row and the remaining rows re-widen and re-color themselves. Deal a card into a fan built on the midpoint `(sibling-count() + 1) / 2` and every card rotates to rebalance. That's behavior you'd previously have written a resize-observer's worth of JavaScript for.
+The coolest part? These are live values. Insert or remove a sibling and every other element's computed style updates...and because normal transitions animate computed-value changes, the whole group glides to its new state. Delete a row and the remaining rows re-widen and re-color themselves. Deal a card into a fan built on the midpoint `(sibling-count() + 1) / 2` and every card rotates to rebalance. That's behavior you'd previously have written a resize-observer's worth of JavaScript for.
 
 Two habits keep it honest. Put the math on the element whose position matters — the function resolves against the element the declaration lands on, so a child of a list item is index 1 of its own little world, not the row's position. And since position math mostly drives motion, keep a `prefers-reduced-motion` override next to any stagger.
 
