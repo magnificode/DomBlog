@@ -1,0 +1,83 @@
+---
+title: 'sibling-index() and sibling-count() — position-aware CSS without the :nth-child() ladder'
+date: 2026-08-19
+description: 'CSS sibling-index() and sibling-count() turn an element''s position and its parent''s child count into numbers you can calc() with — staggered animations, distributed hues, and self-balancing layouts with no numbered classes or JS loops.'
+tags: ['css', 'animation']
+code: |
+  :::section Staggered entrance
+  ```css
+  .list > li {
+    animation: rise 0.45s ease both;
+    animation-delay: calc((sibling-index() - 1) * 80ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .list > li {
+      animation: none;
+    }
+  }
+  ```
+
+  :::section Share of the whole
+  ```css
+  .list > li {
+    inline-size: calc(100% / sibling-count() * sibling-index());
+    background: oklch(0.72 0.17 calc((sibling-index() - 1) * (360deg / sibling-count())) / 0.12);
+    transition:
+      inline-size 0.5s ease,
+      background-color 0.5s ease;
+  }
+  ```
+
+  :::section Symmetry from the midpoint
+  ```css
+  .card {
+    --mid: calc((sibling-count() + 1) / 2);
+    rotate: calc((sibling-index() - var(--mid)) * 7deg);
+    translate: 0 calc(abs(sibling-index() - var(--mid)) * 0.45rem);
+    transform-origin: 50% 130%;
+    transition:
+      rotate 0.45s ease,
+      translate 0.45s ease;
+  }
+  ```
+
+  :::section Fallback for older browsers
+  ```css
+  .list > li {
+    animation-delay: calc((var(--i, 1) - 1) * 80ms);
+    animation-delay: calc((sibling-index() - 1) * 80ms);
+  }
+  ```
+
+  ```js
+  if (!CSS.supports('top: calc(sibling-index() * 1px)')) {
+    document.querySelectorAll('.list > li').forEach((li, i) => {
+      li.style.setProperty('--i', i + 1);
+    });
+  }
+  ```
+codeLanguage: css
+---
+
+Styling elements by position has always meant telling CSS something it should already know. A staggered list entrance was a ladder of `:nth-child(2)`, `:nth-child(3)`, `:nth-child(4)` rules with hand-bumped delays. Or a `--i` custom property stamped onto every item in the markup. Or a JavaScript loop calling `style.setProperty` after render. All three break the same way: add, remove, or reorder an item and the numbers are wrong.
+
+`sibling-index()` and `sibling-count()` hand those numbers to the stylesheet. The first returns the element's position among its siblings, starting at 1 like `:nth-child()`. The second returns how many element children its parent has. Both are integers, not strings, so they slot straight into `calc()` — multiply by a time for animation delays, by a percentage for widths, by an angle for hues or rotations.
+
+A stagger becomes one declaration:
+
+```css
+.list > li {
+	animation-delay: calc((sibling-index() - 1) * 80ms);
+}
+```
+
+Subtracting 1 keeps the first item at zero delay. The same offset matters for color wheels: hues wrap at `360deg`, so `360deg / sibling-count() * sibling-index()` lands the last item on the same hue as the first. Distribute with `(sibling-index() - 1)` instead and the spread stays even.
+
+The part that made me sit up is that these are live values. Insert or remove a sibling and every other element's computed style updates — and because ordinary transitions animate computed-value changes, the whole group glides to its new state. Delete a row and the remaining rows re-widen and re-color themselves. Deal a card into a fan built on the midpoint `(sibling-count() + 1) / 2` and every card rotates to rebalance. That's behavior you'd previously have written a resize-observer's worth of JavaScript for.
+
+Two habits keep it honest. Put the math on the element whose position matters — the function resolves against the element the declaration lands on, so a child of a list item is index 1 of its own little world, not the row's position. And since position math mostly drives motion, keep a `prefers-reduced-motion` override next to any stagger.
+
+As I write this, support is one day old: [Firefox 154 shipped both functions yesterday](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/154), joining Chrome and Edge 138 from June 2025 and Safari 26.2 from December 2025. [MDN still labels `sibling-index()` limited availability](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-index) because the Baseline data hasn't caught up with a release this fresh, so ship the fallback: a JS loop that stamps `--i` only when `CSS.supports()` says the browser needs it, and a doubled declaration where the older browser uses the variable and newer ones parse the native function.
+
+The demo keeps every number in CSS. Add and remove pipeline stages to watch widths and hues redistribute, replay the entrance stagger, and deal cards into a fan that re-centers itself. React edits the DOM; the stylesheet does the counting.
