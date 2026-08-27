@@ -44,6 +44,6 @@ What I didn't expect is how much the ghost space differs between fonts. In the d
 
 Two things to know. It doesn't inherit, so put it on the element holding the text rather than the layout wrapper. And it only trims the first and last line of a block. `line-height` still owns the gaps in between, which is why this belongs on buttons, labels, and headings rather than paragraphs.
 
-[Firefox 154 shipped it yesterday](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/154), in the same release as `sibling-index()`. Chrome and Edge have had it since 133 (February 2025) and Safari since 18.2 (December 2024), so [MDN now marks `text-box-trim` Baseline 2026 Newly Available](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-box-trim). Older browsers ignore the declaration and keep the leading. The layout still works, just a couple of pixels less precise.
+[Firefox 154 shipped it Aug 18](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/154), in the same release as `sibling-index()`. Chrome and Edge have had it since 133 (February 2025) and Safari since 18.2 (December 2024), so [MDN now marks `text-box-trim` Baseline 2026 Newly Available](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-box-trim). Older browsers ignore the declaration and keep the leading. The layout still works, just a couple of pixels less precise.
 
 The demo lets you flip trim and edge values across three fonts, then compares ordinary pill buttons with trimmed ones. Watch the cap heights line up.
