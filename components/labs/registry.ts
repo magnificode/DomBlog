@@ -11,6 +11,7 @@ import { SiblingIndexDemo } from './sibling-index-demo';
 import { ScrollTargetGroupDemo } from './scroll-target-group-demo';
 import { StartingStyleDemo } from './starting-style-demo';
 import { TemporalStage4Demo } from './temporal-stage-4-demo';
+import { TextBoxTrimDemo } from './text-box-trim-demo';
 import { TextWrapBalanceDemo } from './text-wrap-balance-demo';
 import { TextWrapBalanceBalanceDemo } from './text-wrap-balance-balance-demo';
 import { TextWrapBalancePrettyDemo } from './text-wrap-balance-pretty-demo';
@@ -28,6 +29,7 @@ export const labDemos: Record<string, ComponentType> = {
 	'sibling-index': SiblingIndexDemo,
 	'starting-style': StartingStyleDemo,
 	temporal: TemporalStage4Demo,
+	'text-box-trim': TextBoxTrimDemo,
 	'text-wrap-balance': TextWrapBalanceDemo,
 	'text-wrap-balance-balance': TextWrapBalanceBalanceDemo,
 	'text-wrap-balance-pretty': TextWrapBalancePrettyDemo,

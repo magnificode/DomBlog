@@ -1,0 +1,49 @@
+---
+title: 'text-box-trim: padding that hugs the letters'
+date: 2026-08-19
+description: 'CSS text-box-trim cuts the invisible space fonts add above their capitals and below the baseline, so headings sit flush, pills hug their labels, and padding means what it says.'
+tags: ['css', 'typography']
+code: |
+  :::section Smallest useful CSS
+  ```css
+  .button-label {
+    text-box: trim-both cap alphabetic;
+  }
+  ```
+
+  :::section Flush heading
+  ```css
+  h1 {
+    text-box: trim-start cap alphabetic;
+  }
+  ```
+
+  :::section Longhands
+  ```css
+  .sample {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
+  ```
+codeLanguage: css
+---
+
+Every font ships with invisible space above its capitals and below its baseline. It's why a button with `padding: 12px` on all sides rarely shows 12px of space above and below the letters, why the icon next to a label never quite lines up, and why a heading sits a few pixels lower than the image it's meant to align with. The fix has always been a magic number. `margin-top: -3px`. `padding-block: 11px 13px`. A comment that says `/* optical */` and hopes nobody swaps the font.
+
+`text-box-trim` deletes that space. Tell it which edges to trim with `trim-both`, `trim-start`, or `trim-end`, and `text-box-edge` says where to cut. `cap` is the top of the capital letters, `ex` is x-height, `alphabetic` is the baseline. The shorthand takes both:
+
+```css
+.button-label {
+	text-box: trim-both cap alphabetic;
+}
+```
+
+Now the box starts at the top of the H and ends at the baseline. Padding measures from the letters instead of the font's line box, so 12px means 12px in every font.
+
+What I didn't expect is how much the ghost space differs between fonts. In the demo, Space Grotesk, Instrument Serif, and JetBrains Mono at the same size get three different boxes with trimming off. Flip on `trim-start cap` and all three cap heights snap to the same line. That's the actual win. Not one font looking tidy, but three fonts agreeing.
+
+Two things to know. It doesn't inherit, so put it on the element holding the text rather than the layout wrapper. And it only trims the first and last line of a block. `line-height` still owns the gaps in between, which is why this belongs on buttons, labels, and headings rather than paragraphs.
+
+[Firefox 154 shipped it yesterday](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/154), in the same release as `sibling-index()`. Chrome and Edge have had it since 133 (February 2025) and Safari since 18.2 (December 2024), so [MDN now marks `text-box-trim` Baseline 2026 Newly Available](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-box-trim). Older browsers ignore the declaration and keep the leading. The layout still works, just a couple of pixels less precise.
+
+The demo lets you flip trim and edge values across three fonts, then compares ordinary pill buttons with trimmed ones. Watch the cap heights line up.
